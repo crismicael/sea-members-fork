@@ -1,6 +1,6 @@
 {
   "name": "sea-members",
-  "packageManager": "yarn@4.9.1",
+  "packageManager": "yarn@1.22.22",
   "type": "module",
   "version": "0.0.1",
   "private": "true",
