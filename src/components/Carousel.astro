@@ -159,7 +159,6 @@ const slides = [
   if (!carousel) return;
 
   const isMobile = window.matchMedia('(max-width: 639px)').matches;
-  if (isMobile) return;
 
   const track = carousel.querySelector('.startup-carousel__track');
   const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
@@ -196,7 +195,11 @@ const slides = [
     index = Math.min(Math.max(nextIndex, 0), maxIndex);
     const maxOffset = Math.max(track.scrollWidth - (viewport?.getBoundingClientRect().width || 0), 0);
     const offset = Math.min(step * index, maxOffset);
-    track.style.transform = `translateX(-${offset}px)`;
+    if (isMobile && viewport) {
+      viewport.scrollTo({ left: offset, behavior: 'smooth' });
+    } else {
+      track.style.transform = `translateX(-${offset}px)`;
+    }
 
     slides.forEach((slide, i) => {
       slide.dataset.active = i === index ? "true" : "false";
@@ -258,7 +261,7 @@ const slides = [
     return values[4] || 0;
   };
 
-  if (viewport) {
+  if (viewport && !isMobile) {
     viewport.addEventListener('pointerdown', (event) => {
       if (event.button !== undefined && event.button !== 0) return;
       isDragging = true;
@@ -334,7 +337,8 @@ const slides = [
 .startup-carousel {
   width: 100%;
   padding: 3rem 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
@@ -424,7 +428,6 @@ const slides = [
 .startup-carousel__media {
   border-radius: 16px;
   overflow: hidden;
-  background: #0f172a;
   /*aspect-ratio: 332 / 448;*/
 }
 
@@ -472,6 +475,7 @@ const slides = [
 .startup-carousel__dots {
   display: flex;
   gap: 0.5rem;
+  margin-top: auto;
 }
 
 .startup-carousel__dot {
@@ -489,22 +493,21 @@ const slides = [
 
 @media (max-width: 639px) {
   .startup-carousel__mask {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
+    scrollbar-width: none;
   }
 
   .startup-carousel__track {
     width: 100%;
     box-sizing: border-box;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     /*padding: 0 1rem;*/
-    transform: none !important;
-    scrollbar-width: none;
   }
 
-  .startup-carousel__track::-webkit-scrollbar {
+  .startup-carousel__mask::-webkit-scrollbar {
     display: none;
   }
 
@@ -513,7 +516,16 @@ const slides = [
     min-width: 70%;
     max-width: 70%;
     flex: 0 0 70%;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
+  }
+
+  .startup-carousel__dots {
+      justify-content: center;
+  }
+
+  .startup-carousel__dot {
+    width: 8px;
+    height: 4px;
   }
 }
 
