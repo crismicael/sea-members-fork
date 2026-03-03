@@ -1,6 +1,6 @@
 ---
 import Image from 'astro/components/Image.astro'
-
+import Logo from '../assets/members_icon.svg'
 ---
 
 <section id="prices" class="left-right-padding up-down-padding border-x border-b border-(--border-color)">
@@ -20,11 +20,19 @@ import Image from 'astro/components/Image.astro'
                             Experiencias exclusivas y descuentos en comercios participantes
                         </p>
                     </div>
-                    <ul class="list-disc pl-5">
-                        <li>Beneficios exclusivos en gastronomía, wellness, estilo y escapadas</li>
-                        <li>Nuevos comercios sumándose cada mes</li>
-                        <li>Tarjeta física personalizada</li>
-                        <li>Tarjeta virtual para Apple Wallet y Google Wallet</li>
+                    <ul class="pl-5">
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false"  />
+                            Beneficios exclusivos en gastronomía, wellness, estilo y escapadas</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Nuevos comercios sumándose cada mes</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Tarjeta física personalizada</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Tarjeta virtual para Apple Wallet y Google Wallet</li>
                     </ul>
                 </div>
             </article>
@@ -36,10 +44,18 @@ import Image from 'astro/components/Image.astro'
                         </p>
                     </div>
                     <ul class="list-disc pl-5">
-                        <li>Edición anticipada de Sea View Magazine</li>
-                        <li>Edición anticipada de Sunwave</li>
-                        <li>Resumen semanal de The Gazzella</li>
-                        <li>Episodio exclusivo de nuestro podcast</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Edición anticipada de Sea View Magazine</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Edición anticipada de Sunwave</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Resumen semanal de The Gazzella</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Episodio exclusivo de nuestro podcast</li>
                     </ul>
                 </div>
             </article>
@@ -51,10 +67,18 @@ import Image from 'astro/components/Image.astro'
                         </p>
                     </div>
                     <ul class="list-disc pl-5">
-                        <li>Acceso prioritario a eventos del grupo editorial</li>
-                        <li>Participa para acceder a los mejores eventos de la ciudad</li>
-                        <li>Participa por accesos a eventos exclusivos</li>
-                        <li>Participa en sorteos y premios mensuales solo para members</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Acceso prioritario a eventos del grupo editorial</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Participa para acceder a los mejores eventos de la ciudad</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Participa por accesos a eventos exclusivos</li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
+                            Participa en sorteos y premios mensuales solo para members</li>
                     </ul>
                 </div>
             </article>

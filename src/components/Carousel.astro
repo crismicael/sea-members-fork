@@ -1,6 +1,7 @@
 ---
 import Image from 'astro/components/Image.astro'
 import AboutPlaceholder from '../assets/aboutPlaceholder.png'
+import Logo from '../assets/members_logo.svg'
 import PromoOne from '../assets/promo_1.jpg'
 import AquaventurasPromo from '../assets/promo_2.jpg'
 import Button from './shared/Button.astro'
@@ -14,89 +15,141 @@ const slides = [
     image: AquaventurasPromo
   },
   {
-    brand: "Bicho's",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Bicho's",
-    href: "#"
+    brand: "Papelon con Limon",
+    description: "Combo de 2 arepas y 1 papelon indivial por $170",
+    cta: "Lee la historia de Papelon con Limon",
+    href: "#",
   },
   {
-    brand: "4 Mares",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de 4 Mares",
-    href: "#"
+    brand: "Ciao Pasta",
+    description: "Pasta o Pizza con 1 refresco por $190",
+    cta: "Lee la historia de Ciao Pasta",
+    href: "#",
   },
   {
-    brand: "La Tosca",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de La Tosca",
-    href: "#"
+    brand: "Orogold",
+    description: "30% de descuento en productos y faciales.",
+    cta: "Lee la historia de Orogold",
+    href: "#",
   },
   {
-    brand: "Emma´s",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Emma´s",
-    href: "#"
+    brand: "Flavorcup",
+    description: "Pannini, papas y refresco por $144 o Waffle Original y Cafe americano por $135.",
+    cta: "Lee la historia de Flavorcup",
+    href: "#",
   },
   {
-    brand: "Cafe la Diosa",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Cafe la Diosa",
-    href: "#"
+    brand: "VIPS",
+    description: "10% en consumo o 2x1 en cervezas participantes.",
+    cta: "Lee la historia de VIPS",
+    href: "#",
   },
   {
-    brand: "Danny's",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Danny's",
-    href: "#"
+    brand: "Virtuality World",
+    description: "2x1 en atracciones y/o 10% de descuento en fiestas de Lunes a Viernes.",
+    cta: "Lee la historia de Virtuality World",
+    href: "#",
   },
   {
-    brand: "Siempre Diva",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Siempre Diva",
-    href: "#"
+    brand: "Kalim",
+    description: "1 Cerveza o Refresco en tu consumo.",
+    cta: "Lee la historia de Kalim",
+    href: "#",
   },
   {
-    brand: "Blessed",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Blessed",
-    href: "#"
+    brand: "Market Place",
+    description: "Degustación de tequila gratis.",
+    cta: "Lee la historia de Market Place",
+    href: "#",
   },
-  {
-    brand: "Chinelo",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Chinelo",
-    href: "#"
-  },
-  {
-    brand: "Hera: Medicina Estética",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Hera",
-    href: "#"
-  },
-  {
-    brand: "Paty Ramirez: Sexológa",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Paty Ramirez",
-    href: "#"
-  },
-  {
-    brand: "Aurea",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Aurea",
-    href: "#"
-  },
-  {
-    brand: "Happy",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Happy",
-    href: "#"
-  },
+  // {
+  //   brand: "Bicho's",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Bicho's",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "4 Mares",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de 4 Mares",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "La Tosca",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de La Tosca",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Emma´s",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Emma´s",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Cafe la Diosa",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Cafe la Diosa",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Danny's",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Danny's",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Siempre Diva",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Siempre Diva",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Blessed",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Blessed",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Chinelo",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Chinelo",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Hera: Medicina Estética",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Hera",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Paty Ramirez: Sexológa",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Paty Ramirez",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Aurea",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Aurea",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Happy",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Happy",
+  //   href: "#"
+  // },
 ];
 ---
 
 <section id="sponsors"  class="startup-carousel__frame  left-right-padding up-down-padding border-0 md:border-x md:border-(--border-color)">
     <div class="prose">
         <h2 class="startup-carousel__title font-normal">La columna vertebral del comercio en Puerto Vallarta</h2>
+        <div class="flex items-center gap-1">
+            <p class="mt-0 mb-0">Conoce las ofertas que puedes disfrutar con</p>
+            <Image src={Logo} class="mt-0 mb-0" alt="Members Logo" width="100" height="100" draggable="false" />
+        </div>
     </div>
 <div class="startup-carousel" aria-label="Startup carousel">
   <div class="startup-carousel__header">
@@ -172,6 +225,10 @@ const slides = [
   let index = 0;
   let timer = null;
 
+  // NUEVO: Variables para controlar la colisión de animaciones en móvil
+  let isAnimating = false;
+  let scrollEndTimeout = null;
+
   const getGap = () => {
     const style = window.getComputedStyle(track);
     const gap = parseFloat(style.gap || style.columnGap || "0");
@@ -187,20 +244,7 @@ const slides = [
     return step > 0 ? Math.max(0, Math.round(maxOffset / step)) : slides.length - 1;
   };
 
-  const goTo = (nextIndex) => {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    const gap = getGap();
-    const step = slideWidth + gap;
-    const maxIndex = getMaxIndex();
-    index = Math.min(Math.max(nextIndex, 0), maxIndex);
-    const maxOffset = Math.max(track.scrollWidth - (viewport?.getBoundingClientRect().width || 0), 0);
-    const offset = Math.min(step * index, maxOffset);
-    if (isMobile && viewport) {
-      viewport.scrollTo({ left: offset, behavior: 'smooth' });
-    } else {
-      track.style.transform = `translateX(-${offset}px)`;
-    }
-
+  const updateUI = () => {
     slides.forEach((slide, i) => {
       slide.dataset.active = i === index ? "true" : "false";
       slide.setAttribute("aria-hidden", i === index ? "false" : "true");
@@ -210,8 +254,43 @@ const slides = [
       dot.setAttribute("aria-pressed", i === index ? "true" : "false");
     });
 
+    const maxIndex = getMaxIndex();
     if (prevButton) prevButton.disabled = index <= 0;
     if (nextButton) nextButton.disabled = index >= maxIndex;
+  };
+
+  const goTo = (nextIndex) => {
+    const maxIndex = getMaxIndex();
+    index = Math.min(Math.max(nextIndex, 0), maxIndex);
+
+    if (isMobile && viewport) {
+      // NUEVO: Bloqueamos el evento scroll nativo mientras navegamos por botón
+      isAnimating = true;
+
+      // NUEVO: Usamos offsetLeft para obtener la posición exacta del slide,
+      // esto evita errores de cálculo con elementos que usan porcentajes (%)
+      const targetSlide = slides[index];
+      const offset = targetSlide ? targetSlide.offsetLeft : 0;
+
+      viewport.scrollTo({ left: offset, behavior: 'smooth' });
+
+      // Liberamos la bandera después de que termine la animación suave (aprox 600ms)
+      if (scrollEndTimeout) clearTimeout(scrollEndTimeout);
+      scrollEndTimeout = setTimeout(() => {
+        isAnimating = false;
+      }, 600);
+
+    } else {
+      // Lógica original para escritorio (se mantiene intacta)
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      const gap = getGap();
+      const step = slideWidth + gap;
+      const maxOffset = Math.max(track.scrollWidth - (viewport?.getBoundingClientRect().width || 0), 0);
+      const offset = Math.min(step * index, maxOffset);
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+
+    updateUI();
   };
 
   const start = () => {
@@ -246,6 +325,37 @@ const slides = [
     });
   });
 
+  if (viewport && isMobile) {
+    let scrollTicking = false;
+    let scrollTimeout;
+
+    viewport.addEventListener('scroll', () => {
+      stop();
+
+      // NUEVO: Si la animación fue iniciada por un botón (goTo),
+      // ignoramos este evento para no interferir con el cálculo
+      if (isAnimating) return;
+
+      if (scrollTicking) return;
+      scrollTicking = true;
+
+      window.requestAnimationFrame(() => {
+        scrollTicking = false;
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = getGap();
+        const step = slideWidth + gap;
+        const maxIndex = getMaxIndex();
+        const nextIndex = step > 0 ? Math.round(viewport.scrollLeft / step) : 0;
+        index = Math.min(Math.max(nextIndex, 0), maxIndex);
+        updateUI();
+      });
+
+      if (scrollTimeout) window.clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(start, 800);
+    });
+  }
+
+  // ... (El resto del código de arrastre en escritorio se mantiene igual)
   let isDragging = false;
   let startX = 0;
   let startOffset = 0;
@@ -517,6 +627,7 @@ const slides = [
     max-width: 70%;
     flex: 0 0 70%;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .startup-carousel__dots {

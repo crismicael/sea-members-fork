@@ -1,4 +1,4 @@
----
+50---
 import Image from 'astro/components/Image.astro'
 import Logo from '../assets/members_logo.svg'
 import Language from "./ui/Language.astro";
@@ -14,22 +14,23 @@ import Language from "./ui/Language.astro";
             </div>
             <div class="md:col-span-2">
                 <ul class="*:hover:underline inline-block">
-                    <li><a href="#">¿Qué somos?</a></li>
-                    <li><a href="#">Suscripción</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="/#sponsors">Beneficios</a></li>
+                    <li><a href="/#prices">Suscripción</a></li>
+                    <li><a href="tel:3222657989">Contacto</a></li>
                 </ul>
             </div>
             <div class="md:col-span-2">
                 <ul class="*:hover:underline inline-block">
-                    <li><a href="#">Sea View Magazine</a></li>
-                    <li><a href="#">Sunwave</a></li>
+                    <li><a href="https://seaviewmagazine.com/">Sea View Magazine</a></li>
+                    <li><a href="https://sunwavemagazine.com/">Sunwave</a></li>
+                    <li><a href="https://thegazzella.com/">The Gazzella</a></li>
                     <li><a href="#">Beyond</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="left-right-padding py-6 border-t border-x border-y-dotted-r-solid border-(--border-color)">
-        <div class="flex justify-end text-gray-500">
+        <div class="flex justify-between text-gray-500">
             <!-- <div id="language-button-footer">
                 <Language color="black">
                     <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">es</span>
@@ -42,7 +43,10 @@ import Language from "./ui/Language.astro";
                 </div>
             </div> -->
             <div>
-                <p>&copy; {new Date().getFullYear()} Sea View Magazine</p>
+                <p class="text-[14px] sm:text-[16px]">Hecho con 💚 por Beyond</p>
+            </div>
+            <div>
+                <p class="text-[14px] sm:text-[16px]">&copy; {new Date().getFullYear()} Sea View Magazine</p>
             </div>
         </div>
     </div>
