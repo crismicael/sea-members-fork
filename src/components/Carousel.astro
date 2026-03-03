@@ -172,6 +172,10 @@ const slides = [
   let index = 0;
   let timer = null;
 
+  // NUEVO: Variables para controlar la colisión de animaciones en móvil
+  let isAnimating = false;
+  let scrollEndTimeout = null;
+
   const getGap = () => {
     const style = window.getComputedStyle(track);
     const gap = parseFloat(style.gap || style.columnGap || "0");
@@ -187,20 +191,7 @@ const slides = [
     return step > 0 ? Math.max(0, Math.round(maxOffset / step)) : slides.length - 1;
   };
 
-  const goTo = (nextIndex) => {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    const gap = getGap();
-    const step = slideWidth + gap;
-    const maxIndex = getMaxIndex();
-    index = Math.min(Math.max(nextIndex, 0), maxIndex);
-    const maxOffset = Math.max(track.scrollWidth - (viewport?.getBoundingClientRect().width || 0), 0);
-    const offset = Math.min(step * index, maxOffset);
-    if (isMobile && viewport) {
-      viewport.scrollTo({ left: offset, behavior: 'smooth' });
-    } else {
-      track.style.transform = `translateX(-${offset}px)`;
-    }
-
+  const updateUI = () => {
     slides.forEach((slide, i) => {
       slide.dataset.active = i === index ? "true" : "false";
       slide.setAttribute("aria-hidden", i === index ? "false" : "true");
@@ -210,8 +201,43 @@ const slides = [
       dot.setAttribute("aria-pressed", i === index ? "true" : "false");
     });
 
+    const maxIndex = getMaxIndex();
     if (prevButton) prevButton.disabled = index <= 0;
     if (nextButton) nextButton.disabled = index >= maxIndex;
+  };
+
+  const goTo = (nextIndex) => {
+    const maxIndex = getMaxIndex();
+    index = Math.min(Math.max(nextIndex, 0), maxIndex);
+
+    if (isMobile && viewport) {
+      // NUEVO: Bloqueamos el evento scroll nativo mientras navegamos por botón
+      isAnimating = true;
+
+      // NUEVO: Usamos offsetLeft para obtener la posición exacta del slide,
+      // esto evita errores de cálculo con elementos que usan porcentajes (%)
+      const targetSlide = slides[index];
+      const offset = targetSlide ? targetSlide.offsetLeft : 0;
+
+      viewport.scrollTo({ left: offset, behavior: 'smooth' });
+
+      // Liberamos la bandera después de que termine la animación suave (aprox 600ms)
+      if (scrollEndTimeout) clearTimeout(scrollEndTimeout);
+      scrollEndTimeout = setTimeout(() => {
+        isAnimating = false;
+      }, 600);
+
+    } else {
+      // Lógica original para escritorio (se mantiene intacta)
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      const gap = getGap();
+      const step = slideWidth + gap;
+      const maxOffset = Math.max(track.scrollWidth - (viewport?.getBoundingClientRect().width || 0), 0);
+      const offset = Math.min(step * index, maxOffset);
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+
+    updateUI();
   };
 
   const start = () => {
@@ -246,6 +272,37 @@ const slides = [
     });
   });
 
+  if (viewport && isMobile) {
+    let scrollTicking = false;
+    let scrollTimeout;
+
+    viewport.addEventListener('scroll', () => {
+      stop();
+
+      // NUEVO: Si la animación fue iniciada por un botón (goTo),
+      // ignoramos este evento para no interferir con el cálculo
+      if (isAnimating) return;
+
+      if (scrollTicking) return;
+      scrollTicking = true;
+
+      window.requestAnimationFrame(() => {
+        scrollTicking = false;
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = getGap();
+        const step = slideWidth + gap;
+        const maxIndex = getMaxIndex();
+        const nextIndex = step > 0 ? Math.round(viewport.scrollLeft / step) : 0;
+        index = Math.min(Math.max(nextIndex, 0), maxIndex);
+        updateUI();
+      });
+
+      if (scrollTimeout) window.clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(start, 800);
+    });
+  }
+
+  // ... (El resto del código de arrastre en escritorio se mantiene igual)
   let isDragging = false;
   let startX = 0;
   let startOffset = 0;
