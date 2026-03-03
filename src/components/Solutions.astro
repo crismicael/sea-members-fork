@@ -1,6 +1,9 @@
 ---
 import Image from 'astro/components/Image.astro'
 import VerticalCard from '../assets/vertical_card.png'
+import PromoOne from '../assets/promo_1.jpg'
+import PromoTwo from '../assets/promo_2.jpg'
+import PromoThree from '../assets/promo_3.jpg'
 ---
 
 <section id="solutions" class=" bg-(--secondary-bg-color) border-y border-(--border-color)">
@@ -15,29 +18,32 @@ import VerticalCard from '../assets/vertical_card.png'
         </div>
         <div class="group grid grid-cols-1 md:grid-cols-3 gap-4 *:border *:border-(--border-color) *:rounded-(--rounded-button) *:px-5 *:py-4 *:transition-transform *:hover:scale-101 *:ease-in *:*:*:font-normal">
             <div class="md:col-span-2">
-                <div class="prose">
+                <div class="flex flex-col gap-3 prose">
                     <h3>Obten una lista de beneficios de nuestros socios</h3>
                 </div>
             </div>
             <div>
-                <div class="prose">
+                <div class="h-full flex flex-col gap-3 prose">
                     <h3>Haz crecer tu cartera con nuestros increibles ahorros y ofertas</h3>
+                    <Image src={PromoThree} alt="Carta vertical de Members" class="flex-1 w-full max-w-55 h-auto mx-auto md:mx-0 md:max-w-none rounded-(--rounded-button) object-cover" />
                 </div>
             </div>
             <div>
-                <div class="prose">
+                <div class="h-full flex flex-col gap-3 prose">
                     <h3>Ofertas que llegan a tus necesidades</h3>
+                    <Image src={PromoTwo} alt="Carta vertical de Members" class="w-full max-w-55 h-auto mx-auto md:mx-0 md:max-w-none rounded-(--rounded-button) object-contain" />
                 </div>
             </div>
             <div>
                 <div class="flex flex-col gap-3 prose">
                     <h3>Presume tu tarjeta members</h3>
-                    <Image src={VerticalCard} alt="Carta vertical de Members" class="w-full max-w-[220px] h-auto mx-auto md:mx-0 md:max-w-none" />
+                    <Image src={VerticalCard} alt="Carta vertical de Members" class="w-full max-w-80 mx-auto md:mx-0 md:max-w-none object-contain" />
                 </div>
             </div>
             <div>
-                <div class="prose">
+                <div class="h-full flex flex-col gap-3 prose">
                     <h3>Accede a ofertas invaluables</h3>
+                    <Image src={PromoOne} alt="Carta vertical de Members" class="w-full max-w-55 h-auto mx-auto md:mx-0 md:max-w-none rounded-(--rounded-button) object-contain" />
                 </div>
             </div>
         </div>
