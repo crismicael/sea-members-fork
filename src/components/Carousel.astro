@@ -1,6 +1,7 @@
 ---
 import Image from 'astro/components/Image.astro'
 import AboutPlaceholder from '../assets/aboutPlaceholder.png'
+import Logo from '../assets/members_logo.svg'
 import PromoOne from '../assets/promo_1.jpg'
 import AquaventurasPromo from '../assets/promo_2.jpg'
 import Button from './shared/Button.astro'
@@ -14,89 +15,141 @@ const slides = [
     image: AquaventurasPromo
   },
   {
-    brand: "Bicho's",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Bicho's",
-    href: "#"
+    brand: "Papelon con Limon",
+    description: "Combo de 2 arepas y 1 papelon indivial por $170",
+    cta: "Lee la historia de Papelon con Limon",
+    href: "#",
   },
   {
-    brand: "4 Mares",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de 4 Mares",
-    href: "#"
+    brand: "Ciao Pasta",
+    description: "Pasta o Pizza con 1 refresco por $190",
+    cta: "Lee la historia de Ciao Pasta",
+    href: "#",
   },
   {
-    brand: "La Tosca",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de La Tosca",
-    href: "#"
+    brand: "Orogold",
+    description: "30% de descuento en productos y faciales.",
+    cta: "Lee la historia de Orogold",
+    href: "#",
   },
   {
-    brand: "Emma´s",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Emma´s",
-    href: "#"
+    brand: "Flavorcup",
+    description: "Pannini, papas y refresco por $144 o Waffle Original y Cafe americano por $135.",
+    cta: "Lee la historia de Flavorcup",
+    href: "#",
   },
   {
-    brand: "Cafe la Diosa",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Cafe la Diosa",
-    href: "#"
+    brand: "VIPS",
+    description: "10% en consumo o 2x1 en cervezas participantes.",
+    cta: "Lee la historia de VIPS",
+    href: "#",
   },
   {
-    brand: "Danny's",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Danny's",
-    href: "#"
+    brand: "Virtuality World",
+    description: "2x1 en atracciones y/o 10% de descuento en fiestas de Lunes a Viernes.",
+    cta: "Lee la historia de Virtuality World",
+    href: "#",
   },
   {
-    brand: "Siempre Diva",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Siempre Diva",
-    href: "#"
+    brand: "Kalim",
+    description: "1 Cerveza o Refresco en tu consumo.",
+    cta: "Lee la historia de Kalim",
+    href: "#",
   },
   {
-    brand: "Blessed",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Blessed",
-    href: "#"
+    brand: "Market Place",
+    description: "Degustación de tequila gratis.",
+    cta: "Lee la historia de Market Place",
+    href: "#",
   },
-  {
-    brand: "Chinelo",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Chinelo",
-    href: "#"
-  },
-  {
-    brand: "Hera: Medicina Estética",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Hera",
-    href: "#"
-  },
-  {
-    brand: "Paty Ramirez: Sexológa",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Paty Ramirez",
-    href: "#"
-  },
-  {
-    brand: "Aurea",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Aurea",
-    href: "#"
-  },
-  {
-    brand: "Happy",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
-    cta: "Lee la historia de Happy",
-    href: "#"
-  },
+  // {
+  //   brand: "Bicho's",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Bicho's",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "4 Mares",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de 4 Mares",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "La Tosca",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de La Tosca",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Emma´s",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Emma´s",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Cafe la Diosa",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Cafe la Diosa",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Danny's",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Danny's",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Siempre Diva",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Siempre Diva",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Blessed",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Blessed",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Chinelo",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Chinelo",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Hera: Medicina Estética",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Hera",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Paty Ramirez: Sexológa",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Paty Ramirez",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Aurea",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Aurea",
+  //   href: "#"
+  // },
+  // {
+  //   brand: "Happy",
+  //   description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+  //   cta: "Lee la historia de Happy",
+  //   href: "#"
+  // },
 ];
 ---
 
 <section id="sponsors"  class="startup-carousel__frame  left-right-padding up-down-padding border-0 md:border-x md:border-(--border-color)">
     <div class="prose">
         <h2 class="startup-carousel__title font-normal">La columna vertebral del comercio en Puerto Vallarta</h2>
+        <div class="flex items-center gap-1">
+            <p class="mt-0 mb-0">Conoce las ofertas que puedes disfrutar con</p>
+            <Image src={Logo} class="mt-0 mb-0" alt="Members Logo" width="100" height="100" draggable="false" />
+        </div>
     </div>
 <div class="startup-carousel" aria-label="Startup carousel">
   <div class="startup-carousel__header">
