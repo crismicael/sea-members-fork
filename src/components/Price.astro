@@ -59,13 +59,23 @@ import Image from 'astro/components/Image.astro'
                 </div>
             </article>
         </div>
-        <div class="group flex flex-col sm:flex-row  justify-evenly items-stretch rounded-(--rounded-button) border border-(--border-color) bg-(--secondary-color)/10">
-            <a href="https://buy.stripe.com/dRm8wH9eV5aPcmz7Wk1Jm07" class="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors hover:bg-(--secondary-color)/30">
+        <div class="flex flex-col sm:flex-row gap-3  justify-evenly items-stretch">
+            <a href="https://buy.stripe.com/dRm8wH9eV5aPcmz7Wk1Jm07" class="group relative flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors border border-(--secondary-color) rounded-(--rounded-button)">
+                <span class="absolute right-3 top-3 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 border border-(--border-color) rounded-(--rounded-button) p-1">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-(--header-color)" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                    </svg>
+                </span>
                 <span class="text-sm line-through">Antes $179 MXN / MES</span>
                 <span class="text-xl font-semibold text-(--header-color)">$149 MXN / MES</span>
                 <span class="text-sm">Tarjeta virtual incluida</span>
             </a>
-            <a href="https://buy.stripe.com/3cIaEP62JdHl2LZa4s1Jm06" class="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors hover:bg-(--secondary-color)/30">
+            <a href="https://buy.stripe.com/3cIaEP62JdHl2LZa4s1Jm06" class="group relative flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors bg-(--secondary-color)/30 border border-(--border-color) rounded-(--rounded-button)">
+                <span class="absolute right-3 top-3 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 border border-(--secondary-color) rounded-(--rounded-button) p-1">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-(--header-color)" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                    </svg>
+                </span>
                 <span class="text-sm line-through">Antes $1490 MXN / AÑO</span>
                 <span class="text-xl font-semibold text-(--header-color)">1299,00 MXN / AÑO</span>
                 <span class="text-sm">Tarjeta física</span>
