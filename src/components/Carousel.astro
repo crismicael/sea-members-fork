@@ -1,0 +1,517 @@
+---
+import Image from 'astro/components/Image.astro'
+import AboutPlaceholder from '../assets/aboutPlaceholder.png'
+import Button from './shared/Button.astro'
+import ButtonArrow from './shared/ButtonArrow.astro'
+const slides = [
+  {
+    brand: "Aquaventuras",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Aquaventuras",
+    href: "#"
+  },
+  {
+    brand: "Bicho's",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Bicho's",
+    href: "#"
+  },
+  {
+    brand: "4 Mares",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de 4 Mares",
+    href: "#"
+  },
+  {
+    brand: "La Tosca",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de La Tosca",
+    href: "#"
+  },
+  {
+    brand: "Emma´s",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Emma´s",
+    href: "#"
+  },
+  {
+    brand: "Cafe la Diosa",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Cafe la Diosa",
+    href: "#"
+  },
+  {
+    brand: "Danny's",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Danny's",
+    href: "#"
+  },
+  {
+    brand: "Siempre Diva",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Siempre Diva",
+    href: "#"
+  },
+  {
+    brand: "Blessed",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Blessed",
+    href: "#"
+  },
+  {
+    brand: "Chinelo",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Chinelo",
+    href: "#"
+  },
+  {
+    brand: "Hera: Medicina Estética",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Hera",
+    href: "#"
+  },
+  {
+    brand: "Paty Ramirez: Sexológa",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Paty Ramirez",
+    href: "#"
+  },
+  {
+    brand: "Aurea",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Aurea",
+    href: "#"
+  },
+  {
+    brand: "Happy",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, quasi?",
+    cta: "Lee la historia de Happy",
+    href: "#"
+  },
+];
+---
+
+<div class="startup-carousel__frame px-0 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-32 up-down-padding border-0 md:border-x md:border-(--border-color)">
+<section class="startup-carousel" aria-label="Startup carousel">
+  <div class="startup-carousel__header">
+    <div class="prose">
+        <h2 class="startup-carousel__title font-normal">La columna vertebral del comercio en Puerto Vallarta</h2>
+    </div>
+    <div class="startup-carousel__controls">
+      <button class="startup-carousel__button" type="button" data-prev aria-label="Anterior">
+        <span aria-hidden="true">‹</span>
+      </button>
+      <button class="startup-carousel__button" type="button" data-next aria-label="Siguiente">
+        <span aria-hidden="true">›</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="startup-carousel__mask" data-carousel>
+    <div class="startup-carousel__track">
+      {slides.map((slide, index) => (
+        <article
+          class="startup-carousel__slide"
+          data-slide
+          data-index={index}
+          data-active={index === 0 ? "true" : "false"}
+          aria-hidden={index === 0 ? "false" : "true"}
+        >
+          <div class="startup-carousel__card">
+            <div class="startup-carousel__media">
+              <Image src={AboutPlaceholder} alt="" width={332} height={448} class="startup-carousel__media-image" draggable="false" />
+            </div>
+            <div class="startup-carousel__meta">
+              <p class="startup-carousel__brand">{slide.brand}</p>
+              <p class="startup-carousel__copy">{slide.description}</p>
+              <a class="startup-carousel__link" href={slide.href}>
+                {slide.cta}
+                <span aria-hidden="true">›</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="startup-carousel__dots" role="tablist" aria-label="Carrusel de startups">
+    {slides.map((_, index) => (
+      <button
+        class="startup-carousel__dot"
+        type="button"
+        data-dot
+        data-index={index}
+        aria-label={`Ir al slide ${index + 1}`}
+        aria-pressed={index === 0 ? "true" : "false"}
+      />
+    ))}
+  </div>
+</section>
+</div>
+
+<script is:inline>
+(() => {
+  const carousel = document.querySelector('.startup-carousel');
+  if (!carousel) return;
+
+  const isMobile = window.matchMedia('(max-width: 639px)').matches;
+  if (isMobile) return;
+
+  const track = carousel.querySelector('.startup-carousel__track');
+  const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+  const dots = Array.from(carousel.querySelectorAll('[data-dot]'));
+  const prevButton = carousel.querySelector('[data-prev]');
+  const nextButton = carousel.querySelector('[data-next]');
+  const viewport = carousel.querySelector('.startup-carousel__mask');
+
+  if (!track || slides.length === 0) return;
+
+  let index = 0;
+  let timer = null;
+
+  const getGap = () => {
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap || style.columnGap || "0");
+    return Number.isNaN(gap) ? 0 : gap;
+  };
+
+  const getMaxIndex = () => {
+    if (!viewport) return slides.length - 1;
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = getGap();
+    const step = slideWidth + gap;
+    const maxOffset = Math.max(track.scrollWidth - viewport.getBoundingClientRect().width, 0);
+    return step > 0 ? Math.max(0, Math.round(maxOffset / step)) : slides.length - 1;
+  };
+
+  const goTo = (nextIndex) => {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = getGap();
+    const step = slideWidth + gap;
+    const maxIndex = getMaxIndex();
+    index = Math.min(Math.max(nextIndex, 0), maxIndex);
+    const maxOffset = Math.max(track.scrollWidth - (viewport?.getBoundingClientRect().width || 0), 0);
+    const offset = Math.min(step * index, maxOffset);
+    track.style.transform = `translateX(-${offset}px)`;
+
+    slides.forEach((slide, i) => {
+      slide.dataset.active = i === index ? "true" : "false";
+      slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+    });
+
+    dots.forEach((dot, i) => {
+      dot.setAttribute("aria-pressed", i === index ? "true" : "false");
+    });
+
+    if (prevButton) prevButton.disabled = index <= 0;
+    if (nextButton) nextButton.disabled = index >= maxIndex;
+  };
+
+  const start = () => {
+    stop();
+    timer = window.setInterval(() => goTo(index + 1), 6000);
+  };
+
+  const stop = () => {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  prevButton?.addEventListener('click', () => {
+    if (prevButton?.disabled) return;
+    goTo(index - 1);
+    start();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    if (nextButton?.disabled) return;
+    goTo(index + 1);
+    start();
+  });
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const targetIndex = Number(dot.getAttribute('data-index') || 0);
+      goTo(targetIndex);
+      start();
+    });
+  });
+
+  let isDragging = false;
+  let startX = 0;
+  let startOffset = 0;
+  let currentOffset = 0;
+  let dragged = false;
+
+  const getTranslateX = () => {
+    const transform = window.getComputedStyle(track).transform;
+    if (transform === 'none') return 0;
+    const match = transform.match(/matrix\(([^)]+)\)/);
+    if (!match) return 0;
+    const values = match[1].split(',').map((value) => parseFloat(value.trim()));
+    return values[4] || 0;
+  };
+
+  if (viewport) {
+    viewport.addEventListener('pointerdown', (event) => {
+      if (event.button !== undefined && event.button !== 0) return;
+      isDragging = true;
+      dragged = false;
+      stop();
+      carousel.classList.add('is-dragging');
+      startX = event.clientX;
+      startOffset = getTranslateX();
+      currentOffset = startOffset;
+      track.style.transition = 'none';
+      viewport.setPointerCapture?.(event.pointerId);
+    });
+
+    viewport.addEventListener('pointermove', (event) => {
+      if (!isDragging) return;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) > 5) dragged = true;
+      currentOffset = startOffset + delta;
+      track.style.transform = `translateX(${currentOffset}px)`;
+    });
+
+    const endDrag = (event) => {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.classList.remove('is-dragging');
+      track.style.transition = '';
+      viewport.releasePointerCapture?.(event.pointerId);
+
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      const gap = getGap();
+      const step = slideWidth + gap;
+      const nextIndex = Math.round(-currentOffset / step);
+      goTo(nextIndex);
+      start();
+    };
+
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+
+    viewport.addEventListener('click', (event) => {
+      if (!dragged) return;
+      event.preventDefault();
+      event.stopPropagation();
+      dragged = false;
+    });
+  }
+
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', stop);
+  carousel.addEventListener('focusout', start);
+
+  const ro = new ResizeObserver(() => goTo(index));
+  slides.forEach((slide) => ro.observe(slide));
+
+  goTo(0);
+  start();
+})();
+</script>
+
+<style>
+:global(:root) {
+  --carousel-gap: 1.5rem;
+  --carousel-radius: 20px;
+  --carousel-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+.startup-carousel {
+  width: 100%;
+  padding: 3rem 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.startup-carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.startup-carousel__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.55);
+  margin: 0 0 0.5rem 0;
+}
+
+/*.startup-carousel__title {
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  margin: 0;
+  color: #0f172a;
+  max-width: 36rem;
+}*/
+
+.startup-carousel__controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.startup-carousel__button {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--rounded-button);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: white;
+  color: #0f172a;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.startup-carousel__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+}
+
+.startup-carousel__mask {
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.startup-carousel.is-dragging .startup-carousel__mask {
+  cursor: grabbing;
+}
+
+.startup-carousel__track {
+  display: flex;
+  gap: var(--carousel-gap);
+  transition: transform 500ms ease;
+}
+
+.startup-carousel__slide {
+  min-width: 332px;
+  max-width: 332px;
+  width: 332px;
+  flex: 0 0 332px;
+  transition: transform 500ms ease, opacity 500ms ease;
+  opacity: 1s;
+  transform: scale(0.96);
+}
+
+.startup-carousel__slide[data-active="true"] {
+  transform: scale(1);
+}
+
+.startup-carousel__card {
+  display: grid;
+  gap: 1rem;
+}
+
+.startup-carousel__media {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f3f4f6;
+  aspect-ratio: 332 / 448;
+}
+
+.startup-carousel__media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.startup-carousel__meta {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.startup-carousel__brand {
+  margin: 0;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.startup-carousel__copy {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.7);
+  line-height: 1.5;
+}
+
+.startup-carousel__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.startup-carousel__link span {
+  transition: transform 200ms ease;
+}
+
+.startup-carousel__link:hover span {
+  transform: translateX(4px);
+}
+
+.startup-carousel__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.startup-carousel__dot {
+  width: 26px;
+  height: 4px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(15, 23, 42, 0.15);
+  cursor: pointer;
+}
+
+.startup-carousel__dot[aria-pressed="true"] {
+  background: var(--accent-color);
+}
+
+@media (max-width: 639px) {
+  .startup-carousel__mask {
+    overflow: hidden;
+    touch-action: pan-x;
+  }
+
+  .startup-carousel__track {
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1rem;
+    transform: none !important;
+    scrollbar-width: none;
+  }
+
+  .startup-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .startup-carousel__slide {
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .startup-carousel__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>

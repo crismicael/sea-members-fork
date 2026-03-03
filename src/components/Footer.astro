@@ -1,0 +1,94 @@
+---
+import Image from 'astro/components/Image.astro'
+import Logo from '../assets/members_logo.svg'
+import Language from "./ui/Language.astro";
+---
+
+<footer id="footer" class="bg-(--secondary-bg-color) border-b border-(--border-color)">
+    <div class="left-right-padding up-down-padding border-t border-x border-y-dotted-r-solid  border-(--border-color)">
+        <div class="grid grid-cols-1 md:grid-cols-5 text-gray-500 gap-8 md:gap-0">
+            <div>
+                <a href="">
+                    <Image src={Logo} alt="Sea Members Logo" width=130 height=100 />
+                </a>
+            </div>
+            <div class="md:col-span-2">
+                <ul class="*:hover:underline inline-block">
+                    <li><a href="#">¿Qué somos?</a></li>
+                    <li><a href="#">Suscripción</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <ul class="*:hover:underline inline-block">
+                    <li><a href="#">Sea View Magazine</a></li>
+                    <li><a href="#">Sunwave</a></li>
+                    <li><a href="#">Beyond</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="left-right-padding py-6 border-t border-x border-y-dotted-r-solid border-(--border-color)">
+        <div class="flex justify-end text-gray-500">
+            <!-- <div id="language-button-footer">
+                <Language color="black">
+                    <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">es</span>
+                </Language>
+            </div>
+            <div id="language-popper" role="tooltip" class="hidden z-30">
+                <div class="popover-content w-48 p-4 bg-white border border-gray-300 rounded-(--rounded-button) shadow-lg flex flex-col">
+                    <a href="" class="flex gap-3 py-2 px-3 rounded-(--rounded-button) hover:bg-gray-500/10"><span class="font-bold uppercase">en</span><span>English</span></a>
+                    <a href="" class="flex gap-3 py-2 px-3 rounded-(--rounded-button) hover:bg-gray-500/10"><span class="font-bold uppercase">es</span><span>Español</span></a>
+                </div>
+            </div> -->
+            <div>
+                <p>&copy; {new Date().getFullYear()} Sea View Magazine</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    import { createPopper } from "@popperjs/core";
+
+    const button = document.getElementById("language-button-footer");
+    const popper = document.getElementById("language-popper");
+
+    let popperInstance: any = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function show() {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+        popper?.classList.remove("hidden");
+        popperInstance = createPopper(button, popper, {
+            placement: "top",
+            modifiers: [
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8],
+                    },
+                },
+            ],
+        });
+    }
+
+    function hide() {
+        hideTimeout = setTimeout(() => {
+            popper?.classList.add("hidden");
+
+            if (popperInstance) {
+                popperInstance.destroy();
+                popperInstance = null;
+            }
+        }, 100);
+    }
+
+    button?.addEventListener('mouseenter', show);
+    button?.addEventListener('mouseleave', hide);
+    popper?.addEventListener('mouseenter', show);
+    popper?.addEventListener('mouseleave', hide);
+</script>

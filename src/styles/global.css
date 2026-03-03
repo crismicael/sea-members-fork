@@ -1,1 +1,67 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@font-face {
+    font-family: 'Montserrat';
+    src:
+        url('/fonts/Monstserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src:
+        url('/fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src:
+        url('/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@theme {
+    --font-main: 'Montserrat', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --primary-color: #1fa198;
+    --secondary-color: #10726f;
+    --accent-color: #37b8ad;
+    --secondary-bg-color: #f8fafd;
+    --header-color: #282828;
+    --text-color: #A7ADAF;
+    --border-color: #e5edf5;
+    --footer-bg-color: #1E1E1E;
+    --rounded-button: 4px;
+    --breakpoint-3xl: 1920px;
+}
+
+@layer components {
+
+    p,
+    span,
+    li {
+        font-family: var(--font-secondary);
+    }
+
+    .left-right-padding {
+        @apply px-4 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-32
+    }
+
+    .up-down-padding {
+        @apply py-9
+    }
+}
+
+@layer utilities {
+    .border-y-dotted-r-solid {
+        border-top-style: dashed;
+        border-bottom-style: dashed;
+        border-right-style: solid;
+        border-left-style: solid;
+    }
+}

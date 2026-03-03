@@ -1,0 +1,75 @@
+---
+import Image from 'astro/components/Image.astro'
+
+---
+
+<section id="prices" class="left-right-padding up-down-padding border-x border-b border-(--border-color)">
+    <div class="flex flex-col gap-6">
+        <div class="flex pt-14">
+            <div class="prose">
+                <h2 class="font-normal">
+                    Vallarta tiene mucho que ofrecer. Members te da acceso a lo mejor por un solo precio.
+                </h2>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 border border-(--border-color) rounded-(--rounded-button) overflow-hidden divide-y md:divide-y-0 md:divide-x divide-(--border-color) divide-dashed">
+            <article class="p-6 text-(--header-color)">
+                <div class="flex flex-col gap-3">
+                    <div class="px-4 py-2">
+                        <p class="font-semibold text-(--header-color) leading-snug">
+                            Experiencias exclusivas y descuentos en comercios participantes
+                        </p>
+                    </div>
+                    <ul class="list-disc pl-5">
+                        <li>Beneficios exclusivos en gastronomía, wellness, estilo y escapadas</li>
+                        <li>Nuevos comercios sumándose cada mes</li>
+                        <li>Tarjeta física personalizada</li>
+                        <li>Tarjeta virtual para Apple Wallet y Google Wallet</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="p-6 text-(--header-color)">
+                <div class="flex flex-col gap-3">
+                    <div class="px-4 py-2">
+                        <p class="font-semibold text-(--header-color) leading-snug">
+                            Contenido editorial exclusivo
+                        </p>
+                    </div>
+                    <ul class="list-disc pl-5">
+                        <li>Edición anticipada de Sea View Magazine</li>
+                        <li>Edición anticipada de Sunwave</li>
+                        <li>Resumen semanal de The Gazzella</li>
+                        <li>Episodio exclusivo de nuestro podcast</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="p-6 text-(--header-color)">
+                <div class="flex flex-col gap-3">
+                    <div class="px-4 py-2">
+                        <p class="font-semibold text-(--header-color) leading-snug">
+                            Comunidad y acceso especial
+                        </p>
+                    </div>
+                    <ul class="list-disc pl-5">
+                        <li>Acceso prioritaro a eventos del grupo editorial</li>
+                        <li>Participa para acceder a los mejores eventos de la ciuddad</li>
+                        <li>Participa por accesos a eventos exclusivos</li>
+                        <li>Participa en sorteos y premios mensuales solo para members</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+        <div class="group flex flex-col sm:flex-row  justify-evenly items-stretch rounded-(--rounded-button) border border-(--border-color) bg-(--secondary-color)/10">
+            <a href="https://buy.stripe.com/dRm8wH9eV5aPcmz7Wk1Jm07" class="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors hover:bg-(--secondary-color)/30">
+                <span class="text-sm line-through">Antes $179 MXN / MES</span>
+                <span class="text-xl font-semibold text-(--header-color)">$149 MXN / MES</span>
+                <span class="text-sm">Tarjeta virtual incluida</span>
+            </a>
+            <a href="https://buy.stripe.com/3cIaEP62JdHl2LZa4s1Jm06" class="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors hover:bg-(--secondary-color)/30">
+                <span class="text-sm line-through">Antes $1490 MXN / MES</span>
+                <span class="text-xl font-semibold text-(--header-color)">1299,00 MXN / AÑO</span>
+                <span class="text-sm">Tarjeta física</span>
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+---
+const {text, href} = Astro.props
+---
+
+<a href={href}>
+    <li>{text}</li>
+    <slot />
+</a>

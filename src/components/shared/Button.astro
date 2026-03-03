@@ -1,0 +1,11 @@
+---
+const { text, href="", className="" } = Astro.props
+---
+
+<a href={href} class={`group rounded-(--rounded-button) text-(--primary-color) hover:text-(--secondary-color) no-underline transition-colors border border-(--primary-color)/50 bg-white hover:border-(--secondary-color) ease-in py-2.5 px-3.5 ${className}`}>
+    <div class="flex items-center gap-3">
+        <span class="m-0">
+            {text}
+        </span>
+    </div>
+</a>
