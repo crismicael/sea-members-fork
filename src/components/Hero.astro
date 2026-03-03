@@ -1,5 +1,6 @@
 ---
 import Image from 'astro/components/Image.astro'
+import Logo from '../assets/members_icon.svg'
 import Card from '../assets/members_hero.png'
 import Button from './shared/Button.astro'
 import ButtonArrow from './shared/ButtonArrow.astro'
@@ -24,7 +25,9 @@ import SeaViewLogo from '../../public/seaviewmagazine_logo.png'
             </div>
             <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center font-bold">
                 <ButtonArrow href="/#prices" text="Suscríbete" className="px-6 py-2.5 w-full sm:w-auto" />
-                <Button href="/#prices" text="Suscríbete" className="px-6 sm:px-16 py-2.5 w-full sm:w-auto" />
+                <Button href="/#prices" text="Conoce los beneficios" className="px-6 sm:px-16 py-2.5 w-full sm:w-auto" >
+                    <Image src={Logo} alt="Members Logo" width="30" height="30" draggable="false" />
+                </Button>
             </div>
         </div>
         <div class="flex justify-center md:justify-end w-full md:w-auto">
