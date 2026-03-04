@@ -1,19 +1,20 @@
 ---
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import VerticalCard from '../assets/vertical_card.png'
 import ToscaPromo from '../assets/promos/tosca_promo.jpg'
 import HeraPromo from '../assets/promos/hera_promo.jpg'
 import AquaventurasPromo from '../assets/promos/aquaventuras_promo.jpg'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 ---
 
 <section id="solutions" class=" bg-(--secondary-bg-color) border-y border-(--border-color)">
     <div class="left-right-padding up-down-padding border-x border-(--border-color)">
         <div class="prose max-w-2xl pt-14 pb-10">
             <h2 class="font-normal">
-                ¿Estás listo para formar parte de esta <span class="text-(--secondary-color)">comunidad</span>?
-                <!-- <span>
-                    Haz crecer tu empresa con un conjunto integral de pagos y herramientas financieras diseñadas para trabajar de forma individual o conjunta.
-                </span> -->
+                {translateLabels("solutions.title.line1")}<span class="text-(--secondary-color)">{translateLabels("solutions.title.line2")}</span>{translateLabels("solutions.title.line3")}
             </h2>
         </div>
         <div class="group grid grid-cols-1 md:grid-cols-3 gap-4 *:border *:border-(--border-color) *:rounded-(--rounded-button) *:px-5 *:py-4 *:transition-transform *:hover:scale-101 *:ease-in *:*:*:font-normal">
@@ -31,19 +32,19 @@ import AquaventurasPromo from '../assets/promos/aquaventuras_promo.jpg'
             </div> -->
             <div>
                 <div class="h-full flex flex-col gap-3 prose">
-                    <h3>Ofertas que llegan a tus necesidades</h3>
+                    <h3>{translateLabels("solutions.solutionsGrid.01")}</h3>
                     <Image src={AquaventurasPromo} alt="Carta vertical de Members" class="w-full h-auto mx-auto md:mx-0 md:max-w-none rounded-(--rounded-button) object-contain" />
                 </div>
             </div>
             <div>
                 <div class="flex flex-col gap-3 prose">
-                    <h3>Presume tu tarjeta members</h3>
-                    <Image src={VerticalCard} alt="Carta vertical de Members" class="w-full max-w-80 mx-auto md:mx-0 md:max-w-none object-contain" />
+                    <h3>{translateLabels("solutions.solutionsGrid.02")}</h3>
+                    <Image src={VerticalCard} alt="Carta vertical de Members" class="w-full max-w-80 mx-auto md:mx-0 md:max-w-none object-contain"/>
                 </div>
             </div>
             <div>
                 <div class="h-full flex flex-col gap-3 prose">
-                    <h3>Accede a ofertas invaluables</h3>
+                    <h3>{translateLabels("solutions.solutionsGrid.03")}</h3>
                     <Image src={ToscaPromo} alt="Carta vertical de Members" class="w-full h-auto mx-auto md:mx-0 md:max-w-none rounded-(--rounded-button) object-contain" />
                 </div>
             </div>

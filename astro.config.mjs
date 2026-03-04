@@ -14,4 +14,11 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: 'passthrough'
   }),
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    }
+  }
 });

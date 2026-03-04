@@ -4,7 +4,7 @@
 @font-face {
     font-family: 'Montserrat';
     src:
-        url('/fonts/Monstserrat-Regular.ttf') format('truetype');
+        url('/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -37,19 +37,18 @@
     --border-color: #e5edf5;
     --footer-bg-color: #1E1E1E;
     --rounded-button: 4px;
-    --breakpoint-3xl: 1920px;
+    --breakpoint-3xl: 120rem;
 }
 
 @layer components {
 
     p,
-    span,
     li {
         font-family: var(--font-secondary);
     }
 
     .left-right-padding {
-        @apply px-4 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-32
+        @apply px-4 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-56
     }
 
     .up-down-padding {
