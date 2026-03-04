@@ -1,31 +1,46 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import Logo from '../assets/members_icon.svg'
 import Card from '../assets/members_hero.png'
 import Button from './shared/Button.astro'
 import ButtonArrow from './shared/ButtonArrow.astro'
 import SeaViewLogo from '../../public/seaviewmagazine_logo.png'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+// Helper function for locale-aware hash navigation
+const getHashUrl = (hash: string) => {
+    // If we're on the homepage, use hash only
+    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
+        return hash;
+    }
+    // Otherwise, go to localized homepage with hash
+    return getRelativeLocaleUrl(currentLang, `/`) + hash;
+};
 ---
 
-<section id="hero" class="left-right-padding up-down-padding pt-24 lg:pt-28 px-4 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-32 border-0 md:border-x md:border-b md:border-(--border-color)">
+<section id="hero" class="left-right-padding up-down-padding pt-24 lg:pt-28 px-4 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-56 border-0 md:border-x md:border-b md:border-(--border-color)">
     <div class="flex flex-col md:flex-row gap-8 items-start md:items-center justify-center">
         <div class="flex flex-col gap-10 font-light">
             <div class="flex gap-3 item-center ">
-                <span>Un producto de: </span>
+                <span>{translateLabels("hero.subtitle")}</span>
                 <a href="https://seaviewmagazine.com/" target="_blank">
                     <Image src={SeaViewLogo} width=70 alt="Logo de Sea View Magazine" />
                 </a>
             </div>
-            <div class="prose">
-                <h1 class="font-normal">Members es el nuevo programa de suscripciones con beneficios exclusivos de
-                <span class="text-(--primary-color) font-semibold">
-                    Seaview Grupo Editorial
+            <div class="prose max-w-lg">
+                <h1 class="font-normal text-3xl md:text-4xl">{translateLabels("hero.title.line1")}
+                <span class="text-(--primary-color) font-normal text-3xl md:text-4xl">
+                    {translateLabels("hero.title.line2")}
                 </span>
-                para residentes y visitantes de Puerto Vallarta.</h1>
+                {translateLabels("hero.title.line3")}</h1>
             </div>
-            <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center font-bold">
-                <ButtonArrow href="/#prices" text="Suscríbete" className="px-6 py-2.5 w-full sm:w-auto" />
-                <Button href="/#prices" text="Conoce los beneficios" className="px-2 md:px-2 2xl:px-16 py-2.5 w-full sm:w-auto" >
+            <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center font-semibold">
+                <ButtonArrow href={getHashUrl("#prices")} text={translateLabels("hero.buttonArrowHero")} className="px-6 py-2.5 w-full sm:w-auto" />
+                <Button href={getHashUrl("#prices")} text={translateLabels("hero.buttonHero")} className="px-2 md:px-2 2xl:px-16 py-2.5 w-full sm:w-auto" >
                     <Image src={Logo} alt="Members Logo" width="30" height="30" draggable="false" />
                 </Button>
             </div>

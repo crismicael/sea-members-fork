@@ -1,4 +1,6 @@
 ---
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import AboutPlaceholder from '../assets/aboutPlaceholder.png'
 import Logo from '../assets/members_logo.svg'
@@ -17,112 +19,112 @@ import OroGoldPromo from '../assets/promos/orogold_promo.jpg'
 import MultiMedicaPromoOne from '../assets/promos/multimedica_promo.jpg'
 import MultiMedicaPromoTwo from '../assets/promos/multimedica_promo2.jpg'
 import Solares from '../assets/promos/solares_promo.jpg'
-import Button from './shared/Button.astro'
-import ButtonArrow from './shared/ButtonArrow.astro'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
 const slides = [
   {
-    brand: "Aquaventuras",
-    description: "Un boleto sencillo GRATIS al mes.",
-    cta: "Lee la historia de Aquaventuras",
+    brand: translateLabels("carousel.carouselItems.01.brand"),
+    description: translateLabels("carousel.carouselItems.01.description"),
+    cta: translateLabels("carousel.carouselItems.01.cta"),
     href: "#",
     image: AquaventurasPromo
   },
   {
-    brand: "Papelon con Limon",
-    description: "Combo de 2 arepas y 1 papelon indivial por $170.",
-    cta: "Lee la historia de Papelon con Limon",
+    brand: translateLabels("carousel.carouselItems.02.brand"),
+    description: translateLabels("carousel.carouselItems.02.description"),
+    cta: translateLabels("carousel.carouselItems.02.cta"),
     href: "#",
     image: LimonPromo
   },
   {
-    brand: "Hera",
-    description: "15% de descuento en todos los servicios.",
-    cta: "Lee la historia de Hera",
+    brand: translateLabels("carousel.carouselItems.03.brand"),
+    description: translateLabels("carousel.carouselItems.03.description"),
+    cta: translateLabels("carousel.carouselItems.03.cta"),
     href: "#",
     image: HeraPromo
   },
   {
-    brand: "La Tosca",
-    description: "1 copa de vina grátis con tu cena.",
-    cta: "Lee la historia de La Tosca",
+    brand: translateLabels("carousel.carouselItems.04.brand"),
+    description: translateLabels("carousel.carouselItems.04.description"),
+    cta: translateLabels("carousel.carouselItems.04.cta"),
     href: "#",
     image: ToscaPromo
   },
   {
-    brand: "OROGOLD",
-    description: "30% de descuento en todos los servicios.",
-    cta: "Lee la historia de OROGOLD",
+    brand: translateLabels("carousel.carouselItems.05.brand"),
+    description: translateLabels("carousel.carouselItems.05.description"),
+    cta: translateLabels("carousel.carouselItems.05.cta"),
     href: "#",
     image: OroGoldPromo
   },
   {
-    brand: "Hospital Multimedica",
-    description: "Consulta GRATIS de valoración",
-    cta: "Lee la historia de Hospital Multimedica",
+    brand: translateLabels("carousel.carouselItems.06.brand"),
+    description: translateLabels("carousel.carouselItems.06.description"),
+    cta: translateLabels("carousel.carouselItems.06.cta"),
     href: "#",
     image: MultiMedicaPromoOne
   },
   {
-    brand: "Hospital Multimedica",
-    description: "10% de descuento en aplicación de rellenos y botox.",
-    cta: "Lee la historia de Hospital Multimedica",
+    brand: translateLabels("carousel.carouselItems.07.brand"),
+    description: translateLabels("carousel.carouselItems.07.description"),
+    cta: translateLabels("carousel.carouselItems.07.cta"),
     href: "#",
     image: MultiMedicaPromoTwo
   },
   {
-    brand: "Osoji",
-    description: "10% de descuento en todos los servicios.",
-    cta: "Lee la historia de Osoji",
+    brand: translateLabels("carousel.carouselItems.08.brand"),
+    description: translateLabels("carousel.carouselItems.08.description"),
+    cta: translateLabels("carousel.carouselItems.08.cta"),
     href: "#",
     image: OsojiPromo
   },
   {
-    brand: "4 Mares",
-    description: "Cóctel de cortesía en el consumo de una torre.",
-    cta: "Lee la historia de 4 Mares",
+    brand: translateLabels("carousel.carouselItems.09.brand"),
+    description: translateLabels("carousel.carouselItems.09.description"),
+    cta: translateLabels("carousel.carouselItems.09.cta"),
     href: "#",
     image: MaresPromo
   },
   {
-    brand: "Vips",
-    description: "2x1 en Cervezas Participantes",
-    cta: "Lee la historia de Vips",
+    brand: translateLabels("carousel.carouselItems.10.brand"),
+    description: translateLabels("carousel.carouselItems.10.description"),
+    cta: translateLabels("carousel.carouselItems.10.cta"),
     href: "#",
     image: VipsPromoOne
   },
   {
-    brand: "Vips",
-    description: "10% de descuento en consumo.",
-    cta: "Lee la historia de Vips",
+    brand: translateLabels("carousel.carouselItems.11.brand"),
+    description: translateLabels("carousel.carouselItems.11.description"),
+    cta: translateLabels("carousel.carouselItems.11.cta"),
     href: "#",
     image: VipsPromoTwo
   },
   {
-    brand: "Happy Feets",
-    description: "10% de descuento en todos los servicios.",
-    cta: "Lee la historia de Happy Feets",
+    brand: translateLabels("carousel.carouselItems.12.brand"),
+    description: translateLabels("carousel.carouselItems.12.description"),
+    cta: translateLabels("carousel.carouselItems.12.cta"),
     href: "#",
     image: HappyFeetsPromo
   },
   {
-    brand: "Siempre Diva",
-    description: "10% de descuento en compras online.",
-    cta: "Lee la historia de Siempre Diva",
+    brand: translateLabels("carousel.carouselItems.13.brand"),
+    description: translateLabels("carousel.carouselItems.13.description"),
+    cta: translateLabels("carousel.carouselItems.13.cta"),
     href: "#",
     image: SiempreDivaPromo
   },
   {
-    brand: "La Diosa: Café de Altura",
-    description: "10% de descuento en paquetes de 1KG.",
-    cta: "Lee la historia de La Diosa",
+    brand: translateLabels("carousel.carouselItems.14.brand"),
+    description: translateLabels("carousel.carouselItems.14.description"),
+    cta: translateLabels("carousel.carouselItems.14.cta"),
     href: "#",
     image: DiosaPromo
   },
   {
-    brand: "Solares",
-    description: "15% de descuento en páneles solares.",
-    cta: "Lee la historia de Solares",
+    brand: translateLabels("carousel.carouselItems.15.brand"),
+    description: translateLabels("carousel.carouselItems.15.description"),
+    cta: translateLabels("carousel.carouselItems.15.cta"),
     href: "#",
     image: Solares
   },
@@ -131,9 +133,12 @@ const slides = [
 
 <section id="sponsors"  class="startup-carousel__frame  left-right-padding up-down-padding border-0 md:border-x md:border-(--border-color)">
     <div class="prose">
-        <h2 class="startup-carousel__title font-normal">La columna vertebral del <span class="text-(--secondary-color)">comercio en Puerto Vallarta</span>.</h2>
+        <h2 class="startup-carousel__title font-normal">
+            {translateLabels("carousel.title.line1")}
+            <span class="text-(--secondary-color)">{translateLabels("carousel.title.line2")}</span>{translateLabels("carousel.title.line3")}
+        </h2>
         <div class="flex items-center gap-1 inline-block">
-            <p class="mt-0 mb-0 inline-block">Conoce las ofertas que puedes disfrutar con</p>
+            <p class="mt-0 mb-0 inline-block">{translateLabels("carousel.subtitle")}</p>
             <Image src={Logo} class="mt-0 mb-0 inline-block" alt="Members Logo" width="100" height="100" draggable="false" />
         </div>
     </div>

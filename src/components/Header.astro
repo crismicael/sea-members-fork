@@ -1,8 +1,24 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import Logo from '../assets/members_logo.svg'
 import ListItem from './shared/ListItem.astro'
+import Language from "./ui/Language.astro";
 import ButtonArrow from './shared/ButtonArrow.astro'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+// Helper function for locale-aware hash navigation
+const getHashUrl = (hash: string) => {
+    // If we're on the homepage, use hash only
+    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
+        return hash;
+    }
+    // Otherwise, go to localized homepage with hash
+    return getRelativeLocaleUrl(currentLang, `/`) + hash;
+};
 ---
 <!-- rounded-2xl h-full w-full bg-white/0 shadow-lg ring-1 ring-black/5 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 -->
 <!-- left-right-padding and up-down-padding components are not in this file due to header border -->
@@ -13,11 +29,68 @@ import ButtonArrow from './shared/ButtonArrow.astro'
         </a>
 
         <ul class="hidden md:flex *:hover:bg-gray-400/10 *:py-2.5 *:px-3.5 *:rounded-(--rounded-button) *:hover:text-(--secondary-color) *:transition *:duration-100 *:ease-in">
-            <ListItem text="Beneficios" href="/#sponsors"/>
-            <ListItem text="Suscripción" href="/#prices"/>
-            <ListItem text="Contacto" href="tel:3222657989"/>
+            <ListItem text={translateLabels("header.benefits")} href={getHashUrl("#sponsors")}/>
+            <ListItem text={translateLabels("header.suscription")} href={getHashUrl("#prices")}/>
+            <ListItem text={translateLabels("header.contact")} href="tel:3222657989"/>
         </ul>
-
-        <ButtonArrow text="Suscríbete" href="/#prices" className="font-semibold py-2.5 pb-3 px-5" />
+        <div class="flex items-center gap-8">
+            <div id="language-button">
+                <Language color="black">
+                    <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">{translateLabels("footer.languageIcon")}</span>
+                </Language>
+            </div>
+            <div id="language-popper" role="tooltip" class="hidden z-30">
+                <div class="popover-content w-48 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg flex flex-col">
+                    <a href="/en" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">en</span><span>English</span></a>
+                    <a href="/" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">es</span><span>Español</span></a>
+                </div>
+            </div>
+            <ButtonArrow text={translateLabels("header.button")} href={getHashUrl("#prices")} className="font-semibold py-2.5 pb-3 px-5" />
+        </div>
     </nav>
 </header>
+
+<script>
+    import { createPopper } from "@popperjs/core";
+
+    const button = document.getElementById("language-button");
+    const popper = document.getElementById("language-popper");
+
+    let popperInstance: any = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function show() {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+        popper?.classList.remove("hidden");
+        popperInstance = createPopper(button, popper, {
+            placement: "bottom",
+            modifiers: [
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8],
+                    },
+                },
+            ],
+        });
+    }
+
+    function hide() {
+        hideTimeout = setTimeout(() => {
+            popper?.classList.add("hidden");
+
+            if (popperInstance) {
+                popperInstance.destroy();
+                popperInstance = null;
+            }
+        }, 100);
+    }
+
+    button?.addEventListener('mouseenter', show);
+    button?.addEventListener('mouseleave', hide);
+    popper?.addEventListener('mouseenter', show);
+    popper?.addEventListener('mouseleave', hide);
+</script>

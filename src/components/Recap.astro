@@ -1,9 +1,24 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import Logo from '../assets/members_icon.svg'
 import Button from './shared/Button.astro'
 import ButtonArrow from './shared/ButtonArrow.astro'
 import RecapCard from './shared/RecapCard.astro'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+// Helper function for locale-aware hash navigation
+const getHashUrl = (hash: string) => {
+    // If we're on the homepage, use hash only
+    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
+        return hash;
+    }
+    // Otherwise, go to localized homepage with hash
+    return getRelativeLocaleUrl(currentLang, `/`) + hash;
+};
 ---
 
 <section id="footer" class="bg-(--secondary-bg-color) border-t border-(--border-color)">
@@ -11,18 +26,18 @@ import RecapCard from './shared/RecapCard.astro'
         <div class="grid grid-cols-1 xl:grid-cols-4 items-start py-14 gap-8">
             <div class="grid md:col-span-2 gap-2 sm:gap-8">
                 <div class="prose">
-                <h2 class="font-normal">¿Todo listo para <span class="text-(--secondary-color)">empezar</span>?</h2>
+                <h2 class="font-normal">{translateLabels("recap.title.line1")}<span class="text-(--secondary-color)">{translateLabels("recap.title.line2")}</span>?</h2>
                     <p></p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-5 items-stretch sm:items-center font-semibold">
-                    <ButtonArrow href="/#prices" text="Suscríbete" className="px-6 py-2.5 w-full sm:w-auto" />
-                    <Button href="/#prices" text="Conoce los beneficios" className="px-2 md:px-2 2xl:px-16 py-2.5 w-full sm:w-auto" >
+                    <ButtonArrow href={getHashUrl("#prices")} text={translateLabels("recap.buttonArrowRecap")} className="px-6 py-2.5 w-full sm:w-auto" />
+                    <Button href={getHashUrl("#prices")} text={translateLabels("recap.buttonRecap")} className="px-2 md:px-2 2xl:px-16 py-2.5 w-full sm:w-auto" >
                         <Image src={Logo} alt="Members Logo" width="30" height="30" draggable="false" />
                     </Button>
                 </div>
             </div>
-            <RecapCard title="Ve lo que pagarás" text="Transparencia ante todo" href="/#prices" textLink="Información sobre precios" />
-            <RecapCard title="Conoce nuestro producto" text="Ven a conocer el corazón de Sea View Magazine" href="https://seaviewmagazine.com/" textLink="Conocenos" />
+            <RecapCard title={translateLabels("recap.recapCards.01.title")} text={translateLabels("recap.recapCards.01.subtitle")} href={getHashUrl("#prices")} textLink={translateLabels("recap.recapCards.01.textLink")} />
+            <RecapCard title={translateLabels("recap.recapCards.02.title")} text={translateLabels("recap.recapCards.02.subtitle")} href="https://seaviewmagazine.com/" target="_blank" textLink={translateLabels("recap.recapCards.02.textLink")} />
         </div>
     </div>
 </section>

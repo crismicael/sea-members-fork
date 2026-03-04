@@ -1,6 +1,10 @@
 ---
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import Logo from '../assets/members_icon.svg'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 ---
 
 <section id="prices" class="left-right-padding up-down-padding border-x border-b border-(--border-color)">
@@ -8,7 +12,7 @@ import Logo from '../assets/members_icon.svg'
         <div class="flex pt-14">
             <div class="prose">
                 <h2 class="font-normal">
-                    Vallarta tiene mucho que ofrecer. <span class="text-(--secondary-color)">Members te da acceso a lo mejor por un solo precio</span>.
+                    {translateLabels("prices.title.line1")}<span class="text-(--secondary-color)">{translateLabels("prices.title.line2")}</span>{translateLabels("prices.title.line3")}
                 </h2>
             </div>
         </div>
@@ -17,22 +21,26 @@ import Logo from '../assets/members_icon.svg'
                 <div class="flex flex-col gap-3">
                     <div class="px-4 py-2">
                         <p class="font-semibold text-(--header-color) leading-snug">
-                            Experiencias exclusivas y descuentos en comercios participantes
+                            {translateLabels("prices.pricesGrid.01.title")}
                         </p>
                     </div>
                     <ul class="pl-5">
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false"  />
-                            Beneficios exclusivos en gastronomía, wellness, estilo y escapadas</li>
+                            {translateLabels("prices.pricesGrid.01.bulletPoint1")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Nuevos comercios sumándose cada mes</li>
+                            {translateLabels("prices.pricesGrid.01.bulletPoint2")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Tarjeta física personalizada</li>
+                            {translateLabels("prices.pricesGrid.01.bulletPoint3")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Tarjeta virtual para Apple Wallet y Google Wallet</li>
+                            {translateLabels("prices.pricesGrid.01.bulletPoint4")}
+                        </li>
                     </ul>
                 </div>
             </article>
@@ -40,45 +48,53 @@ import Logo from '../assets/members_icon.svg'
                 <div class="flex flex-col gap-3">
                     <div class="px-4 py-2">
                         <p class="font-semibold text-(--header-color) leading-snug">
-                            Contenido editorial exclusivo
+                            {translateLabels("prices.pricesGrid.02.title")}
                         </p>
                     </div>
                     <ul class="list-disc pl-5">
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Edición anticipada de Sea View Magazine</li>
+                            {translateLabels("prices.pricesGrid.02.bulletPoint1")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Edición anticipada de Sunwave</li>
+                            {translateLabels("prices.pricesGrid.02.bulletPoint2")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Resumen semanal de The Gazzella</li>
+                            {translateLabels("prices.pricesGrid.02.bulletPoint3")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Episodio exclusivo de nuestro podcast</li>
+                            {translateLabels("prices.pricesGrid.02.bulletPoint4")}
+                        </li>
                     </ul>
                 </div>
             </article>
-            <article class="p-6 text-(--header-color)">
+            <article id="suscribe" class="p-6 text-(--header-color)">
                 <div class="flex flex-col gap-3">
                     <div class="px-4 py-2">
                         <p class="font-semibold text-(--header-color) leading-snug">
-                            Comunidad y acceso especial
+                            {translateLabels("prices.pricesGrid.03.title")}
                         </p>
                     </div>
                     <ul class="list-disc pl-5">
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Acceso prioritario a eventos del grupo editorial</li>
+                            {translateLabels("prices.pricesGrid.03.bulletPoint1")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Participa para acceder a los mejores eventos de la ciudad</li>
+                            {translateLabels("prices.pricesGrid.03.bulletPoint2")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Participa por accesos a eventos exclusivos</li>
+                            {translateLabels("prices.pricesGrid.03.bulletPoint3")}
+                        </li>
                         <li class="flex items-baseline gap-2">
                             <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" />
-                            Participa en sorteos y premios mensuales solo para members</li>
+                            {translateLabels("prices.pricesGrid.03.bulletPoint4")}
+                        </li>
                     </ul>
                 </div>
             </article>
@@ -90,9 +106,15 @@ import Logo from '../assets/members_icon.svg'
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
                     </svg>
                 </span>
-                <span class="text-sm line-through">Antes $179 MXN / MES</span>
-                <span class="text-xl font-semibold text-(--header-color)">$149 MXN / MES</span>
-                <span class="text-sm">Tarjeta virtual incluida</span>
+                <span class="text-sm line-through">
+                    {translateLabels("prices.pricesButtons.01.before")}
+                </span>
+                <span class="text-2xl font-medium text-(--header-color)">
+                    {translateLabels("prices.pricesButtons.01.newPrice")}
+                </span>
+                <span class="text-sm">
+                    {translateLabels("prices.pricesButtons.01.subText")}
+                </span>
             </a>
             <a href="https://buy.stripe.com/3cIaEP62JdHl2LZa4s1Jm06" class="group relative flex flex-1 flex-col items-center justify-center gap-1 px-6 py-4 transition-colors bg-(--secondary-color)/30 border border-(--border-color) rounded-(--rounded-button)">
                 <span class="absolute right-3 top-3 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 border border-(--secondary-color) rounded-(--rounded-button) p-1">
@@ -100,9 +122,15 @@ import Logo from '../assets/members_icon.svg'
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
                     </svg>
                 </span>
-                <span class="text-sm line-through">Antes $1490 MXN / AÑO</span>
-                <span class="text-xl font-semibold text-(--header-color)">1299,00 MXN / AÑO</span>
-                <span class="text-sm">Tarjeta física</span>
+                <span class="text-sm line-through">
+                    {translateLabels("prices.pricesButtons.01.before")}
+                </span>
+                <span class="text-2xl font-medium text-(--header-color)">
+                    {translateLabels("prices.pricesButtons.01.newPrice")}
+                </span>
+                <span class="text-sm">
+                    {translateLabels("prices.pricesButtons.01.subText")}
+                </span>
             </a>
         </div>
     </div>
