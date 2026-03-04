@@ -6,8 +6,8 @@ import ButtonArrow from './shared/ButtonArrow.astro'
 ---
 <!-- rounded-2xl h-full w-full bg-white/0 shadow-lg ring-1 ring-black/5 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 -->
 <!-- left-right-padding and up-down-padding components are not in this file due to header border -->
-<header class="px-8 sm:px-32 3xl:px-32 border-b border-(--border-color)">
-    <nav class="flex items-center justify-between px-0 sm:px-5 py-3.5">
+<header class="fixed h-18 w-full lg:px-32 3xl:px-32 border-b border-(--border-color) z-50">
+    <nav class="flex items-center justify-between px-8 sm:px-5 py-3.5 h-full w-full bg-white/0 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10">
         <a href="">
             <Image src={Logo} alt="Sea View Magazine Logo" width=130 height=100 />
         </a>
@@ -18,6 +18,6 @@ import ButtonArrow from './shared/ButtonArrow.astro'
             <ListItem text="Contacto" href="tel:3222657989"/>
         </ul>
 
-        <ButtonArrow text="Suscribirme" href="/#prices" className="font-semibold py-2.5 pb-3 px-5" />
+        <ButtonArrow text="Suscríbete" href="/#prices" className="font-semibold py-2.5 pb-3 px-5" />
     </nav>
 </header>
