@@ -33,16 +33,18 @@ const getHashUrl = (hash: string) => {
             <ListItem text={translateLabels("header.suscription")} href={getHashUrl("#prices")}/>
             <ListItem text={translateLabels("header.contact")} href="tel:3222657989"/>
         </ul>
-        <div class="flex items-center gap-8">
-            <div id="language-button">
-                <Language color="black">
-                    <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">{translateLabels("footer.languageIcon")}</span>
-                </Language>
-            </div>
-            <div id="language-popper" role="tooltip" class="hidden z-30">
-                <div class="popover-content w-48 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg flex flex-col">
-                    <a href="/en" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">en</span><span>English</span></a>
-                    <a href="/" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">es</span><span>Español</span></a>
+        <div class="flex items-center gap-4 md:gap-8">
+            <div class="hidden sm:block">
+                <div id="language-button">
+                    <Language color="black">
+                        <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">{translateLabels("footer.languageIcon")}</span>
+                    </Language>
+                </div>
+                <div id="language-popper" role="tooltip" class="hidden z-30">
+                    <div class="popover-content w-48 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg flex flex-col">
+                        <a href="/en" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">en</span><span>English</span></a>
+                        <a href="/" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">es</span><span>Español</span></a>
+                    </div>
                 </div>
             </div>
             <ButtonArrow text={translateLabels("header.button")} href={getHashUrl("#prices")} className="font-semibold py-2.5 pb-3 px-5" />

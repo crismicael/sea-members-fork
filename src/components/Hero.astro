@@ -4,6 +4,7 @@ import { useTranslation } from "../i18n/utils"
 import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import Logo from '../assets/members_icon.svg'
+import Language from "./ui/Language.astro";
 import Card from '../assets/members_hero.png'
 import Button from './shared/Button.astro'
 import ButtonArrow from './shared/ButtonArrow.astro'
@@ -25,11 +26,26 @@ const getHashUrl = (hash: string) => {
 <section id="hero" class="left-right-padding up-down-padding pt-24 lg:pt-28 px-4 mx-0 md:px-6 md:mx-8 lg:mx-32 3xl:mx-56 border-0 md:border-x md:border-b md:border-(--border-color)">
     <div class="flex flex-col md:flex-row gap-8 items-start md:items-center justify-center">
         <div class="flex flex-col gap-10 font-light">
-            <div class="flex gap-3 item-center ">
-                <span>{translateLabels("hero.subtitle")}</span>
-                <a href="https://seaviewmagazine.com/" target="_blank">
-                    <Image src={SeaViewLogo} width=70 alt="Logo de Sea View Magazine" />
-                </a>
+            <div class="flex gap-3 justify-between">
+                <div class="flex gap-3 item-center">
+                    <span>{translateLabels("hero.subtitle")}</span>
+                    <a href="https://seaviewmagazine.com/" target="_blank">
+                        <Image src={SeaViewLogo} width=70 alt="Logo de Sea View Magazine" />
+                    </a>
+                </div>
+                <div class="block sm:hidden pe-3">
+                    <div id="language-button-hero">
+                        <Language color="black">
+                            <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">{translateLabels("footer.languageIcon")}</span>
+                        </Language>
+                    </div>
+                    <div id="language-popper-hero" role="tooltip" class="hidden z-50">
+                        <div class="popover-content w-48 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg flex flex-col">
+                            <a href="/en" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">en</span><span>English</span></a>
+                            <a href="/" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">es</span><span>Español</span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="prose max-w-lg">
                 <h1 class="font-normal text-3xl md:text-4xl">{translateLabels("hero.title.line1")}
@@ -50,3 +66,48 @@ const getHashUrl = (hash: string) => {
         </div>
     </div>
 </section>
+
+<script>
+    import { createPopper } from "@popperjs/core";
+
+    const button = document.getElementById("language-button-hero");
+    const popper = document.getElementById("language-popper-hero");
+
+    let popperInstance: any = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function show() {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+        popper?.classList.remove("hidden");
+        popperInstance = createPopper(button, popper, {
+            placement: "left",
+            modifiers: [
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8],
+                    },
+                },
+            ],
+        });
+    }
+
+    function hide() {
+        hideTimeout = setTimeout(() => {
+            popper?.classList.add("hidden");
+
+            if (popperInstance) {
+                popperInstance.destroy();
+                popperInstance = null;
+            }
+        }, 100);
+    }
+
+    button?.addEventListener('mouseenter', show);
+    button?.addEventListener('mouseleave', hide);
+    popper?.addEventListener('mouseenter', show);
+    popper?.addEventListener('mouseleave', hide);
+</script>
