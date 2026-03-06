@@ -1,5 +1,5 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
 import { useTranslation } from "../i18n/utils"
 import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
@@ -22,17 +22,20 @@ const getHashUrl = (hash: string) => {
 ---
 <!-- rounded-2xl h-full w-full bg-white/0 shadow-lg ring-1 ring-black/5 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 -->
 <!-- left-right-padding and up-down-padding components are not in this file due to header border -->
-<header class="fixed h-18 w-full lg:px-32 3xl:px-32 border-b border-(--border-color) z-50">
-    <nav class="flex items-center justify-between px-8 sm:px-5 py-3.5 h-full w-full bg-white/0 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10">
-        <a href="">
-            <Image src={Logo} alt="Sea View Magazine Logo" width=130 height=100 />
-        </a>
+<header class="fixed h-18 w-full border-b border-(--border-color) z-50">
+    <!-- px-4 sm:px-5 py-3.5 -->
+    <nav class="flex items-center justify-between px-4 lg:px-36 3xl:px-62 h-full w-full bg-white/0 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10">
+        <div class="flex items-center gap-5">
+            <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
+                <Image src={Logo} alt="Sea View Magazine Logo" width=130 height=100 />
+            </a>
 
-        <ul class="hidden md:flex *:hover:bg-gray-400/10 *:py-2.5 *:px-3.5 *:rounded-(--rounded-button) *:hover:text-(--secondary-color) *:transition *:duration-100 *:ease-in">
-            <ListItem text={translateLabels("header.benefits")} href={getHashUrl("#sponsors")}/>
-            <ListItem text={translateLabels("header.suscription")} href={getHashUrl("#prices")}/>
-            <ListItem text={translateLabels("header.contact")} href="tel:3222657989"/>
-        </ul>
+            <ul class="hidden md:flex *:hover:bg-gray-400/10 *:py-2.5 *:px-3.5 *:rounded-(--rounded-button) *:hover:text-(--secondary-color) *:transition *:duration-100 *:ease-in">
+                <ListItem text={translateLabels("header.suscription")} href={getHashUrl("#prices")}/>
+                <ListItem text={translateLabels("header.benefits")} href={getHashUrl("#sponsors")}/>
+                <ListItem text={translateLabels("header.contact")} href="tel:3222657989"/>
+            </ul>
+        </div>
         <div class="flex items-center gap-4 md:gap-8">
             <div class="hidden sm:block">
                 <div id="language-button">
@@ -47,7 +50,7 @@ const getHashUrl = (hash: string) => {
                     </div>
                 </div>
             </div>
-            <ButtonArrow text={translateLabels("header.button")} href={getHashUrl("#prices")} className="font-semibold py-2.5 pb-3 px-5" />
+            <ButtonArrow text={translateLabels("header.button")} href=https://billing.stripe.com/p/login/28E28j2Qx1YD5Yb4K81Jm00 className="font-semibold py-2.5 pb-3 px-5 text-[12px] xl:text-[16px]" />
         </div>
     </nav>
 </header>

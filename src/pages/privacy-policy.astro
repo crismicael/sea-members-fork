@@ -1,0 +1,131 @@
+---
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+const currentLang = Astro.currentLocale || 'en';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+---
+
+<Layout>
+  <Header />
+  <main class="font-secondary">
+    <div class="left-right-padding up-down-padding mx-auto pt-24 lg:pt-28 max-w-4xl border-x border-(--border-color) prose">
+        <h1 class="font-main text-center">{translateLabels("privacyPolicy.title")}</h1>
+        <p>
+            {translateLabels("privacyPolicy.textIntro")}
+        </p>
+        <h2 class="font-main">{translateLabels("privacyPolicy.sections.01.title")}</h2>
+        <p>
+            {translateLabels("privacyPolicy.sections.01.text")}
+        </p>
+        <h2 class="font-main">{translateLabels("privacyPolicy.sections.02.title")}</h2>
+        <p>
+            {translateLabels("privacyPolicy.sections.02.text1")}
+        </p>
+        <ul>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.02.privacyPolicySection02BulletPoints.01.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.02.privacyPolicySection02BulletPoints.01.text")}
+            </li>
+            <li>
+                <span class="font-bold">
+                  {translateLabels("privacyPolicy.sections.02.privacyPolicySection02BulletPoints.02.title")}
+                </span>
+                  {translateLabels("privacyPolicy.sections.02.privacyPolicySection02BulletPoints.02.text")}
+            </li>
+            <li>
+                <span class="font-bold">
+                  {translateLabels("privacyPolicy.sections.02.privacyPolicySection02BulletPoints.03.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.02.privacyPolicySection02BulletPoints.03.text")}
+            </li>
+        </ul>
+        <p>
+            {translateLabels("privacyPolicy.sections.02.text2")}
+        </p>
+        <h2 class="font-main">{translateLabels("privacyPolicy.sections.03.title")}</h2>
+        <p>{translateLabels("privacyPolicy.sections.03.text1")}</p>
+        <p>{translateLabels("privacyPolicy.sections.03.text2")}</p>
+        <ul>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.03.privacyPolicySection03BulletPoints.01.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.03.privacyPolicySection03BulletPoints.01.text")}
+            </li>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.03.privacyPolicySection03BulletPoints.02.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.03.privacyPolicySection03BulletPoints.02.text")}
+            </li>
+        </ul>
+        <h2 class="font-main">{translateLabels("privacyPolicy.sections.04.title")}</h2>
+        <p>{translateLabels("privacyPolicy.sections.04.text1")}</p>
+        <p>{translateLabels("privacyPolicy.sections.04.text2")}</p>
+        <ul>
+            <li>
+                {translateLabels("privacyPolicy.sections.04.privacyPolicySection04BulletPoints.01.text")}
+            </li>
+            <li>
+                {translateLabels("privacyPolicy.sections.04.privacyPolicySection04BulletPoints.02.text")}
+            </li>
+            <li>
+                {translateLabels("privacyPolicy.sections.04.privacyPolicySection04BulletPoints.03.text")}
+            </li>
+            <li>
+                {translateLabels("privacyPolicy.sections.04.privacyPolicySection04BulletPoints.04.text")}
+            </li>
+            <li>
+                {translateLabels("privacyPolicy.sections.04.privacyPolicySection04BulletPoints.05.text")}
+            </li>
+        </ul>
+        <p>{translateLabels("privacyPolicy.sections.04.text3")}</p>
+        <h2 class="font-main">{translateLabels("privacyPolicy.sections.05.title")}</h2>
+        <p>{translateLabels("privacyPolicy.sections.05.text1")}</p>
+        <ul>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.05.privacyPolicySection05BulletPoints.01.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.05.privacyPolicySection05BulletPoints.01.text")}
+            </li>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.05.privacyPolicySection05BulletPoints.02.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.05.privacyPolicySection05BulletPoints.02.text")}
+            </li>
+        </ul>
+        <p>{translateLabels("privacyPolicy.sections.05.text2")}</p>
+        <h2 class="font-main">{translateLabels("privacyPolicy.sections.06.title")}</h2>
+        <p>{translateLabels("privacyPolicy.sections.06.text")}</p>
+        <ul>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.06.privacyPolicySection06BulletPoints.01.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.06.privacyPolicySection06BulletPoints.01.text")}
+            </li>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.06.privacyPolicySection06BulletPoints.02.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.06.privacyPolicySection06BulletPoints.02.text")}
+            </li>
+            <li>
+                <span class="font-bold">
+                    {translateLabels("privacyPolicy.sections.06.privacyPolicySection06BulletPoints.03.title")}
+                </span>
+                {translateLabels("privacyPolicy.sections.06.privacyPolicySection06BulletPoints.03.text")}
+            </li>
+        </ul>
+        <p>{translateLabels("privacyPolicy.lastUpdated")}</p>
+    </div>
+  </main>
+  <Footer />
+</Layout>

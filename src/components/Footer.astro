@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
 import { useTranslation } from "../i18n/utils"
 import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
@@ -12,7 +13,7 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
     <div class="left-right-padding up-down-padding border-t border-x border-y-dotted-r-solid  border-(--border-color)">
         <div class="grid grid-cols-1 md:grid-cols-6 text-gray-500 gap-8 md:gap-0">
             <div class="md:col-span-1">
-                <a href="">
+                <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
                     <Image src={Logo} alt="Sea Members Logo" width=130 height=100 />
                 </a>
             </div>
@@ -21,14 +22,23 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
                     <li><a href="/#sponsors">{translateLabels("footer.footerListItems.01.listItem01")}</a></li>
                     <li><a href="/#prices">{translateLabels("footer.footerListItems.01.listItem02")}</a></li>
                     <li><a href="tel:3222657989">{translateLabels("footer.footerListItems.01.listItem03")}</a></li>
+                    <li>
+                        <a href={getRelativeLocaleUrl(currentLang, "/privacy-policy")}}>
+                        {translateLabels("footer.footerListItems.01.listItem04")}
+                        </a>
+                    </li>
+                    <li>
+                        <a href={getRelativeLocaleUrl(currentLang, "/terms-conditions")}}>
+                        {translateLabels("footer.footerListItems.01.listItem05")}
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="md:col-span-2">
                 <ul class="*:hover:underline inline-block">
-                    <li><a href="https://seaviewmagazine.com/">Sea View Magazine</a></li>
-                    <li><a href="https://sunwavemagazine.com/">Sunwave</a></li>
-                    <li><a href="https://thegazzella.com/">The Gazzella</a></li>
-                    <!-- <li><a href="#">Beyond</a></li> -->
+                    <li>{translateLabels("footer.footerListItems.02.listItem01")}</li>
+                    <li>{translateLabels("footer.footerListItems.02.listItem02")}</li>
+                    <li><a href="https://billing.stripe.com/p/login/28E28j2Qx1YD5Yb4K81Jm00">{translateLabels("footer.footerListItems.02.listItem03")}</a></li>
                 </ul>
             </div>
             <div class="md:col-span-1 flex md:justify-end-safe  md:pe-4">
