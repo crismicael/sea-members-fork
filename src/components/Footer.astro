@@ -74,15 +74,18 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
     const button = document.getElementById("language-button-footer");
     const popper = document.getElementById("language-popper-footer");
 
-    let popperInstance: any = null;
+    let popperInstance: ReturnType<typeof createPopper> | null = null;
     let hideTimeout: ReturnType<typeof setTimeout> | null = null;
 
     function show() {
+        if (!button || !popper) return;
+
         if (hideTimeout) {
             clearTimeout(hideTimeout);
             hideTimeout = null;
         }
-        popper?.classList.remove("hidden");
+
+        popper.classList.remove("hidden");
         popperInstance = createPopper(button, popper, {
             placement: "top",
             modifiers: [
@@ -97,8 +100,10 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
     }
 
     function hide() {
+        if (!popper) return;
+
         hideTimeout = setTimeout(() => {
-            popper?.classList.add("hidden");
+            popper.classList.add("hidden");
 
             if (popperInstance) {
                 popperInstance.destroy();
@@ -107,8 +112,10 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
         }, 100);
     }
 
-    button?.addEventListener('mouseenter', show);
-    button?.addEventListener('mouseleave', hide);
-    popper?.addEventListener('mouseenter', show);
-    popper?.addEventListener('mouseleave', hide);
+    if (button && popper) {
+        button.addEventListener('mouseenter', show);
+        button.addEventListener('mouseleave', hide);
+        popper.addEventListener('mouseenter', show);
+        popper.addEventListener('mouseleave', hide);
+    }
 </script>

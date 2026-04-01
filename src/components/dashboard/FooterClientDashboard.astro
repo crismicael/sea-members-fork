@@ -1,0 +1,50 @@
+---
+import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../../i18n/utils"
+import type { languageList } from "../../i18n/ui";
+import Image from 'astro/components/Image.astro'
+import Logo from '../../assets/members_logo.svg'
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+---
+
+<footer id="footer" class="bg-(--secondary-bg-color) border-b border-(--border-color)">
+    <div class="left-right-padding up-down-padding border-t border-x border-y-dotted-r-solid  border-(--border-color)">
+        <div class="grid grid-cols-1 md:grid-cols-6 text-gray-500 gap-8 md:gap-0">
+            <div class="md:col-span-1">
+                <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
+                    <Image src={Logo} alt="Sea Members Logo" width=130 height=100 />
+                </a>
+            </div>
+            <div class="md:col-span-2">
+                <ul class="*:hover:underline inline-block">
+                    <li>
+                        <a href={getRelativeLocaleUrl(currentLang, "/privacy-policy")}}>
+                        {translateLabels("dashboard.footer.footerListItems.01.listItem01")}
+                        </a>
+                    </li>
+                    <li>
+                        <a href={getRelativeLocaleUrl(currentLang, "/terms-conditions")}}>
+                        {translateLabels("dashboard.footer.footerListItems.01.listItem02")}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <ul class="*:hover:underline inline-block">
+                    <li><a href="https://billing.stripe.com/p/login/28E28j2Qx1YD5Yb4K81Jm00">{translateLabels("dashboard.footer.footerListItems.02.listItem01")}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="left-right-padding py-6 border-t border-x border-y-dotted-r-solid border-(--border-color)">
+        <div class="flex justify-between text-gray-500">
+            <div>
+                <p class="text-[14px] sm:text-[16px]">{translateLabels("footer.madeBy")}</p>
+            </div>
+            <div>
+                <p class="text-[14px] sm:text-[16px]">&copy; {new Date().getFullYear()} Sea View Magazine</p>
+            </div>
+        </div>
+    </div>
+</footer>

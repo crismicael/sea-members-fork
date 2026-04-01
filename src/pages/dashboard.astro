@@ -1,0 +1,128 @@
+---
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../i18n/utils"
+import { API_URL } from 'astro:env/server';
+import type { languageList } from "../i18n/ui";
+import Layout from "../layouts/Layout.astro";
+import HeaderDashboard from "../components/dashboard/HeaderDashboard.astro";
+import FooterDashboard from "../components/dashboard/FooterClientDashboard.astro";
+import Image from 'astro/components/Image.astro'
+import Logo from '../assets/members_logo.svg'
+import Button from '../components/shared/Button.astro'
+import ButtonArrow from '../components/shared/ButtonArrow.astro'
+import HyperLink from '../components/ui/Hyperlink.astro'
+const currentLang = Astro.currentLocale || 'en';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+type Coupon = {
+  available_again_at?: string | null;
+  name: string;
+  description: string;
+  img_url: string;
+};
+
+
+// 1. Get the custom JWT token from the user's cookies
+const tokenCookie = Astro.cookies.get("client_jwt");
+
+// 2. If the user isn't logged in, redirect them back to the login page
+if (!tokenCookie) {
+  return Astro.redirect("/signin");
+}
+
+
+
+const token = tokenCookie.value;
+
+let profile = null;
+let coupons: Coupon[] = [];
+
+try {
+  // 3. Fetch the Client Profile (Step 13 from our prompt)
+  const profileResponse = await fetch(`${API_URL}/clients/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}` // Pass the JWT in the header
+    }
+  });
+
+  if (profileResponse.status === 401) {
+    // Token is invalid or expired
+    Astro.cookies.delete("client_jwt");
+    return Astro.redirect("/signin");
+  }
+
+  profile = await profileResponse.json();
+
+  // 4. Fetch the Client's Coupons
+  const couponsResponse = await fetch(`${API_URL}/clients/coupons`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  });
+
+  if (couponsResponse.ok) {
+    coupons = await couponsResponse.json();
+  }
+
+} catch (error) {
+  console.error("Error:", error);
+}
+---
+
+<Layout>
+  <HeaderDashboard />
+  <main class="font-main">
+    <div class="left-right-padding up-down-padding mx-auto pt-24 lg:pt-28 max-w-6xl border-x border-(--border-color) prose">
+      <h1 class="text-[22px] md:text-[2.25em]">{translateLabels("dashboard.welcome")}, {profile?.full_name ?? "Usuario"}!</h1>
+      <p class="font-main">{translateLabels("dashboard.subtitle")}:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 3xl:grid-cols-4 gap-4">
+          {coupons.length === 0 ? (
+                    <p>No coupons available at this time.</p>
+                  ) : (
+                      coupons.map((coupon: Coupon) => {
+                        // Check the cooldown state returned by FastAPI
+                        const now = new Date();
+                        const availableAgain = coupon.available_again_at
+                          ? new Date(coupon.available_again_at)
+                          : null;
+                        const isOnCooldown = availableAgain && availableAgain > now;
+
+                        return isOnCooldown ? (
+                        <div>
+                            <div class="relative">
+                                <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0 grayscale-100 blur-xs" />
+                                <strong class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
+                                  <span>{translateLabels("dashboard.coupons.notAvailable")}</span>
+                                  <span>
+                                    {availableAgain.toLocaleDateString()} at{" "}
+                                    {availableAgain.toLocaleTimeString()}
+                                  </span>
+                                </strong>
+                            </div>
+                            <div>
+                                <h4>{coupon.name}</h4>
+                                <p>{coupon.description}</p>
+                            </div>
+                        </div>
+                        ) : (
+                        <div>
+                            <div>
+                                <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0" />
+                            </div>
+                            <div>
+                                <h4>{coupon.name}</h4>
+                                <p>{coupon.description}</p>
+                            </div>
+                        </div>
+                        );
+                      })
+                  )}
+      </div>
+    </div>
+  </main>
+  <FooterDashboard />
+</Layout>

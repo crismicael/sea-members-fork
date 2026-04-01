@@ -1,0 +1,140 @@
+---
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../../i18n/utils"
+import { API_URL } from 'astro:env/server';
+import type { languageList } from "../../i18n/ui";
+import Layout from "../../layouts/Layout.astro";
+import HeaderBusinessDashboard from "../../components/dashboard/HeaderBusinessDashboard.astro";
+import FooterBusinessDashboard from "../../components/dashboard/FooterBusinessDashboard.astro";
+import Image from 'astro/components/Image.astro'
+import Button from '../../components/shared/Button.astro'
+const currentLang = Astro.currentLocale || 'en';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+type Coupon = {
+  name: string;
+  description: string;
+  img_url: string;
+  cooldown_days: number;
+  max_redemptions: number;
+  valid_from: string;
+  valid_to: string;
+  is_active: boolean;
+};
+
+
+// 1. Get the custom JWT token from the user's cookies
+const businessTokenCookie = Astro.cookies.get("business_jwt");
+
+// 2. If the user isn't logged in, redirect them back to the login page
+if (!businessTokenCookie) {
+  return Astro.redirect("/business/signin");
+}
+
+const token = businessTokenCookie.value;
+
+let profile = null;
+let coupons: Coupon[] = [];
+
+try {
+  // 3. Fetch the Client Profile (Step 13 from our prompt)
+  const profileResponse = await fetch(`${API_URL}/businesses/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}` // Pass the JWT in the header
+    }
+  });
+
+  if (profileResponse.status === 401) {
+    // Token is invalid or expired
+    Astro.cookies.delete("business_jwt");
+    return Astro.redirect("/business/signin");
+  }
+
+  profile = await profileResponse.json();
+
+  // 4. Fetch the Business's Coupons
+  const couponsResponse = await fetch(`${API_URL}/businesses/coupons`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  });
+
+  if (couponsResponse.ok) {
+    coupons = await couponsResponse.json();
+  }
+
+} catch (error) {
+  console.error("Error:", error);
+}
+
+const activeCoupons: Coupon[] = coupons.filter((coupon) => coupon.is_active);
+const inactiveCoupons: Coupon[] = coupons.filter((coupon) => !coupon.is_active);
+---
+
+<Layout>
+  <HeaderBusinessDashboard />
+  <main class="font-main">
+    <div class="left-right-padding up-down-padding mx-auto pt-24 lg:pt-28 max-w-6xl border-x border-(--border-color) prose">
+      <h1 class="text-[22px] md:text-[2.25em]">{translateLabels("businessDashboard.welcome")}, {profile?.name ?? "Usuario"}!</h1>
+      <p class="font-main">{translateLabels("businessDashboard.subtitle")} el negocio "{profile.name}":</p>
+      {coupons.length === 0 ? (
+        <p>No coupons available at this time.</p>
+      ) : (
+        <div class="flex flex-col gap-8">
+          <section>
+            <div class="grid grid-cols-2 sm:grid-cols-3 3xl:grid-cols-4 gap-4">
+              {activeCoupons.length === 0 ? (
+                <p>No hay cupones activos.</p>
+              ) : (
+                activeCoupons.map((coupon: Coupon) => (
+                  <div>
+                    <div>
+                      <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0" />
+                    </div>
+                    <div>
+                      <h4>{coupon.name}</h4>
+                      <p>{coupon.description}</p>
+                      <div class="flex flex-col *:text-xs">
+                        <span>Tiempo para que vuelva a ser utilizado: {coupon.cooldown_days} días</span>
+                        <span>Número máximo de intercambios: {coupon.max_redemptions}</span>
+                        <span>Fecha de inicio: {coupon.valid_from}</span>
+                        <span>Fecha de fin: {coupon.valid_to}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </section>
+          <section>
+            <h3 class="mt-0">Cupones inactivos</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 3xl:grid-cols-4 gap-4">
+              {inactiveCoupons.length === 0 ? (
+                <p>No hay cupones inactivos.</p>
+              ) : (
+                inactiveCoupons.map((coupon: Coupon) => (
+                  <div>
+                    <div>
+                      <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0" />
+                    </div>
+                    <div>
+                      <h4>{coupon.name}</h4>
+                      <p>{coupon.description}</p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </section>
+        </div>
+      )}
+
+
+    </div>
+  </main>
+  <FooterBusinessDashboard />
+</Layout>

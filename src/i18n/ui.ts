@@ -389,6 +389,80 @@ export const lang = {
         }
       },
       'lastUpdated': 'Última actualización: 5 de marzo de 2026'
+    },
+    'signin': {
+      'title': 'Iniciar Sesión',
+      'ulidCodeLabel': 'Usuario',
+      'passwordLabel': 'Contraseña',
+      'submitButton': 'Iniciar Sesión',
+      'popup': 'Tu nombre de usuario es el código que puedes encontrar en tu tarjeta virtual o fisica de members.',
+      'back': 'Regresar',
+      'business': 'Cuenta de Negocio'
+    },
+    'dashboard': {
+      'welcome': '¡Bienvenido',
+      'subtitle': 'Mis cupones',
+      'coupons': {
+        'notAvailable': '¡Cupón ya canjeado! Disponible nuevamente el '
+      },
+      'header': {
+        'button': 'Gestiona tu cuenta de '
+      },
+      'footer': {
+        'footerListItems': {
+          '01': {
+            'listItem01': 'Politicas de Privacidad',
+            'listItem02': 'Términos y Condiciones'
+          },
+          '02': {
+            'listItem01': 'Cancelación de suscripción',
+          }
+        }
+      }
+    },
+    'businessSignin': {
+      'title': 'Iniciar Sesión como Negocio',
+      'emailLabel': 'Correo Electrónico',
+      'passwordLabel': 'Contraseña',
+      'submitButton': 'Iniciar Sesión',
+      'back': 'Regresar',
+      'client': 'Cuenta de Cliente'
+    },
+    'businessDashboard': {
+      'welcome': '¡Bienvenido',
+      'subtitle': 'Cupones activos para',
+      'coupons': {
+        'notAvailable': '¡Este cupón está desactivaco! Contactar al administrador para activarlo nuevamente. '
+      },
+      'header': {
+        'button': 'Redimir Cupón'
+      },
+    },
+    'redeem': {
+      'success': '¡Cupón canjeado con éxito! Ha comenzado el periodo de espera de 30 días.',
+      'error': 'No se ha podido canjear el cupón.',
+      'header': {
+        'title': 'Regresar'
+      },
+      'qr': {
+        'title': 'Paso 1: Escanea la tarjeta del cliente',
+        'description': 'Pídele al cliente que abra su Apple Wallet, Google Wallet o su tarjeta física y que muestre el código QR de su membresía.',
+        'success': '¡Código QR escaneado correctamente!',
+      },
+      'form': {
+        'title': 'Paso 2: Completar el canje',
+        'button': 'Canjear Cupón',
+        'labels': {
+          '01': {
+            'label': 'Código ULID escaneado',
+            'placeholder': 'Esperando el escaneo...'
+          },
+          '02': {
+            'label': 'Selecciona el cupón que deseas canjear',
+            'placeholder': '-- Elige un cupón --'
+          }
+        }
+      }
     }
   },
   en: {
@@ -777,6 +851,77 @@ export const lang = {
         }
       },
       'lastUpdated': 'Last update: March 5, 2026'
+    },
+    'signin': {
+      'title': 'Sign In',
+      'ulidCodeLabel': 'Username',
+      'passwordLabel': 'Password',
+      'submitButton': 'Sign In',
+      'popup': 'Your username is the code printed on your virtual or physical membership card.',
+      'back': 'Go Back',
+      'business': 'Business Account'
+    },
+    'dashboard': {
+      'welcome': '¡Welcome',
+      'subtitle': 'My coupons',
+      'coupons': {
+        'notAvailable': '¡Cupón ya canjeado!'
+      },
+      'header': {
+        'button': 'G'
+      },
+      'footer': {
+        'footerListItems': {
+          '01': {
+            'listItem101': 'Privacy Policy',
+            'listItem102': 'Terms and Conditions'
+          }
+        }
+      }
+    },
+    'businessSignin': {
+      'title': 'Sign in as a Business',
+      'emailLabel': 'Email',
+      'passwordLabel': 'Password',
+      'submitButton': 'Sign In',
+      'back': 'Go Back',
+      'client': 'Client Account'
+    },
+    'businessDashboard': {
+      'welcome': '¡Bienvenido',
+      'subtitle': 'Cupones activos para',
+      'coupons': {
+        'notAvailable': '¡Este cupón está desactivaco! Contactar al administrador para activarlo nuevamente. '
+      },
+      'header': {
+        'button': 'Redimir Cupón'
+      },
+    },
+    'redeem': {
+      'success': 'Coupon successfully redeemed! The 30-day cooldown has started.',
+      'error': 'Failed to redeem coupon.',
+      'header': {
+        'title': 'Go Back'
+      },
+      'qr': {
+        'title': 'Step 1: Scan Client Card',
+        'description': 'Ask the client to open their Apple, Google Wallet or Physical Card and show their membership QR code.',
+        'success': 'QR Code Scanned Successfully!'
+      },
+      'form': {
+        'title': 'Step 2: Complete Redemption',
+        'button': 'Confirm Redemption',
+        'labels': {
+          '01': {
+            'label': 'Scanned ULID Code',
+            'placeholder': 'Waiting for scan...'
+          },
+          '02': {
+            'label': 'Select Coupon to Redeem',
+            'placeholder': '-- Choose a coupon --'
+          }
+        }
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -10,7 +10,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-
+  output: 'server',
   adapter: cloudflare({
     imageService: 'passthrough'
   }),
@@ -19,6 +19,11 @@ export default defineConfig({
     locales: ['es', 'en'],
     routing: {
       prefixDefaultLocale: false,
+    }
+  },
+  env: {
+    schema: {
+      API_URL: envField.string({ context: 'server', access: 'secret' })
     }
   }
 });

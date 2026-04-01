@@ -50,7 +50,7 @@ const getHashUrl = (hash: string) => {
                     </div>
                 </div>
             </div>
-            <ButtonArrow text={translateLabels("header.button")} href=https://billing.stripe.com/p/login/28E28j2Qx1YD5Yb4K81Jm00 className="font-semibold py-2.5 pb-3 px-5 text-[12px] xl:text-[16px]" />
+            <ButtonArrow text={translateLabels("header.button")} href={getHashUrl("signin")} className="font-semibold py-2.5 pb-3 px-5 text-[12px] xl:text-[16px]" />
         </div>
     </nav>
 </header>
@@ -61,17 +61,20 @@ const getHashUrl = (hash: string) => {
     const button = document.getElementById("language-button");
     const popper = document.getElementById("language-popper");
 
-    let popperInstance: any = null;
+    let popperInstance: ReturnType<typeof createPopper> | null = null;
     let hideTimeout: ReturnType<typeof setTimeout> | null = null;
 
     function show() {
+        if (!button || !popper) return;
+
         if (hideTimeout) {
             clearTimeout(hideTimeout);
             hideTimeout = null;
         }
-        popper?.classList.remove("hidden");
+
+        popper.classList.remove("hidden");
         popperInstance = createPopper(button, popper, {
-            placement: "bottom",
+            placement: "top",
             modifiers: [
                 {
                     name: "offset",
@@ -84,8 +87,10 @@ const getHashUrl = (hash: string) => {
     }
 
     function hide() {
+        if (!popper) return;
+
         hideTimeout = setTimeout(() => {
-            popper?.classList.add("hidden");
+            popper.classList.add("hidden");
 
             if (popperInstance) {
                 popperInstance.destroy();
@@ -94,8 +99,10 @@ const getHashUrl = (hash: string) => {
         }, 100);
     }
 
-    button?.addEventListener('mouseenter', show);
-    button?.addEventListener('mouseleave', hide);
-    popper?.addEventListener('mouseenter', show);
-    popper?.addEventListener('mouseleave', hide);
+    if (button && popper) {
+        button.addEventListener('mouseenter', show);
+        button.addEventListener('mouseleave', hide);
+        popper.addEventListener('mouseenter', show);
+        popper.addEventListener('mouseleave', hide);
+    }
 </script>

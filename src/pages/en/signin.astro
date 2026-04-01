@@ -1,0 +1,196 @@
+---
+import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../../i18n/utils"
+import { API_URL } from 'astro:env/server';
+import type { languageList } from "../../i18n/ui";
+import Layout from "../../layouts/Layout.astro";
+import Image from 'astro/components/Image.astro'
+import Logo from '../../assets/members_logo.svg'
+import LeftArrow from '../../assets/left-arrow.svg'
+import InformationIcon from "../../components/ui/InformationIcon.astro";
+const currentLang = Astro.currentLocale || 'en';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+let errorMessage = "";
+
+// 1. Check if the form was submitted
+if (Astro.request.method === "POST") {
+  try {
+    // 2. Grab the form data submitted by the user
+    const data = await Astro.request.formData();
+    const ulid_code = data.get("ulid_code");
+    const password = data.get("password");
+
+    // 3. Fetch the FastAPI backend (Step 4 from our prompt)
+    const response = await fetch(`${API_URL}/auth/client/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // FastAPI expects a JSON body matching the MemberLoginRequest schema
+      body: JSON.stringify({
+        ulid_code: ulid_code,
+        password: password,
+      }),
+    });
+
+    if (!response.ok) {
+      // If FastAPI returns a 401 Unauthorized or 400 Bad Request
+      const errorData = await response.json();
+      errorMessage = errorData.detail || "Invalid ULID or password.";
+    } else {
+      // 4. Success! Grab the token from FastAPI
+      const responseData = await response.json();
+      const token = responseData.access_token;
+
+      // 5. Securely set the JWT as an httpOnly cookie
+      // httpOnly prevents client-side JavaScript from reading the cookie,
+      // making it immune to XSS (Cross-Site Scripting) attacks.
+      Astro.cookies.set("client_jwt", token, {
+        path: "/",
+        httpOnly: true,
+        secure: import.meta.env.PROD, // Only use secure cookies in production (HTTPS)
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24 * 7 // 1 week
+      });
+
+      // 6. Redirect the user to their dashboard
+      return Astro.redirect("/dashboard");
+    }
+  } catch (error) {
+    errorMessage = "An unexpected error occurred. Please try again later.";
+  }
+}
+
+// Helper function for locale-aware hash navigation
+const getHashUrl = (hash: string) => {
+    // If we're on the homepage, use hash only
+    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
+        return hash;
+    }
+    // Otherwise, go to localized homepage with hash
+    return getRelativeLocaleUrl(currentLang, `/`) + hash;
+};
+---
+
+<Layout>
+  <main class="font-main">
+    <div class="left-right-padding up-down-padding mx-auto pt-24 lg:pt-28 max-w-4xl min-h-dvh border-x border-(--border-color) prose">
+        <div class="flex justify-center">
+            <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
+                <Image src={Logo} alt="Sea View Magazine Logo" width=260 />
+            </a>
+        </div>
+        <h1 class="font-main text-center text-3xl">{translateLabels("signin.title")}</h1>
+        {errorMessage && (
+                <div class="bg-red-50 text-red-600 p-3 rounded-md text-sm mb-4 text-center">
+                  {errorMessage}
+                </div>
+        )}
+
+        <form method="post" class="flex flex-col gap-3">
+            <div class="flex flex-col">
+                <div class="flex items-baseline gap-3">
+                    <label for="ulid_code" class="font-medium text-gray-700 mb-1">{translateLabels("signin.ulidCodeLabel")}</label>
+                    <div id="information-button">
+                        <InformationIcon />
+                    </div>
+                    <div id="information-popper" role="tooltip" class="hidden z-30">
+                        <div class="flex flex-col items-center gap-3 popover-content w-72 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg">
+                            <p class="mt-0 mb-0">{translateLabels("signin.popup")}</p>
+                        </div>
+                    </div>
+                </div>
+                <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
+                type="text"
+                id="ulid_code"
+                name="ulid_code"
+                required
+                placeholder="01ARZ3NDEKTSV4RRFFQ69G5FAV" />
+            </div>
+            <div class="flex flex-col">
+                <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>
+                <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="*************"/>
+            </div>
+            <button type="submit" class="py-2.5 px-3.5 mt-2 rounded-(--rounded-button) transition-colors ease-in-out no-underline bg-(--primary-color) hover:bg-(--secondary-color) text-white cursor-pointer">
+                    {translateLabels("signin.submitButton")}
+            </button>
+        </form>
+        <div class="flex justify-between mt-5">
+            <a href="/en" class="no-underline hover:underline">
+                <span>
+                    <Image src={LeftArrow} alt="Left Arrow" width=15 class="inline-block mt-0 mb-0 mr-1" />
+                    {translateLabels("signin.back")}
+                </span>
+            </a>
+            <a href="/business/signin" class="no-underline hover:underline">
+                <span>
+                    {translateLabels("signin.business")}
+                </span>
+            </a>
+        </div>
+        <div class="flex justify-center h-full my-auto">
+            <a href="/signin" class="no-underline hover:underline decoration-gray-600">
+                <p class="text-gray-600">EN | English</p>
+            </a>
+        </div>
+    </div>
+</main>
+
+<script>
+    import { createPopper } from "@popperjs/core";
+
+    const button = document.getElementById("information-button");
+    const popper = document.getElementById("information-popper");
+
+    let popperInstance: ReturnType<typeof createPopper> | null = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function show() {
+        if (!button || !popper) return;
+
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+
+        popper.classList.remove("hidden");
+        popperInstance = createPopper(button, popper, {
+            placement: "top",
+            modifiers: [
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8],
+                    },
+                },
+            ],
+        });
+    }
+
+    function hide() {
+        if (!popper) return;
+
+        hideTimeout = setTimeout(() => {
+            popper.classList.add("hidden");
+
+            if (popperInstance) {
+                popperInstance.destroy();
+                popperInstance = null;
+            }
+        }, 100);
+    }
+
+    if (button && popper) {
+        button.addEventListener('mouseenter', show);
+        button.addEventListener('mouseleave', hide);
+        popper.addEventListener('mouseenter', show);
+        popper.addEventListener('mouseleave', hide);
+    }
+</script>
+</Layout>

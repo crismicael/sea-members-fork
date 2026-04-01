@@ -1,0 +1,37 @@
+---
+import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../../i18n/utils"
+import type { languageList } from "../../i18n/ui";
+import Image from 'astro/components/Image.astro'
+import Logo from '../../assets/members_logo.svg'
+import LeftArrow from '../../assets/left-arrow.svg'
+import Button from "../shared/Button.astro";
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+// Helper function for locale-aware hash navigation
+const getHashUrl = (hash: string) => {
+    // If we're on the homepage, use hash only
+    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
+        return hash;
+    }
+    // Otherwise, go to localized homepage with hash
+    return getRelativeLocaleUrl(currentLang, `/`) + hash;
+};
+---
+
+<header class="fixed h-18 w-full border-b border-(--border-color) z-50">
+    <nav class="flex items-center justify-between px-4 lg:px-48 3xl:px-96 h-full w-full bg-white/0 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10">
+        <div class="flex items-center gap-5">
+            <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
+                <Image src={Logo} alt="Sea View Magazine Logo" width=130 height=100 />
+            </a>
+        </div>
+        <a href={getHashUrl("business/dashboard")} class="no-underline hover:underline">
+            <span>
+                <Image src={LeftArrow} alt="Left Arrow" width=15 class="inline-block mt-0 mb-0 mr-1" />
+                {translateLabels("businessSignin.back")}
+            </span>
+        </a>
+    </nav>
+</header>
