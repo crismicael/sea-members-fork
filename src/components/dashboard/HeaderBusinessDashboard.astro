@@ -26,6 +26,6 @@ const getHashUrl = (hash: string) => {
                 <Image src={Logo} alt="Sea View Magazine Logo" width=130 height=100 />
             </a>
         </div>
-        <Button text={translateLabels("businessDashboard.header.button")} href="/business/redeem" />
+        <Button text={translateLabels("businessDashboard.header.button")} href={getRelativeLocaleUrl(currentLang, `/business/redeem`)} />
     </nav>
 </header>

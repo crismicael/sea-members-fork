@@ -1,12 +1,12 @@
 ---
 import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
-import { useTranslation } from "../../i18n/utils"
+import { useTranslation } from "../../../i18n/utils"
 import { API_URL } from 'astro:env/server';
-import type { languageList } from "../../i18n/ui";
-import Layout from "../../layouts/Layout.astro";
+import type { languageList } from "../../../i18n/ui";
+import Layout from "../../../layouts/Layout.astro";
 import Image from 'astro/components/Image.astro'
-import Logo from '../../assets/members_logo.svg'
-import LeftArrow from '../../assets/left-arrow.svg'
+import Logo from '../../../assets/members_logo.svg'
+import LeftArrow from '../../../assets/left-arrow.svg'
 const currentLang = Astro.currentLocale || 'en';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -54,7 +54,7 @@ if (Astro.request.method === "POST") {
       });
 
       // 6. Redirect the user to their dashboard
-      return Astro.redirect("/business/dashboard");
+      return Astro.redirect("/en/business/dashboard");
     }
   } catch (error) {
     errorMessage = "An unexpected error occurred. Please try again later.";
@@ -124,7 +124,7 @@ const getHashUrl = (hash: string) => {
             </a>
         </div>
         <div class="flex justify-center h-full my-auto">
-            <a href="/en/business/signin" class="no-underline hover:underline decoration-gray-600">
+            <a href="/business/signin" class="no-underline hover:underline decoration-gray-600">
                 <p class="text-gray-600">ES | Español</p>
             </a>
         </div>

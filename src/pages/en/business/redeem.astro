@@ -1,10 +1,10 @@
 ---
 import { getAbsoluteLocaleUrl } from "astro:i18n";
-import { useTranslation } from "../../i18n/utils"
+import { useTranslation } from "../../../i18n/utils"
 import { API_URL } from 'astro:env/server';
-import type { languageList } from "../../i18n/ui";
-import Layout from "../../layouts/Layout.astro";
-import HeaderRedeemDashboard from "../../components/dashboard/HeaderRedeemDashboard.astro";
+import type { languageList } from "../../../i18n/ui";
+import Layout from "../../../layouts/Layout.astro";
+import HeaderRedeemDashboard from "../../../components/dashboard/HeaderRedeemDashboard.astro";
 const currentLang = Astro.currentLocale || 'en';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -17,7 +17,7 @@ type Coupon = {
 
 const tokenCookie = Astro.cookies.get("business_jwt");
 if (!tokenCookie) {
-  return Astro.redirect("/business/signin");
+  return Astro.redirect("/en/business/signin");
 }
 const token = tokenCookie.value;
 
@@ -31,7 +31,7 @@ try {
   const profileResponse = await fetch(`${API_URL}/businesses/me`, {
     headers: { "Authorization": `Bearer ${token}` }
   });
-  if (profileResponse.status === 401) return Astro.redirect("/business/signin");
+  if (profileResponse.status === 401) return Astro.redirect("/en/business/signin");
   profile = await profileResponse.json();
 
   // 2. Fetch active coupons to populate the dropdown menu
@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     html5QrcodeScanner.pause();
 
     // Provide feedback to the receptionist
+    console.log(`Scan result: ${decodedText}`);
     }
 
     function onScanFailure(error) {

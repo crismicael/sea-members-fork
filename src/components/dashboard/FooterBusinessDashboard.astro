@@ -4,6 +4,7 @@ import { useTranslation } from "../../i18n/utils"
 import type { languageList } from "../../i18n/ui";
 import Image from 'astro/components/Image.astro'
 import Logo from '../../assets/members_logo.svg'
+import Language from "../../components/ui/Language.astro";
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 ---
@@ -30,6 +31,19 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
                     </li>
                 </ul>
             </div>
+            <div class="md:col-span-1 flex md:justify-end-safe  md:pe-4">
+                <div id="business-dashboard-button-footer">
+                    <Language color="black">
+                        <span class="absolute inline-flex items-center justify-center h-full w-full rounded-full -top-3 -right-3 bg-black text-white text-[12px]">{translateLabels("footer.languageIcon")}</span>
+                    </Language>
+                </div>
+                <div id="business-dashboard-popper-footer" role="tooltip" class="hidden z-30">
+                    <div class="popover-content w-48 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg flex flex-col">
+                        <a href="/en/dashboard" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">en</span><span>English</span></a>
+                        <a href="/dashboard" class="flex gap-3 py-2 px-3 rounded-[10px] hover:bg-gray-500/10"><span class="font-bold uppercase">es</span><span>Español</span></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="left-right-padding py-6 border-t border-x border-y-dotted-r-solid border-(--border-color)">
@@ -43,3 +57,55 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
         </div>
     </div>
 </footer>
+
+<script>
+    import { createPopper } from "@popperjs/core";
+
+    const button = document.getElementById("business-dashboard-button-footer");
+    const popper = document.getElementById("business-dashboard-popper-footer");
+
+    let popperInstance: ReturnType<typeof createPopper> | null = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function show() {
+        if (!button || !popper) return;
+
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+
+        popper.classList.remove("hidden");
+        popperInstance = createPopper(button, popper, {
+            placement: "top",
+            modifiers: [
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8],
+                    },
+                },
+            ],
+        });
+    }
+
+    function hide() {
+        if (!popper) return;
+
+        hideTimeout = setTimeout(() => {
+            popper.classList.add("hidden");
+
+            if (popperInstance) {
+                popperInstance.destroy();
+                popperInstance = null;
+            }
+        }, 100);
+    }
+
+    if (button && popper) {
+        button.addEventListener('mouseenter', show);
+        button.addEventListener('mouseleave', hide);
+        popper.addEventListener('mouseenter', show);
+        popper.addEventListener('mouseleave', hide);
+    }
+</script>
