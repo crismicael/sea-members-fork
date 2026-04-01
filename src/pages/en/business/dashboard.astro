@@ -1,13 +1,13 @@
 ---
 import { getAbsoluteLocaleUrl } from "astro:i18n";
-import { useTranslation } from "../../i18n/utils"
+import { useTranslation } from "../../../i18n/utils"
 import { API_URL } from 'astro:env/server';
-import type { languageList } from "../../i18n/ui";
-import Layout from "../../layouts/Layout.astro";
-import HeaderBusinessDashboard from "../../components/dashboard/HeaderBusinessDashboard.astro";
-import FooterBusinessDashboard from "../../components/dashboard/FooterBusinessDashboard.astro";
+import type { languageList } from "../../../i18n/ui";
+import Layout from "../../../layouts/Layout.astro";
+import HeaderBusinessDashboard from "../../../components/dashboard/HeaderBusinessDashboard.astro";
+import FooterBusinessDashboard from "../../../components/dashboard/FooterBusinessDashboard.astro";
 import Image from 'astro/components/Image.astro'
-import Language from "../../components/ui/Language.astro";
+import Language from "../../../components/ui/Language.astro";
 const currentLang = Astro.currentLocale || 'en';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -28,7 +28,7 @@ const businessTokenCookie = Astro.cookies.get("business_jwt");
 
 // 2. If the user isn't logged in, redirect them back to the login page
 if (!businessTokenCookie) {
-  return Astro.redirect("/business/signin");
+  return Astro.redirect("/en/business/signin");
 }
 
 const token = businessTokenCookie.value;
@@ -49,7 +49,7 @@ try {
   if (profileResponse.status === 401) {
     // Token is invalid or expired
     Astro.cookies.delete("business_jwt");
-    return Astro.redirect("/business/signin");
+    return Astro.redirect("/en/business/signin");
   }
 
   profile = await profileResponse.json();
@@ -112,10 +112,10 @@ const inactiveCoupons: Coupon[] = coupons.filter((coupon) => !coupon.is_active);
                       <h4>{coupon.name}</h4>
                       <p>{coupon.description}</p>
                       <div class="flex flex-col *:text-xs">
-                        <span>Tiempo para que vuelva a ser utilizado: {coupon.cooldown_days} días</span>
-                        <span>Número máximo de intercambios: {coupon.max_redemptions}</span>
-                        <span>Fecha de inicio: {coupon.valid_from}</span>
-                        <span>Fecha de fin: {coupon.valid_to}</span>
+                        <span>{translateLabels("businessDashboard.time")} {coupon.cooldown_days} días</span>
+                        <span>{translateLabels("businessDashboard.max_redemptions")} {coupon.max_redemptions}</span>
+                        <span>{translateLabels("businessDashboard.valid_from")} {coupon.valid_from}</span>
+                        <span>{translateLabels("businessDashboard.valid_to")} {coupon.valid_to}</span>
                       </div>
                     </div>
                   </div>
@@ -145,8 +145,6 @@ const inactiveCoupons: Coupon[] = coupons.filter((coupon) => !coupon.is_active);
           </section>
         </div>
       )}
-
-
     </div>
   </main>
   <FooterBusinessDashboard />

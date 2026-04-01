@@ -392,15 +392,16 @@ export const lang = {
     },
     'signin': {
       'title': 'Iniciar Sesión',
-      'ulidCodeLabel': 'Usuario',
+      'emailLabel': 'Correo electrónico',
       'passwordLabel': 'Contraseña',
       'submitButton': 'Iniciar Sesión',
-      'popup': 'Tu nombre de usuario es el código que puedes encontrar en tu tarjeta virtual o fisica de members.',
+      'popup': 'La dirección de correo electrónico es la misma que utilizaste para adquirir tu suscripción.',
       'back': 'Regresar',
       'business': 'Cuenta de Negocio'
     },
     'dashboard': {
       'welcome': '¡Bienvenido',
+      'introduction': 'Muestra estos cupones al negocio para redimir los beneficios de tu membresía. Es importante tener tu tarjeta virtual o física a mano.',
       'subtitle': 'Mis cupones',
       'coupons': {
         'notAvailable': '¡Cupón ya canjeado! Disponible nuevamente el '
@@ -431,7 +432,18 @@ export const lang = {
     'businessDashboard': {
       'welcome': '¡Bienvenido',
       'subtitle': 'Cupones activos para',
+      'time': 'Tiempo para que vuelva a ser utilizado:',
+      'max_redemptions': 'Número máximo de intercambios: ',
+      'valid_from': 'Fecha de inicio: ',
+      'valid_to': 'Fecha de fin: ',
       'coupons': {
+        'active': {
+          'title': 'Active Coupons',
+        },
+        'inactive': {
+          'title': 'Inactive Coupons',
+          'description': ''
+        },
         'notAvailable': '¡Este cupón está desactivaco! Contactar al administrador para activarlo nuevamente. '
       },
       'header': {
@@ -854,27 +866,31 @@ export const lang = {
     },
     'signin': {
       'title': 'Sign In',
-      'ulidCodeLabel': 'Username',
+      'emailLabel': 'Email',
       'passwordLabel': 'Password',
       'submitButton': 'Sign In',
-      'popup': 'Your username is the code printed on your virtual or physical membership card.',
+      'popup': 'The email address is the same one you used to purchase your membership.',
       'back': 'Go Back',
       'business': 'Business Account'
     },
     'dashboard': {
       'welcome': '¡Welcome',
+      'introduction': 'Show these coupons to the business to redeem your membership benefits. It’s important to have your virtual or physical card on hand.',
       'subtitle': 'My coupons',
       'coupons': {
-        'notAvailable': '¡Cupón ya canjeado!'
+        'notAvailable': '¡Coupon already redeemed!'
       },
       'header': {
-        'button': 'G'
+        'button': 'Manage your account'
       },
       'footer': {
         'footerListItems': {
           '01': {
-            'listItem101': 'Privacy Policy',
-            'listItem102': 'Terms and Conditions'
+            'listItem01': 'Privacy Policy',
+            'listItem02': 'Terms and Conditions'
+          },
+          '02': {
+            'listItem01': 'Unsubscribe',
           }
         }
       }
@@ -888,13 +904,24 @@ export const lang = {
       'client': 'Client Account'
     },
     'businessDashboard': {
-      'welcome': '¡Bienvenido',
-      'subtitle': 'Cupones activos para',
+      'welcome': '¡Welcome',
+      'subtitle': 'Active coupons for the business',
+      'time': 'Time until it can be used again:',
+      'max_redemptions': 'Maximum number of exchanges:',
+      'valid_from': 'Start date: ',
+      'valid_to': 'End date: ',
       'coupons': {
-        'notAvailable': '¡Este cupón está desactivaco! Contactar al administrador para activarlo nuevamente. '
+        'active': {
+          'title': 'Active Coupons',
+        },
+        'inactive': {
+          'title': 'Inactive Coupons',
+          'description': ''
+        },
+        'notAvailable': '¡This coupon has already been redeemed! Contact the administrator to activate it again.'
       },
       'header': {
-        'button': 'Redimir Cupón'
+        'button': 'Redeem Coupon'
       },
     },
     'redeem': {
