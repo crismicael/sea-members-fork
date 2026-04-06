@@ -14,9 +14,14 @@ export const lang = {
     'hero': {
       'subtitle': 'Un producto de: ',
       'title': {
-        'line1': 'Members es el nuevo programa de suscripciones con beneficios exclusivos de ',
-        'line2': 'Seaview Grupo Editorial',
-        'line3': 'para residentes y visitantes de Puerto Vallarta.'
+        'line1': 'Lo mejor de ',
+        'line2': 'Puerto Vallarta.',
+        'bulletPoints': {
+          '01': 'Promociones exclusivas en los establecimientos más reconocidos de Puerto Vallarta.',
+          '02': 'Participa para acceder a los mejores eventos de la ciudad.',
+          '03': 'Acceso ilimitado a contenido exclusivo de Sea View Magazine.',
+          '04': 'Acceso a la edición digital',
+        },
       },
       'buttonArrowHero': 'Suscríbete',
       'buttonHero': 'Conoce los beneficios'
@@ -41,37 +46,38 @@ export const lang = {
       },
       'pricesGrid': {
         '01': {
-          'title': 'Experiencias exclusivas y descuentos en comercios participantes',
-          'bulletPoint1': 'Beneficios exclusivos en gastronomía, wellness, estilo y escapadas',
+          'title': 'Mensual',
+          'bulletPoint1': 'Tarjeta virtual para Apple Wallet y Google Wallet para acceder a beneficios exclusivos en gastronomía, wellness, estilo y escapadas',
           'bulletPoint2': 'Nuevos comercios sumándose cada mes',
-          'bulletPoint3': 'Tarjeta física personalizada',
-          'bulletPoint4': 'Tarjeta virtual para Apple Wallet y Google Wallet',
+          'bulletPoint3': 'Acceso a edición anticipada de Seaview Magazine ',
+          'bulletPoint4': 'Acceso ilimitado a las ediciones pasadas de Sea View Magazine, Sunwave y The Gazzella',
+          'bulletPoint5': 'Entrevistas exclusivas',
         },
         '02': {
-          'title': 'Contenido editorial exclusivo',
-          'bulletPoint1': 'Edición anticipada de Sea View Magazine',
-          'bulletPoint2': 'Edición anticipada de Sunwave',
-          'bulletPoint3': 'Resumen semanal de The Gazzella',
-          'bulletPoint4': 'Episodio exclusivo de nuestro podcast',
+          'title': 'Anual',
+          'bulletPoint1': 'Todo lo incluido en el plan mensual +',
+          'bulletPoint2': 'Acceso a videos de Q&A sobre nuestras ediciones.',
+          'bulletPoint3': 'Acceso prioritario a eventos del grupo editorial',
+          'bulletPoint4': 'Participa para acceder a los mejores eventos de la ciudad',
+          'bulletPoint5': 'Participa en sorteos y premios mensuales solo para members',
+          'bulletPoint6': 'Episodios exclusivo de nuestro podcast',
+          'bulletPoint7': 'Tarjeta física personalizada para acceder a Beneficios exclusivos en gastronomía, wellness, estilo y escapadas',
           'button': 'Conoce sobre el grupo editorial'
-        },
-        '03': {
-          'title': 'Comunidad y acceso especial',
-          'bulletPoint1': 'Acceso prioritario a eventos del grupo editorial',
-          'bulletPoint2': 'Participa para acceder a los mejores eventos de la ciudad',
-          'bulletPoint3': 'Participa en sorteos y premios mensuales solo para members',
         },
       },
       'pricesButtons': {
         '01': {
-          'before': 'Antes $179 MXN / MES',
-          'newPrice': '$149 MXN / MES',
-          'subText': 'Tarjeta virtual incluida',
+          'before': 'Antes $149 MXN / MES',
+          'newPrice': '$99 MXN / MES',
+          'subText': 'Membresia con tarjeta virtual',
+          'disclaimer': '*Recomendado para residentes de Puerto Vallarta y lectores internacionales',
         },
         '02': {
-          'before': 'Antes $1490 MXN / AÑO',
-          'newPrice': '1299,00 MXN / AÑO',
-          'subText': 'Tarjeta física',
+          'before': 'Antes $124 MXN / MES',
+          'newPrice': '$108 MXN / MES',
+          'subText': 'Membresia con tarjeta fisica personalizada + tarjeta virtual',
+          'disclaimer01': '*Facturación anual',
+          'disclaimer02': '*Recomendado para residentes de Puerto Vallarta'
         },
       }
     },
@@ -174,6 +180,72 @@ export const lang = {
           'href': ''
         },
       }
+    },
+    'qna': {
+      'title': {
+        'line1': 'Preguntas',
+        'line2': 'más frecuentes',
+      },
+      'questions': {
+        '01': {
+          'question': '¿Cuándo va a ser enviada mi revista?',
+          'answer': 'Tú revista, en su formato digital, será enviada inmediatamente después de haber realizado tu compra de la suscripción. La edición enviada será la que se encuentre dentro de nuestro ciclo de publicación al momento de tu compra. Las consecuentes ediciones serán enviadas en la fecha ilustrada en la tabla de abajo. Por favor, ten en cuenta que Seaview Magazine se publica 5 veces al año.',
+          'disclaimer': '*Fechas de edición están sujetas a cambio en cualquier momento.',
+          'table': {
+            'th': {
+              '01': 'Edition',
+              '02': 'Digital Version Available'
+            },
+            'td': {
+              '01': {
+                '01': 'Feb - Abril',
+                '02': 'Abril - Junio',
+                '03': 'Junio - Agosto',
+                '04': 'Agosto - Octubre',
+                '05': 'Octubre - Diciembre',
+              },
+              '02': {
+                '01': 'Fecha TBD',
+                '02': 'Fecha TBD',
+                '03': 'Fecha TBD',
+                '04': 'Fecha TBD',
+                '05': 'Fecha TBD',
+              }
+            }
+          },
+        },
+        '02': {
+          'question': '¿Por cual medio se entrega mi edición?',
+          'answer': 'La edición será enviada al correo electrónico con el cual se registró la compra.',
+        },
+        '03': {
+          'question': '¿Puedo suscribirme a la edición impresa?',
+          'answer': 'Proximamente podrás suscribirte a la edición empresa.',
+        },
+        '04': {
+          'question': '¿La edición digital está disponible para suscriptores internacionales?',
+          'answer': 'Sí, la revista digital está disponible para suscriptores internacionales, sin embargo las promociones solo aplican para los establecimientos dentro de Puerto Vallarta.',
+        },
+        '05': {
+          'question': '¿Dónde puedo contactar a atención al cliente?',
+          'answer': 'Puedes contactarnos a través de',
+          'email': 'members@seaviewmagazine.com',
+        },
+        '06': {
+          'question': '¿Cómo redimo una promoción?',
+          'answer01': 'Adquiere el plan mensual o anual y muestra estos cupones en el establecimiento para canjear las ventajas de tu suscripción. Asegúrate de tener a mano tu tarjeta virtual o física y de encontrarte en un establecimiento participante para completar el canje.',
+          'answer02': 'Una vez canjeado, el cupón se renovará automáticamente en 30 días.',
+          'answer03': 'Visita el botón "Gestiona tu cuenta" para ver tus cupones y canjear más.',
+        },
+        // '07': {
+        //   'question': '¿Cómo se entrega mi tarjeta física?',
+        //   'answer': 'Tu tarjeta llegará al domicilio registrado al momento de realizar la compra en un plazo de X horas.',
+        // },
+        '08': {
+          'question': '¿Habrá promociones en ciudades fuera de Puerto Vallarta?',
+          'answer': 'Estamos trabajando para llevar la experiencia Members a otras ciudades de la república. Estaremos actualizando a los Members y al público en general a través de nuestras redes sociales.',
+        },
+      },
     },
     'recap': {
       'title': {
@@ -487,9 +559,14 @@ export const lang = {
     'hero': {
       'subtitle': 'A product of: ',
       'title': {
-        'line1': 'Members is the new subscription program with exclusive benefits from ',
-        'line2': 'Seaview Publishing Group',
-        'line3': 'for Puerto Vallarta residents and visitors.'
+        'line1': 'The best of ',
+        'line2': 'Puerto Vallarta.',
+        'bulletPoints': {
+          '01': 'Exclusive deals at Puerto Vallarta’s most renowned establishments.',
+          '02': 'Access to the best events in town.',
+          '03': 'Unlimited access to exclusive content from Sea View Magazine.',
+          '04': 'Access to Sea View Magazine’s digital edition.',
+        },
       },
       'buttonArrowHero': 'Subscribe',
       'buttonHero': 'Learn about the benefits'
@@ -514,40 +591,104 @@ export const lang = {
       },
       'pricesGrid': {
         '01': {
-          'title': 'Exclusive experiences and discounts at participating stores',
-          'bulletPoint1': 'Exclusive benefits in gastronomy, wellness, style, and getaways',
-          'bulletPoint2': 'New businesses joining every month',
-          'bulletPoint3': 'Personalized physical card',
-          'bulletPoint4': 'Virtual card for Apple Wallet and Google Wallet',
+          'title': 'Exclusive experiences and discounts at participating stores.',
+          'bulletPoint1': 'Virtual card for Apple Wallet and Google Wallet to access exclusive benefits in dining, wellness, style, and getaways.',
+          'bulletPoint2': 'New businesses are joining every month.',
+          'bulletPoint3': 'Access to the early-access edition of Seaview Magazine.',
+          'bulletPoint4': 'Unlimited access to back issues of Sea View Magazine, Sunwave, and The Gazzella.',
+          'bulletPoint5': 'Exclusive interviews',
         },
         '02': {
           'title': 'Exclusive editorial content',
-          'bulletPoint1': 'Advance edition of Sea View Magazine',
-          'bulletPoint2': 'Early release of Sunwave',
-          'bulletPoint3': 'Weekly summary of The Gazzella',
-          'bulletPoint4': 'Exclusive episode of our podcast',
-          'button': 'Learn more about the editorial group'
-        },
-        '03': {
-          'title': 'Community and special access',
-          'bulletPoint1': 'Priority access to events organized by the publishing group',
-          'bulletPoint2': 'Participate to gain access to the best events in the city',
-          'bulletPoint3': 'Participate in monthly raffles and prizes exclusively for members.',
-
+          'bulletPoint1': 'Everything included in the monthly plan +',
+          'bulletPoint2': 'Access to Q&A videos about our publications.',
+          'bulletPoint3': "Priority access to the publishing group's events.",
+          'bulletPoint4': 'Sign up to get access to the best events in town.',
+          'bulletPoint5': 'Enter monthly giveaways and contests exclusively for members.',
+          'bulletPoint6': 'Exclusive episodes from our podcast.',
+          'bulletPoint7': 'A personalized physical card that grants access to exclusive benefits in dining, wellness, lifestyle, and getaways.',
         },
       },
       'pricesButtons': {
         '01': {
-          'before': 'Previously $179 MXN / MONTH',
-          'newPrice': '$149 MXN / MONTH',
-          'subText': 'Virtual card included',
+          'before': 'Previously $149 MXN / MONTH',
+          'newPrice': '$99 MXN / MONTH',
+          'subText': 'Virtual Card Membership',
+          'disclaimer': '*Recommended for residents of Puerto Vallarta and international readers',
         },
         '02': {
-          'before': 'Antes $1490 MXN / YEAR',
-          'newPrice': '$1299 MXN / YEAR',
-          'subText': 'Physical card',
+          'before': 'Antes $124 MXN / YEAR',
+          'newPrice': '$108 MXN / YEAR',
+          'subText': 'Membership with a personalized physical card + virtual',
+          'disclaimer01': '*Billed yearly',
+          'disclaimer02': '*Recommended for residents of Puerto Vallarta'
         },
       }
+    },
+    'qna': {
+      'title': {
+        'line1': 'Frequently',
+        'line2': 'Asked Questions',
+      },
+      'questions': {
+        '01': {
+          'question': 'When will my magazine be shipped?',
+          'answer': 'Your magazine, in its digital format, will be sent immediately after you purchase your subscription. The issue you receive will be the one currently in our publication cycle at the time of your purchase. Subsequent issues will be sent on the dates listed in the table below. Please note that Seaview Magazine is published five times a year.',
+          'disclaimer': '*Release dates are subject to change at any time.',
+          'table': {
+            'th': {
+              '01': 'Edition',
+              '02': 'Digital Version Available'
+            },
+            'td': {
+              '01': {
+                '01': 'Feb – Apr',
+                '02': 'April – June',
+                '03': 'June – August',
+                '04': 'August – October',
+                '05': 'October – December',
+              },
+              '02': {
+                '01': 'Date TBD',
+                '02': 'Date TBD',
+                '03': 'Date TBD',
+                '04': 'Date TBD',
+                '05': 'Date TBD',
+              }
+            }
+          },
+        },
+        '02': {
+          'question': 'How will my copy be delivered?',
+          'answer': 'The issue will be sent to the email address used to register the purchase.',
+        },
+        '03': {
+          'question': 'Can I subscribe to the print edition?',
+          'answer': "You'll soon be able to subscribe to the business edition.",
+        },
+        '04': {
+          'question': 'Is the digital edition available to international subscribers?',
+          'answer': 'Yes, the digital magazine is available to international subscribers; however, the promotions apply only to establishments within Puerto Vallarta.',
+        },
+        '05': {
+          'question': 'Where can I contact customer service?',
+          'answer': 'You can contact us via',
+        },
+        '06': {
+          'question': 'How do I redeem a promotion?',
+          'answer01': 'Purchase the monthly or annual plan and show these coupons to the business to redeem your membership benefits. Be sure to have your virtual or physical card on hand and be in a participating business to complete the redemption.',
+          'answer02': 'Once redeemed, in 30 days the coupon will automatically renew.',
+          'answer03': 'Click the “Manage Your Account” button to view your coupons and redeem more.',
+        },
+        // '07': {
+        //   'question': '¿Cómo se entrega mi tarjeta física?',
+        //   'answer': 'Tu tarjeta llegará al domicilio registrado al momento de realizar la compra en un plazo de X horas.',
+        // },
+        '08': {
+          'question': 'Will there be promotions in cities outside of Puerto Vallarta?',
+          'answer': 'We are working to bring the Members experience to other cities across the country. We will keep Members and the general public updated through our social media channels.',
+        },
+      },
     },
     'carousel': {
       'title': {

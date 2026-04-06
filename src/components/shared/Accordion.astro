@@ -1,0 +1,256 @@
+---
+import { useTranslation } from "../../i18n/utils"
+import type { languageList } from "../../i18n/ui";
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+---
+
+<div data-slot="accordion" class="overflow-hidden border border-(--border-color)" data-default-value="features" id="accordion-multiple-css">
+  <div
+    data-slot="accordion-item"
+    data-value="one"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+      <span>{translateLabels("qna.questions.01.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <span class="block pb-4 text-gray-700">{translateLabels("qna.questions.01.answer")}</span>
+          <table class="w-full table-auto border border-(--border-color) **:border **:border-(--border-color) **:px-5 **:py-2">
+              <tr class="even:bg-gray-50">
+                  <th>{translateLabels("qna.questions.01.table.th.01")}</th>
+                  <th>{translateLabels("qna.questions.01.table.th.02")}</th>
+              </tr>
+              <tr class="even:bg-gray-50">
+                  <td>{translateLabels("qna.questions.01.table.td.01.01")}</td>
+                  <td>{translateLabels("qna.questions.01.table.td.02.01")}</td>
+              </tr>
+              <tr class="even:bg-gray-50">
+                  <td>{translateLabels("qna.questions.01.table.td.01.02")}</td>
+                  <td>{translateLabels("qna.questions.01.table.td.02.02")}</td>
+              </tr>
+              <tr class="even:bg-gray-50">
+                  <td>{translateLabels("qna.questions.01.table.td.01.03")}</td>
+                  <td>{translateLabels("qna.questions.01.table.td.02.03")}</td>
+              </tr>
+              <tr class="even:bg-gray-50">
+                  <td>{translateLabels("qna.questions.01.table.td.01.04")}</td>
+                  <td>{translateLabels("qna.questions.01.table.td.02.04")}</td>
+              </tr>
+              <tr class="even:bg-gray-50">
+                  <td>{translateLabels("qna.questions.01.table.td.01.05")}</td>
+                  <td>{translateLabels("qna.questions.01.table.td.02.05")}</td>
+              </tr>
+          </table>
+          <span class="block pt-4 text-gray-700">{translateLabels("qna.questions.01.disclaimer")}</span>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="two"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+      <span>{translateLabels("qna.questions.02.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <span class="block text-gray-700">{translateLabels("qna.questions.02.answer")}</span>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="three"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+      <span>{translateLabels("qna.questions.03.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+        <span class="block text-gray-700">{translateLabels("qna.questions.03.answer")}</span>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="four"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>{translateLabels("qna.questions.04.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <span class="block text-gray-700">{translateLabels("qna.questions.04.answer")}</span>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="five"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>{translateLabels("qna.questions.05.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <span class="inline-block text-gray-700">{translateLabels("qna.questions.05.answer")}</span>
+          <a href="mailto:members@seaviewmagazine.com" class="text-(--primary-color) hover:underline visited:text-purple-600">members@seaviewmagazine.com</a>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="six"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>{translateLabels("qna.questions.06.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <span class="inline-block text-gray-700">{translateLabels("qna.questions.06.answer01")}</span>
+          <span class="block pt-2 text-lg text-(--secondary-color)">{translateLabels("qna.questions.06.answer02")}</span>
+          <span class="block pt-4 text-gray-700">{translateLabels("qna.questions.06.answer03")}</span>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="seven"
+    class="group border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>{translateLabels("qna.questions.08.question")}</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <span class="inline-block text-gray-700">{translateLabels("qna.questions.08.answer")}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+import { createAccordion } from "@data-slot/accordion"
+
+const accordionMultipleCss = document.getElementById("accordion-multiple-css");
+createAccordion(accordionMultipleCss, { multiple: true })
+</script>
