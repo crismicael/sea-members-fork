@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
+    "@data-slot/accordion": "^0.2.166",
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",

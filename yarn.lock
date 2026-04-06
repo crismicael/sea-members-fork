@@ -157,6 +157,18 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@data-slot/accordion@^0.2.166":
+  version "0.2.166"
+  resolved "https://registry.yarnpkg.com/@data-slot/accordion/-/accordion-0.2.166.tgz#00c7cec651ab269bb924579b7a10c20a12b29e45"
+  integrity sha512-MViSr1Nikj5PqL8aFTQMonG/9SHXYskWK0DTc8OyUvLBg5x2mwTQVTwlPxy114ZH4BMOAYlTXpZ+XuvOrDgH9Q==
+  dependencies:
+    "@data-slot/core" "0.2.166"
+
+"@data-slot/core@0.2.166":
+  version "0.2.166"
+  resolved "https://registry.yarnpkg.com/@data-slot/core/-/core-0.2.166.tgz#9ad41cdfa5755135af47ea4437d47228ce714d86"
+  integrity sha512-/DuzMFIqiefdjheX5fMhaqs4YPp0/t+/pN9EgnB2jLSDk8384WkBCPGq76T/Ypb0MjVlHFiexKDnx9+k+bdcjw==
+
 "@emnapi/core@^1.7.1", "@emnapi/core@^1.8.1":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.8.1.tgz#fd9efe721a616288345ffee17a1f26ac5dd01349"

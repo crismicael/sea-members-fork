@@ -1,0 +1,22 @@
+---
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
+import Accordion from "./shared/Accordion.astro"
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+---
+
+<section id="qna" class="border-y border-(--border-color)">
+    <div class="left-right-padding up-down-padding border-x border-(--border-color)">
+        <div class="flex pb-5">
+            <div class="prose">
+                <h2 class="font-normal">
+                    {translateLabels("qna.title.line1")}<span class="text-(--secondary-color)"> {translateLabels("qna.title.line2")}</span>
+                </h2>
+            </div>
+        </div>
+        <div class="flex flex-col gap-3">
+            <Accordion  />
+        </div>
+    </div>
+</section>

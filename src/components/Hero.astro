@@ -53,7 +53,27 @@ const getHashUrl = (hash: string) => {
                 <span class="text-(--primary-color) font-normal text-3xl md:text-4xl">
                     {translateLabels("hero.title.line2")}
                 </span>
-                {translateLabels("hero.title.line3")}</h1>
+                <div class="flex flex-col">
+                    <ul class="pl-0 text-sm *:font-main">
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" class="mt-0 mb-0"  />
+                            {translateLabels("hero.title.bulletPoints.01")}
+                        </li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" class="mt-0 mb-0" />
+                            {translateLabels("hero.title.bulletPoints.02")}
+                        </li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" class="mt-0 mb-0" />
+                            {translateLabels("hero.title.bulletPoints.03")}
+                        </li>
+                        <li class="flex items-baseline gap-2">
+                            <Image src={Logo} alt="Members Logo" width="20" height="20" draggable="false" class="mt-0 mb-0" />
+                            {translateLabels("hero.title.bulletPoints.04")}
+                        </li>
+                    </ul>
+                </div>
+
             </div>
             <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center font-semibold">
                 <ButtonArrow href={getHashUrl("#prices")} text={translateLabels("hero.buttonArrowHero")} className="px-6 py-2.5 w-full sm:w-auto" />
