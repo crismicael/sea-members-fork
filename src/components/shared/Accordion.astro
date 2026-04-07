@@ -1,6 +1,7 @@
 ---
 import { useTranslation } from "../../i18n/utils"
 import type { languageList } from "../../i18n/ui";
+import WhatsApp from "../ui/WhatsApp.astro";
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 ---
@@ -179,8 +180,10 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
         data-slot="accordion-content-inner"
         class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
       >
-          <span class="inline-block text-gray-700">{translateLabels("qna.questions.05.answer")}</span>
-          <a href="mailto:members@seaviewmagazine.com" class="text-(--primary-color) hover:underline visited:text-purple-600">members@seaviewmagazine.com</a>
+            <span class="inline-block text-gray-700">{translateLabels("qna.questions.05.answer1")}</span>
+            <a href="mailto:members@seaviewmagazine.com" class="text-(--primary-color) hover:underline visited:text-purple-600">members@seaviewmagazine.com</a>
+            <span>{translateLabels("qna.questions.05.answer2")}</span>
+            <a class="text-(--primary-color) hover:underline" href="https://wa.me/13223799602">WhatsApp</a>
       </div>
     </div>
   </div>
