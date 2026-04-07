@@ -7,6 +7,7 @@ import Logo from '../assets/members_logo.svg'
 import ListItem from './shared/ListItem.astro'
 import Language from "./ui/Language.astro";
 import ButtonArrow from './shared/ButtonArrow.astro'
+import WhatsApp from "./ui/WhatsApp.astro";
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -33,7 +34,9 @@ const getHashUrl = (hash: string) => {
             <ul class="hidden md:flex *:hover:bg-gray-400/10 *:py-2.5 *:px-3.5 *:rounded-(--rounded-button) *:hover:text-(--secondary-color) *:transition *:duration-100 *:ease-in">
                 <ListItem text={translateLabels("header.suscription")} href={getHashUrl("#prices")}/>
                 <ListItem text={translateLabels("header.benefits")} href={getHashUrl("#sponsors")}/>
-                <ListItem text={translateLabels("header.contact")} href="tel:3222657989"/>
+                <ListItem text={translateLabels("header.contact")} href="https://wa.me/13223799602" blank={true}>
+                    <WhatsApp className="w-6 h-6"/>
+                </ListItem>
             </ul>
         </div>
         <div class="flex items-center gap-4 md:gap-8">

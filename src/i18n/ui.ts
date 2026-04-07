@@ -20,7 +20,7 @@ export const lang = {
           '01': 'Promociones exclusivas en los establecimientos más reconocidos de Puerto Vallarta.',
           '02': 'Participa para acceder a los mejores eventos de la ciudad.',
           '03': 'Acceso ilimitado a contenido exclusivo de Sea View Magazine.',
-          '04': 'Acceso a la edición digital',
+          '04': 'Acceso a la edición digital de nuestras revistas.',
         },
       },
       'buttonArrowHero': 'Suscríbete',
@@ -228,8 +228,8 @@ export const lang = {
         },
         '05': {
           'question': '¿Dónde puedo contactar a atención al cliente?',
-          'answer': 'Puedes contactarnos a través de',
-          'email': 'members@seaviewmagazine.com',
+          'answer1': 'Puedes contactarnos a través de',
+          'answer2': 'o',
         },
         '06': {
           'question': '¿Cómo redimo una promoción?',
@@ -255,6 +255,7 @@ export const lang = {
       },
       'buttonArrowRecap': 'Suscríbete',
       'buttonRecap': 'Conoce los beneficios',
+      'buttonContact': 'Contáctanos',
       'recapCards': {
         '01': {
           'title': 'Ve lo que pagarás',
@@ -672,7 +673,8 @@ export const lang = {
         },
         '05': {
           'question': 'Where can I contact customer service?',
-          'answer': 'You can contact us via',
+          'answer1': 'You can contact us via',
+          'answer2': 'or',
         },
         '06': {
           'question': 'How do I redeem a promotion?',
@@ -798,6 +800,7 @@ export const lang = {
       },
       'buttonArrowRecap': 'Subscribe',
       'buttonRecap': 'Learn about the benefits',
+      'buttonContact': 'Contact Us',
       'recapCards': {
         '01': {
           'title': "See what you'll pay",
@@ -816,7 +819,7 @@ export const lang = {
         '01': {
           'listItem01': 'Benefits',
           'listItem02': 'Subscription',
-          'listItem03': 'Contact',
+          'listItem03': 'Contact Us',
           'listItem04': 'Privacy Policy',
           'listItem05': 'Terms & Conditions',
         },

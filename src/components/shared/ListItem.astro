@@ -1,8 +1,8 @@
 ---
-const {text, href} = Astro.props
+const {text, href, blank} = Astro.props
 ---
 
-<a href={href}>
-    <li class="font-main">{text}</li>
+<a class="flex gap-2" href={href} target={blank ? "_blank" : undefined}>
     <slot />
+    <li class="font-main">{text}</li>
 </a>
