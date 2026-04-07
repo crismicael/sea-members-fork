@@ -8,6 +8,7 @@ import Image from 'astro/components/Image.astro'
 import Logo from '../../assets/members_logo.svg'
 import LeftArrow from '../../assets/left-arrow.svg'
 import InformationIcon from "../../components/ui/InformationIcon.astro";
+import SignInImage from '../../assets/signin-image.jpeg'
 const currentLang = Astro.currentLocale || 'en';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -74,73 +75,78 @@ const getHashUrl = (hash: string) => {
 ---
 
 <Layout>
-  <main class="font-main">
-    <div class="left-right-padding up-down-padding mx-auto pt-24 lg:pt-28 max-w-4xl min-h-dvh border-x border-(--border-color) prose">
-        <div class="flex justify-center">
-            <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
-                <Image src={Logo} alt="Sea View Magazine Logo" width=260 />
-            </a>
-        </div>
-        <h1 class="font-main text-center text-3xl">{translateLabels("signin.title")}</h1>
-        {errorMessage && (
-                <div class="bg-red-50 text-red-600 p-3 rounded-md text-sm mb-4 text-center">
-                  {errorMessage}
-                </div>
-        )}
+    <main class="font-main">
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 justify-between min-w-dvw prose">
+          <div class="left-right-padding up-down-padding pt-24 lg:pt-20">
+              <div class="flex justify-center">
+                  <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
+                      <Image src={Logo} alt="Sea View Magazine Logo" width=260 />
+                  </a>
+              </div>
+              <h1 class="font-main text-center text-2xl">{translateLabels("signin.title")}</h1>
+              {errorMessage && (
+                      <div class="bg-red-50 text-red-600 p-3 rounded-md text-sm mb-4 text-center">
+                      {errorMessage}
+                      </div>
+              )}
 
-        <form method="post" class="flex flex-col gap-3">
-            <div class="flex flex-col">
-                <div class="flex items-baseline gap-3">
-                    <label for="ulid_code" class="font-medium text-gray-700 mb-1">{translateLabels("signin.emailLabel")}</label>
-                    <div id="information-button">
-                        <InformationIcon />
-                    </div>
-                    <div id="information-popper" role="tooltip" class="hidden z-30">
-                        <div class="flex flex-col items-center gap-3 popover-content w-72 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg">
-                            <p class="mt-0 mb-0">{translateLabels("signin.popup")}</p>
-                        </div>
-                    </div>
-                </div>
-                <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="usuario@ejemplo.com" />
-            </div>
-            <div class="flex flex-col">
-                <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>
-                <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
-                type="password"
-                id="password"
-                name="password"
-                required
-                placeholder="*************"/>
-            </div>
-            <button type="submit" class="py-2.5 px-3.5 mt-2 rounded-(--rounded-button) transition-colors ease-in-out no-underline bg-(--primary-color) hover:bg-(--secondary-color) text-white cursor-pointer">
-                    {translateLabels("signin.submitButton")}
-            </button>
-        </form>
-        <div class="flex justify-between mt-5">
-            <a href="/" class="no-underline hover:underline">
-                <span>
-                    <Image src={LeftArrow} alt="Left Arrow" width=15 class="inline-block mt-0 mb-0 mr-1" />
-                    {translateLabels("signin.back")}
-                </span>
-            </a>
-            <a href={getHashUrl("business/signin")} class="no-underline hover:underline">
-                <span>
-                    {translateLabels("signin.business")}
-                </span>
-            </a>
-        </div>
-        <div class="flex justify-center h-full my-auto">
-            <a href="/signin" class="no-underline hover:underline decoration-gray-600">
-                <p class="text-gray-600">EN | English</p>
-            </a>
-        </div>
-    </div>
-</main>
+              <form method="post" class="flex flex-col gap-3">
+                  <div class="flex flex-col">
+                      <div class="flex items-baseline gap-3">
+                          <label for="ulid_code" class="font-medium text-gray-700 mb-1">{translateLabels("signin.emailLabel")}</label>
+                          <div id="information-button">
+                              <InformationIcon />
+                          </div>
+                          <div id="information-popper" role="tooltip" class="hidden z-30">
+                              <div class="flex flex-col items-center gap-3 popover-content w-72 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg">
+                                  <p class="mt-0 mb-0">{translateLabels("signin.popup")}</p>
+                              </div>
+                          </div>
+                      </div>
+                      <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="usuario@ejemplo.com" />
+                  </div>
+                  <div class="flex flex-col">
+                      <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>
+                      <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
+                      type="password"
+                      id="password"
+                      name="password"
+                      required
+                      placeholder="*************"/>
+                  </div>
+                  <button type="submit" class="py-2.5 px-3.5 mt-2 rounded-(--rounded-button) transition-colors ease-in-out no-underline bg-(--primary-color) hover:bg-(--secondary-color) text-white cursor-pointer">
+                          {translateLabels("signin.submitButton")}
+                  </button>
+              </form>
+              <div class="flex justify-between mt-5">
+                  <a href="/" class="no-underline hover:underline">
+                      <span>
+                          <Image src={LeftArrow} alt="Left Arrow" width=15 class="inline-block mt-0 mb-0 mr-1" />
+                          {translateLabels("signin.back")}
+                      </span>
+                  </a>
+                  <a href={getHashUrl("business/signin")} class="no-underline hover:underline">
+                      <span>
+                          {translateLabels("signin.business")}
+                      </span>
+                  </a>
+              </div>
+              <div class="flex justify-center">
+                  <a href="/signin" class="no-underline hover:underline decoration-gray-600">
+                      <p class="text-gray-600">EN | English</p>
+                  </a>
+              </div>
+          </div>
+          <div class="hidden xl:block rounded-l-3xl">
+              <Image src={SignInImage} alt="Sign In Image" class="w-full h-[100dvh] object-cover rounded-l-4xl mt-0 mb-0 brightness-150" />
+          </div>
+      </div>
+  </main>
 
 <script>
     import { createPopper } from "@popperjs/core";

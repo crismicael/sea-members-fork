@@ -20,7 +20,7 @@ export const lang = {
           '01': 'Promociones exclusivas en los establecimientos más reconocidos de Puerto Vallarta.',
           '02': 'Participa para acceder a los mejores eventos de la ciudad.',
           '03': 'Acceso ilimitado a contenido exclusivo de Sea View Magazine.',
-          '04': 'Acceso a la edición digital',
+          '04': 'Acceso a la edición digital de nuestras revistas.',
         },
       },
       'buttonArrowHero': 'Suscríbete',
