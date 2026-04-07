@@ -618,8 +618,8 @@ export const lang = {
           'disclaimer': '*Recommended for residents of Puerto Vallarta and international readers',
         },
         '02': {
-          'before': 'Antes $124 MXN / YEAR',
-          'newPrice': '$108 MXN / YEAR',
+          'before': 'Antes $124 MXN / MONTH',
+          'newPrice': '$108 MXN / MONTH',
           'subText': 'Membership with a personalized physical card + virtual',
           'disclaimer01': '*Billed yearly',
           'disclaimer02': '*Recommended for residents of Puerto Vallarta'
