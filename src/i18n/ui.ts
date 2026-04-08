@@ -547,6 +547,11 @@ export const lang = {
             'placeholder': '-- Elige un cupón --'
           }
         }
+      },
+      '404': {
+        'title': '404 - Página no encontrada',
+        'description': 'Vaya! Esté cupón (o página) que estás buscando no existe.',
+        'button': 'Volver'
       }
     }
   },
@@ -1093,6 +1098,11 @@ export const lang = {
           }
         }
       }
+    },
+    '404': {
+      'title': '404 - Page Not Found',
+      'description': 'Ops! This coupon (or page) you are looking for does not exist.',
+      'button': 'Go Back'
     }
   }
 }
