@@ -8,7 +8,7 @@ export const lang = {
     'header': {
       'benefits': 'Beneficios',
       'suscription': 'Suscripción',
-      'contact': 'Contacto',
+      'contact': 'Contáctanos',
       'button': 'Gestiona tu cuenta'
     },
     'hero': {
@@ -274,7 +274,7 @@ export const lang = {
         '01': {
           'listItem01': 'Beneficios',
           'listItem02': 'Suscripción',
-          'listItem03': 'Contacto',
+          'listItem03': 'Contáctanos',
           'listItem04': 'Aviso de Privacidad',
           'listItem05': 'Términos y Condiciones',
         },
@@ -559,7 +559,7 @@ export const lang = {
     'header': {
       'benefits': 'Benefits',
       'suscription': 'Subscription',
-      'contact': 'Contact',
+      'contact': 'Contact Us',
       'button': 'Manage your account'
     },
     'hero': {
