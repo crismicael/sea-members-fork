@@ -6,7 +6,7 @@ const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 ---
 
-<div data-slot="accordion" class="overflow-hidden border border-(--border-color)" data-default-value="features" id="accordion-multiple-css">
+<div data-slot="accordion" class="overflow-hidden border border-(--border-color) rounded-(--rounded-button)" data-default-value="features" id="accordion-multiple-css">
   <div
     data-slot="accordion-item"
     data-value="one"
@@ -183,7 +183,7 @@ const translateLabels = useTranslation(currentLang as keyof typeof languageList)
             <span class="inline-block text-gray-700">{translateLabels("qna.questions.05.answer1")}</span>
             <a href="mailto:members@seaviewmagazine.com" class="text-(--primary-color) hover:underline visited:text-purple-600">members@seaviewmagazine.com</a>
             <span>{translateLabels("qna.questions.05.answer2")}</span>
-            <a class="text-(--primary-color) hover:underline" href="https://wa.me/13223799602">WhatsApp</a>
+            <a class="text-(--primary-color) hover:underline" href="https://wa.me/13223799602" target="_blank">WhatsApp</a>
       </div>
     </div>
   </div>
