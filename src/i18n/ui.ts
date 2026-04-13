@@ -1075,7 +1075,7 @@ export const lang = {
       'introduction': 'Show these coupons to the business to redeem your membership benefits. It’s important to have your virtual or physical card on hand.',
       'subtitle': 'My coupons',
       'coupons': {
-        'notAvailable': '¡Coupon already redeemed!'
+        'notAvailable': '¡Coupon already redeemed! Available again at:'
       },
       'header': {
         'button': 'Manage your account'
