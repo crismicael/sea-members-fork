@@ -1,0 +1,67 @@
+---
+import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
+import { useTranslation } from "../i18n/utils"
+import type { languageList } from "../i18n/ui";
+import Image from 'astro/components/Image.astro'
+import ToscaPromo from "../assets/promos/tosca_promo.jpg"
+import HiltonPromo from "../assets/promos/hilton_promo.jpg"
+import SiempreDivaPromo from "../assets/promos/siemprediva_promo.jpeg"
+import OroGoldPromo from "../assets/promos/orogold_promo.jpg"
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+
+// Helper function for locale-aware hash navigation
+const getHashUrl = (hash: string) => {
+    // If we're on the homepage, use hash only
+    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
+        return hash;
+    }
+    // Otherwise, go to localized homepage with hash
+    return getRelativeLocaleUrl(currentLang, `/`) + hash;
+};
+---
+
+<section id="categories">
+    <div class="left-right-padding up-down-padding border-x border-(--border-color)">
+        <div class="flex pt-14 pb-6">
+            <div class="prose">
+                <h2 class="font-normal">
+                    {translateLabels("categories.title.line1")}<span class="text-(--secondary-color)">
+                    {translateLabels("categories.title.line2")}</span>
+                </h2>
+            </div>
+        </div>
+        <div>
+            <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4  border border-(--border-color) rounded-(--rounded-button) overflow-hidden divide-y md:divide-y-0 md:divide-x divide-(--border-color) divide-dashed *:px-6 *:py-3">
+                <div>
+                    <div class="prose">
+                        <h3 class="text-xl mt-2 mb-5">{translateLabels("categories.categoriesGrid.01.title")}</h3>
+                        <Image src={ToscaPromo} alt="" class="rounded-(--rounded-button)" />
+                        <p class="mb-3">{translateLabels("categories.categoriesGrid.01.description")}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="prose">
+                        <h3 class="text-xl mt-2 mb-5">{translateLabels("categories.categoriesGrid.02.title")}</h3>
+                        <Image src={HiltonPromo} alt="" class="rounded-(--rounded-button)" />
+                        <p class="mb-3">{translateLabels("categories.categoriesGrid.02.description")}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="prose">
+                        <h3 class="text-xl mt-2 mb-5">{translateLabels("categories.categoriesGrid.03.title")}</h3>
+                        <Image src={SiempreDivaPromo} alt="" class="rounded-(--rounded-button)" />
+                        <p class="mb-3">{translateLabels("categories.categoriesGrid.03.description")}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="prose">
+                        <h3 class="text-xl mt-2 mb-5">{translateLabels("categories.categoriesGrid.04.title")}</h3>
+                        <Image src={OroGoldPromo} alt="" class="rounded-(--rounded-button)" />
+                        <p class="mb-3">{translateLabels("categories.categoriesGrid.04.description")}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
