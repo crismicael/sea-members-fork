@@ -179,6 +179,30 @@ export const lang = {
           'cta': 'Lee la historia de Solares',
           'href': ''
         },
+        '16': {
+          'brand': 'Hilton',
+          'description': 'DAY PASS PRECIO ESPECIAL: Adultos - 1440MXN, Adolecentes - 1080MXN, Niños 900MXN, INCLUYE 50% EN EFOREA SPA, ALIMENTOS, BEBIDAS Y ENTRETENIMIENTO.',
+          'cta': 'Lee la historia de Hilton',
+          'href': ''
+        },
+        '17': {
+          'brand': 'Hilton',
+          'description': '35% OFF POR NOCHE PARA RESIDENTES',
+          'cta': 'Lee la historia de Hilton',
+          'href': ''
+        },
+        '18': {
+          'brand': 'El Chinelo',
+          'description': '10% de descuento en alimentos y bebidas. Cupón disponible nuevamente al mes de uso.',
+          'cta': 'Lee la historia de El Chinelo',
+          'href': ''
+        },
+        '19': {
+          'brand': 'Ciao Pasta',
+          'description': 'Combo MEMBERS: $190 MXN Pasta o Pizza + 1 Refresco. Cupón disponible nuevamente al mes de uso.',
+          'cta': 'Lee la historia de Ciao Pasta',
+          'href': ''
+        },
       }
     },
     'qna': {
@@ -795,6 +819,30 @@ export const lang = {
           'cta': 'Read the story of Solares',
           'href': ''
         },
+        '16': {
+          'brand': 'Hilton',
+          'description': 'DAY PASS SPECIAL PRICE: Adults - 1,440 MXN, Teens - 1,080 MXN, Children - 900 MXN. INCLUDES 50% OFF AT EFOREA SPA, FOOD, DRINKS, AND ENTERTAINMENT.',
+          'cta': 'Ready the story of Hilton',
+          'href': ''
+        },
+        '17': {
+          'brand': 'Hilton',
+          'description': '35% OFF PER NIGHT FOR RESIDENTS',
+          'cta': 'Ready the story of Hilton',
+          'href': ''
+        },
+        '18': {
+          'brand': 'El Chinelo',
+          'description': '10% off food and drinks. Discount available again one month after use.',
+          'cta': 'Ready the story of El Chinelo',
+          'href': ''
+        },
+        '19': {
+          'brand': 'Ciao Pasta',
+          'description': 'MEMBERS Combo: $190 MXN (Pasta or Pizza + 1 Soft Drink). Discount available again one month after use.',
+          'cta': 'Ready the story of Ciao Pasta',
+          'href': ''
+        },
       }
     },
     'recap': {
@@ -1027,7 +1075,7 @@ export const lang = {
       'introduction': 'Show these coupons to the business to redeem your membership benefits. It’s important to have your virtual or physical card on hand.',
       'subtitle': 'My coupons',
       'coupons': {
-        'notAvailable': '¡Coupon already redeemed!'
+        'notAvailable': '¡Coupon already redeemed! Available again at:'
       },
       'header': {
         'button': 'Manage your account'

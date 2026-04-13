@@ -5,9 +5,13 @@ import Image from 'astro/components/Image.astro'
 import AboutPlaceholder from '../assets/aboutPlaceholder.png'
 import MembersLogo from '../assets/members_logo.svg'
 import AquaventurasPromo from '../assets/promos/aquaventuras_promo.jpg'
+import HiltonPromo from '../assets/promos/hilton_promo.jpg'
+import HiltonPromo2 from '../assets/promos/hilton2_promo.jpg'
 import ToscaPromo from '../assets/promos/tosca_promo.jpg'
 import LimonPromo from '../assets/promos/papelonconlimon_promo.jpeg'
 import HeraPromo from '../assets/promos/hera_promo.jpg'
+import ChineloPromo from '../assets/promos/chinelo_promo.jpg'
+import CiaoPastaPromo from '../assets/promos/ciaopasta_promo.jpg'
 import VipsPromoOne from '../assets/promos/vips_promo.jpeg'
 import VipsPromoTwo from '../assets/promos/vips2_promo.jpeg'
 import OsojiPromo from '../assets/promos/osoji_promo.jpeg'
@@ -31,11 +35,18 @@ const slides = [
     image: AquaventurasPromo
   },
   {
-    brand: translateLabels("carousel.carouselItems.02.brand"),
-    description: translateLabels("carousel.carouselItems.02.description"),
-    cta: translateLabels("carousel.carouselItems.02.cta"),
+    brand: translateLabels("carousel.carouselItems.16.brand"),
+    description: translateLabels("carousel.carouselItems.16.description"),
+    cta: translateLabels("carousel.carouselItems.01.cta"),
     href: "#",
-    image: LimonPromo
+    image: HiltonPromo
+  },
+  {
+    brand: translateLabels("carousel.carouselItems.17.brand"),
+    description: translateLabels("carousel.carouselItems.17.description"),
+    cta: translateLabels("carousel.carouselItems.01.cta"),
+    href: "#",
+    image: HiltonPromo2
   },
   {
     brand: translateLabels("carousel.carouselItems.03.brand"),
@@ -43,13 +54,6 @@ const slides = [
     cta: translateLabels("carousel.carouselItems.03.cta"),
     href: "#",
     image: HeraPromo
-  },
-  {
-    brand: translateLabels("carousel.carouselItems.04.brand"),
-    description: translateLabels("carousel.carouselItems.04.description"),
-    cta: translateLabels("carousel.carouselItems.04.cta"),
-    href: "#",
-    image: ToscaPromo
   },
   {
     brand: translateLabels("carousel.carouselItems.05.brand"),
@@ -71,6 +75,34 @@ const slides = [
     cta: translateLabels("carousel.carouselItems.07.cta"),
     href: "#",
     image: MultiMedicaPromoTwo
+  },
+  {
+    brand: translateLabels("carousel.carouselItems.02.brand"),
+    description: translateLabels("carousel.carouselItems.02.description"),
+    cta: translateLabels("carousel.carouselItems.02.cta"),
+    href: "#",
+    image: LimonPromo
+  },
+  {
+    brand: translateLabels("carousel.carouselItems.18.brand"),
+    description: translateLabels("carousel.carouselItems.18.description"),
+    cta: translateLabels("carousel.carouselItems.18.cta"),
+    href: "#",
+    image: ChineloPromo
+  },
+  {
+    brand: translateLabels("carousel.carouselItems.19.brand"),
+    description: translateLabels("carousel.carouselItems.19.description"),
+    cta: translateLabels("carousel.carouselItems.19.cta"),
+    href: "#",
+    image: CiaoPastaPromo
+  },
+  {
+    brand: translateLabels("carousel.carouselItems.04.brand"),
+    description: translateLabels("carousel.carouselItems.04.description"),
+    cta: translateLabels("carousel.carouselItems.04.cta"),
+    href: "#",
+    image: ToscaPromo
   },
   {
     brand: translateLabels("carousel.carouselItems.08.brand"),
