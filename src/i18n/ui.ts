@@ -17,25 +17,44 @@ export const lang = {
         'line1': 'Lo mejor de ',
         'line2': 'Puerto Vallarta.',
         'bulletPoints': {
-          '01': 'Promociones exclusivas en los establecimientos más reconocidos de Puerto Vallarta.',
-          '02': 'Participa para acceder a los mejores eventos de la ciudad.',
-          '03': 'Acceso ilimitado a contenido exclusivo de Sea View Magazine.',
-          '04': 'Acceso a la edición digital de nuestras revistas.',
+          '01': 'Recibe Seaview Magazine en la puerta de tu casa.',
+          '02': 'Promociones exclusivas en los establecimientos más reconocidos de Puerto Vallarta.',
+          '03': 'Acceso ilimitado a contenido exclusivo de Seaview Magazine.',
+          '04': 'Participa para acceder a los mejores eventos de la ciudad.',
         },
       },
       'buttonArrowHero': 'Suscríbete',
       'buttonHero': 'Conoce los beneficios'
     },
-    'solutions': {
+    'magazine': {
       'title': {
-        'line1': '¿Estás listo para formar parte de esta ',
-        'line2': 'comunidad',
-        'line3': '?'
+        'line1': 'Obten un año de',
+        'line2': 'Seaview Magazine'
       },
-      'solutionsGrid': {
-        '01': 'Ofertas que llegan a tus necesidades',
-        '02': 'Presume tu tarjeta members',
-        '03': 'Accede a ofertas invaluables',
+      'description': 'Seaview Magazine es para aquellos que buscan una nueva perspectiva. Para la mente curiosa que quiere descubrir lo que ofrece el mundo. Cada edición contiene un rico contenido visual en artículos y ensayos que generan asombro y optimismo.'
+    },
+    'categories': {
+      'title': {
+        "line1": "Tu membresia te da acceso a las mejores promociones de",
+        "line2": "Puerto Vallarta"
+      },
+      "categoriesGrid": {
+        "01": {
+          'title': 'Gastronomía',
+          'description': 'Desde el ritual del café por la mañana hasta cenas de autor, disfruta de beneficios exclusivos en los restaurantes más emblematicos de la Bahía.'
+        },
+        "02": {
+          'title': 'Escapadas',
+          'description': 'Redescubre tu entorno con day passes dentro de los hoteles más destacados de la Bahía. Accede a tarifas preferenciales en viajes para desconectar del ruido y reconectar con lo escencial.'
+        },
+        "03": {
+          'title': 'Estilo',
+          'description': 'Promociones en piezas y marcas premium. Como member, disfruta de beneficios exclusivos en las cadenas de moda y accesorios más reconocidas de la región.'
+        },
+        "04": {
+          'title': 'Wellness',
+          'description': 'El arte del autocuidado. Procura tu bienestar con accesos especiales a spas y centros de entrenamiento donde construyes tu mejor versión.'
+        },
       }
     },
     'prices': {
@@ -218,7 +237,7 @@ export const lang = {
           'table': {
             'th': {
               '01': 'Edition',
-              '02': 'Digital Version Available'
+              '02': 'Versión digital disponible'
             },
             'td': {
               '01': {
@@ -229,11 +248,11 @@ export const lang = {
                 '05': 'Octubre - Diciembre',
               },
               '02': {
-                '01': 'Fecha TBD',
-                '02': 'Fecha TBD',
-                '03': 'Fecha TBD',
-                '04': 'Fecha TBD',
-                '05': 'Fecha TBD',
+                '01': 'Fecha por determinar',
+                '02': 'Fecha por determinar',
+                '03': 'Fecha por determinar',
+                '04': 'Fecha por determinar',
+                '05': 'Fecha por determinar',
               }
             }
           },
@@ -592,25 +611,44 @@ export const lang = {
         'line1': 'The best of ',
         'line2': 'Puerto Vallarta.',
         'bulletPoints': {
-          '01': 'Exclusive deals at Puerto Vallarta’s most renowned establishments.',
-          '02': 'Access to the best events in town.',
-          '03': 'Unlimited access to exclusive content from Sea View Magazine.',
-          '04': 'Access to Sea View Magazine’s digital edition.',
+          '01': 'Get Seaview Magazine delivered right to your door.',
+          '02': "Exclusive deals at Puerto Vallarta's most renowned establishments.",
+          '03': 'Unlimited access to exclusive content from Seaview Magazine.',
+          '04': 'Sign up to get access to the best events in town.',
         },
       },
       'buttonArrowHero': 'Subscribe',
       'buttonHero': 'Learn about the benefits'
     },
-    'solutions': {
+    'magazine': {
       'title': {
-        'line1': 'Are you ready to be part of this ',
-        'line2': 'community',
-        'line3': '?'
+        'line1': 'Get a one-year subscription to',
+        'line2': 'Seaview Magazine'
       },
-      'solutionsGrid': {
-        '01': 'Offers that meet your needs',
-        '02': 'Show off your membership card',
-        '03': 'Access invaluable offers',
+      'description': 'Seaview Magazine is for those seeking a fresh perspective. For the curious mind eager to discover what the world has to offer. Each issue features visually rich articles and essays that inspire wonder and optimism.'
+    },
+    'categories': {
+      'title': {
+        "line1": "Your membership gives you access to the best deals in",
+        "line2": "Puerto Vallarta"
+      },
+      "categoriesGrid": {
+        "01": {
+          'title': 'Gastronomy',
+          'description': 'From your morning coffee ritual to gourmet dinners, enjoy exclusive perks at the Bay Area’s most iconic restaurants.'
+        },
+        "02": {
+          'title': 'Getaways ',
+          'description': 'Rediscover your surroundings with day passes at the Bay Area’s top hotels. Enjoy special rates on getaways that let you escape the hustle and bustle and reconnect with what truly matters.'
+        },
+        "03": {
+          'title': 'Style',
+          'description': 'Special offers on premium items and brands. As a MEMBER, enjoy exclusive benefits at the region’s most renowned fashion and accessory retailers. '
+        },
+        "04": {
+          'title': 'Wellness',
+          'description': 'The art of self-care. Prioritize your well-being with special access to spas and fitness centers where you can become the best version of yourself.'
+        },
       }
     },
     'prices': {
