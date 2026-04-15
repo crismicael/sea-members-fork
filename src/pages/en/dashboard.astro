@@ -206,7 +206,7 @@ try {
           popper.addEventListener('mouseleave', hide);
       }
 
-      const haptics = new WebHaptics({ debug: true });
+      const haptics = new WebHaptics();
       const abortController = new AbortController();
 
       const couponCards = document.querySelectorAll('[data-haptics="card"]');

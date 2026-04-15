@@ -158,7 +158,7 @@ try {
       import { createPopper } from "@popperjs/core";
       import { WebHaptics, defaultPatterns } from "web-haptics";
       import Toastify from "toastify-js";
-      
+
 import Background from "../components/ui/Background.astro";
 
       const button = document.getElementById("client-dashboard-button-header");
@@ -209,7 +209,7 @@ import Background from "../components/ui/Background.astro";
           popper.addEventListener('mouseleave', hide);
       }
 
-      const haptics = new WebHaptics({ debug: true });
+      const haptics = new WebHaptics();
       const abortController = new AbortController();
 
       const couponCards = document.querySelectorAll('[data-haptics="card"]');
