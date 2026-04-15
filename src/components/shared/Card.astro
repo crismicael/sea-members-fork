@@ -1,0 +1,16 @@
+---
+import Image from 'astro/components/Image.astro'
+import Hyperlink from "../ui/Hyperlink.astro";
+
+const { text, imgSrc="", imgAlt="" ,href="" } = Astro.props
+---
+
+<div class="group/card flex flex-col gap-2 items-center">
+    <a href={href} target="_blank" class="no-underline">
+        <Image src={imgSrc} alt={imgAlt} width={247} height={407} class="rounded-(--rounded-button) mt-0 mb-0 transition-transform group-hover/card:scale-101" />
+    </a>
+    <span class="flex items-center gap-2">
+        <span class="group-hover/card:underline text-center">{text}</span>
+        <span class="transition-transform group-hover/card:translate-x-1"><Hyperlink /></span>
+    </span>
+</div>

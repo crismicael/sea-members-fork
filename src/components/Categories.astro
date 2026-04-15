@@ -1,5 +1,4 @@
 ---
-import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
 import { useTranslation } from "../i18n/utils"
 import type { languageList } from "../i18n/ui";
 import Image from 'astro/components/Image.astro'
@@ -9,16 +8,6 @@ import SiempreDivaPromo from "../assets/promos/siemprediva_promo.jpeg"
 import OroGoldPromo from "../assets/promos/orogold_promo.jpg"
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
-
-// Helper function for locale-aware hash navigation
-const getHashUrl = (hash: string) => {
-    // If we're on the homepage, use hash only
-    if (Astro.url.pathname === '/' || Astro.url.pathname === `/${currentLang}/`) {
-        return hash;
-    }
-    // Otherwise, go to localized homepage with hash
-    return getRelativeLocaleUrl(currentLang, `/`) + hash;
-};
 ---
 
 <section id="categories">

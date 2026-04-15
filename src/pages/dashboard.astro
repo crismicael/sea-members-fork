@@ -1,5 +1,4 @@
 ---
-import { getAbsoluteLocaleUrl } from "astro:i18n";
 import { useTranslation } from "../i18n/utils"
 import { API_URL } from 'astro:env/server';
 import type { languageList } from "../i18n/ui";
@@ -8,6 +7,7 @@ import HeaderDashboard from "../components/dashboard/HeaderDashboard.astro";
 import FooterDashboard from "../components/dashboard/FooterClientDashboard.astro";
 import Image from 'astro/components/Image.astro'
 import Language from "../components/ui/Language.astro";
+import AccordionDashboard from "../components/shared/AccordionDashboard.astro";
 const currentLang = Astro.currentLocale || 'en';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -70,8 +70,14 @@ try {
 
 <Layout>
   <HeaderDashboard />
-  <main class="font-main">
-    <div class="left-right-padding up-down-padding mx-auto pt-24 lg:pt-28 max-w-6xl border-x border-(--border-color) prose">
+  <main class="font-main"> <!-- pt-24 lg:pt-28 -->
+      <div class="left-right-padding mx-auto max-w-6xl pt-24 lg:pt-20 border-y border-x border-(--border-color) py-1 w-full bg-white">
+          <ul class="flex list-none ps-0 mt-0 mb-0">
+              <li class="no-underline text-gray-500"><a href="/dashboard/#ediciones" class="no-underline hover:underline">Artículos</a></li>
+              <li class="no-underline text-gray-500">&nbsp;/&nbsp;...</li>
+          </ul>
+      </div>
+    <div class="left-right-padding up-down-padding mx-auto max-w-6xl border-x border-(--border-color) prose">
         <div class="flex justify-between">
             <h1 class="text-[22px] md:text-[2.25em]">{translateLabels("dashboard.welcome")}, {profile?.full_name ?? "Usuario"}!</h1>
             <div id="client-dashboard-button-header">
@@ -102,10 +108,10 @@ try {
                         const isOnCooldown = availableAgain && availableAgain > now;
 
                         return isOnCooldown ? (
-                        <div>
+                        <div data-haptics="card" data-haptics-state="inactive" data-toast={translateLabels("dashboard.coupons.toast.notAvailable")}>
                             <div class="relative">
                                 <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0 grayscale-100 blur-xs" />
-                                <strong class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
+                                <strong class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 transition-transform active:scale-99 cursor-pointer">
                                   <span>{translateLabels("dashboard.coupons.notAvailable")}</span>
                                   <span>
                                     {availableAgain.toLocaleDateString()} at{" "}
@@ -119,9 +125,9 @@ try {
                             </div>
                         </div>
                         ) : (
-                        <div>
+                        <div data-haptics="card" data-haptics-state="active" data-toast={translateLabels("dashboard.coupons.toast.available")}>
                             <div>
-                                <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0" />
+                                <Image src={coupon.img_url} alt={coupon.name} width="500" height="500" draggable="false" class="rounded-2xl m-0 transition-transform hover:scale-101 active:scale-99 cursor-pointer" />
                             </div>
                             <div>
                                 <h4>{coupon.name}</h4>
@@ -132,11 +138,28 @@ try {
                       })
                   )}
       </div>
+      <div>
+          <div id="ediciones" class="flex pt-7 pb-5 border-t border-(--border-color)">
+              <div class="prose">
+                  <h2 class="font-normal">
+                    {translateLabels("dashboard.editions.title.line01")}<span class="text-(--secondary-color)">
+                    {translateLabels("dashboard.editions.title.line02")}</span>
+                  </h2>
+                  <p>{translateLabels("dashboard.editions.description")}</p>
+              </div>
+          </div>
+          <AccordionDashboard />
+      </div>
     </div>
   </main>
   <FooterDashboard />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script>
       import { createPopper } from "@popperjs/core";
+      import { WebHaptics, defaultPatterns } from "web-haptics";
+      import Toastify from "toastify-js";
+      
+import Background from "../components/ui/Background.astro";
 
       const button = document.getElementById("client-dashboard-button-header");
       const popper = document.getElementById("client-dashboard-popper-header");
@@ -185,5 +208,56 @@ try {
           popper.addEventListener('mouseenter', show);
           popper.addEventListener('mouseleave', hide);
       }
+
+      const haptics = new WebHaptics({ debug: true });
+      const abortController = new AbortController();
+
+      const couponCards = document.querySelectorAll('[data-haptics="card"]');
+
+      couponCards.forEach((card) => {
+          card.addEventListener("click", () => {
+            const toastMessage = card.getAttribute("data-toast");
+
+            if (card.getAttribute("data-haptics-state") === "inactive") {
+                  haptics.trigger(defaultPatterns.error);
+                  if (toastMessage) {
+                      Toastify({
+                          text: toastMessage,
+                          duration: 3000,
+                          gravity: "bottom",
+                          position: "right",
+                          style: {
+                            background: "#880808",
+                            color: "white",
+                            borderRadius: "8px",
+                          }
+                      }).showToast();
+                  }
+                  return;
+            }
+
+            haptics.trigger(defaultPatterns.success);
+            if (toastMessage) {
+                Toastify({
+                    text: toastMessage,
+                    duration: 3000,
+                    gravity: "bottom",
+                    position: "right",
+                    style: {
+                      background: "#4c9a47",
+                      color: "white",
+                      borderRadius: "8px",
+                    }
+                }).showToast();
+            }
+          },{ signal: abortController.signal });
+
+      });
+
+      function cleanupHaptics() {
+          abortController.abort();
+          haptics.destroy();
+      }
+      window.addEventListener('beforeunload', cleanupHaptics);
   </script>
 </Layout>
