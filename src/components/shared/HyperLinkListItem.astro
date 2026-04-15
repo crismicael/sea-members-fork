@@ -1,0 +1,13 @@
+---
+import Hyperlink from "../ui/Hyperlink.astro";
+
+const { text, href="" } = Astro.props
+
+---
+
+<a href={href} target="_blank" class="group/hyperlink no-underline hover:underline">
+    <span class="flex items-center gap-2 pb-4 text-gray-700">
+        <span>{text}</span>
+        <span class="transition-transform group-hover/hyperlink:translate-x-1"><Hyperlink /></span>
+    </span>
+</a>

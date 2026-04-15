@@ -520,10 +520,121 @@ export const lang = {
       'introduction': 'Muestra estos cupones al negocio para redimir los beneficios de tu membresía. Es importante tener tu tarjeta virtual o física a mano.',
       'subtitle': 'Mis cupones',
       'coupons': {
-        'notAvailable': '¡Cupón ya canjeado! Disponible nuevamente el '
+        'notAvailable': '¡Cupón ya canjeado! Disponible nuevamente el ',
+        'toast': {
+          'available': 'Cupón disponible',
+          'notAvailable': '¡Cupón ya canjeado!'
+        }
       },
       'header': {
         'button': 'Gestiona tu cuenta de '
+      },
+      'editions': {
+        'title': {
+          'line01': 'Disfruta de todas las ediciones de',
+          'line02': 'Seaview Editorial'
+        },
+        'description': 'Muy pronto podrás disfrutar de todas las publicaciones de Sunwave y Gazzella. Cuando estén disponibles, recibirás un correo electrónico con las ediciones; además, podrás verlas desde este panel de control.',
+        '2021': {
+          '01': {
+            'title': 'Diciembre 2021 - Febrero 2022',
+            'imgAlt': 'Edición de Diciembre 2021 a Febrero 2022'
+          },
+          '02': {
+            'title': 'Octubre - Diciembre - 2021',
+            'imgAlt': 'Edición de Octubre 2021 a Diciembre 2021'
+          },
+          '03': {
+            'title': 'Junio - Agosto - 2021',
+            'imgAlt': 'Edición de Junio 2021 a Agosto 2021'
+          },
+        },
+        '2022': {
+          '01': {
+            'title': 'Diciembre 2022 - Febrero 2023',
+            'imgAlt': 'Edición de Diciembre 2022 a Febrero 2023'
+          },
+          '02': {
+            'title': 'Octubre - Diciembre - 2022',
+            'imgAlt': 'Edición de Octubre 2022 a Diciembre 2022'
+          },
+          '03': {
+            'title': 'Agosto - Octubre - 2022',
+            'imgAlt': 'Edición de Agosto 2022 a Octubre 2022'
+          },
+          '04': {
+            'title': 'Junio - Agosto - 2022',
+            'imgAlt': 'Edición de Junio 2022 a Agosto 2022'
+          },
+          '05': {
+            'title': 'Abril - Junio - 2022',
+            'imgAlt': 'Edición de Abril 2022 a Junio 2022'
+          },
+          '06': {
+            'title': 'Febrero - Abril - 2022',
+            'imgAlt': 'Edición de Febrero 2022 a Abril 2022'
+          },
+        },
+        '2023': {
+          '01': {
+            'title': 'Diciembre 2023 - Febrero 2024',
+            'imgAlt': 'Edición de Diciembre 2023 a Febrero 2024'
+          },
+          '02': {
+            'title': 'Agosto - Octubre - 2023',
+            'imgAlt': 'Edición de Agosto 2023 a Octubre 2023'
+          },
+          '03': {
+            'title': 'Junio - Agosto - 2023',
+            'imgAlt': 'Edición de Junio 2023 a Agosto 2023'
+          },
+          '04': {
+            'title': 'Abril - Junio - 2023',
+            'imgAlt': 'Edición de Abril 2023 a Junio 2023'
+          },
+          '05': {
+            'title': 'Febrero - Abril - 2023',
+            'imgAlt': 'Edición de Febrero 2023 a Abril 2023'
+          },
+        },
+        '2024': {
+          '01': {
+            'title': 'Diciembre 2024 - Febrero 2025',
+            'imgAlt': 'Edición de Diciembre 2024 a Febrero 2025'
+          },
+          '02': {
+            'title': 'Octubre - Diciembre - 2024',
+            'imgAlt': 'Edición de Octubre 2024 a Diciembre 2024'
+          },
+          '03': {
+            'title': 'Junio - Agosto - 2024',
+            'imgAlt': 'Edición de Junio 2024 a Agosto 2024'
+          },
+          '04': {
+            'title': 'Abril - Junio - 2024',
+            'imgAlt': 'Edición de Abril 2024 a Junio 2024'
+          },
+          '05': {
+            'title': 'Febrero - Abril - 2024',
+            'imgAlt': 'Edición de Febrero 2024 a Abril 2024'
+          },
+        },
+        '2025': {
+          '01': {
+            'title': 'Agosto - Octubre - 2025',
+            'imgAlt': 'Edición de Agosto 2024 a Octubre 2024'
+          },
+          '02': {
+            'title': 'Febrero - Abril - 2025',
+            'imgAlt': 'Edición de Febrero 2025 a Abril 2025'
+          },
+        },
+        '2026': {
+          '01': {
+            'title': 'Febrero - Abril - 2026',
+            'imgAlt': 'Edición de Febrero 2026 a Abril 2026'
+          },
+        }
       },
       'footer': {
         'footerListItems': {
@@ -1113,7 +1224,119 @@ export const lang = {
       'introduction': 'Show these coupons to the business to redeem your membership benefits. It’s important to have your virtual or physical card on hand.',
       'subtitle': 'My coupons',
       'coupons': {
-        'notAvailable': '¡Coupon already redeemed! Available again at:'
+        'notAvailable': '¡Coupon already redeemed! Available again at:',
+        'toast': {
+          'available': 'Coupon available!',
+          'notAvailable': '¡Coupon already redeemed!'
+        }
+      },
+      'editions': {
+        'title': {
+          'line01': 'Enjoy all of',
+          'line02': "Seaview Editorial's",
+          'line03': 'publications'
+        },
+        'description': 'Enjoy very soon all of Sunwave and the Gazzella publications. When available, an email will be sent to you with the editions, you will also be able to view them from this dashboard.',
+        '2021': {
+          '01': {
+            'title': 'December 2021 - February 2022',
+            'imgAlt': 'December 2021 – February 2022 Issue'
+          },
+          '02': {
+            'title': 'October - December - 2021',
+            'imgAlt': 'October 2021 – December 2021 Issue'
+          },
+          '03': {
+            'title': 'June - August - 2021',
+            'imgAlt': 'June 2021 – August 2021 Issue'
+          },
+        },
+        '2022': {
+          '01': {
+            'title': 'December 2022 - February 2023',
+            'imgAlt': 'December 2022 – February 2023 Issue'
+          },
+          '02': {
+            'title': 'October - December - 2022',
+            'imgAlt': 'October 2022 – December 2022 Issue'
+          },
+          '03': {
+            'title': 'August - October - 2022',
+            'imgAlt': 'August 2022 – October 2022 Issue'
+          },
+          '04': {
+            'title': 'June - August - 2022',
+            'imgAlt': 'June 2022 – August 2022 Issue'
+          },
+          '05': {
+            'title': 'April - June - 2022',
+            'imgAlt': 'April 2022 – June 2022 Issue'
+          },
+          '06': {
+            'title': 'February - April - 2022',
+            'imgAlt': 'February 2022 – April 2022 Issue'
+          },
+        },
+        '2023': {
+          '01': {
+            'title': 'December 2023 - February 2024',
+            'imgAlt': 'December 2023 – February 2024 Issue'
+          },
+          '02': {
+            'title': 'August - October - 2023',
+            'imgAlt': 'August 2023 – October 2023 Issue'
+          },
+          '03': {
+            'title': 'June - August - 2023',
+            'imgAlt': 'June 2023 – August 2023 Issue'
+          },
+          '04': {
+            'title': 'April - June - 2023',
+            'imgAlt': 'April 2023 – June 2023 Issue'
+          },
+          '05': {
+            'title': 'February - April - 2023',
+            'imgAlt': 'February 2023 – April 2023 Issue'
+          },
+        },
+        '2024': {
+          '01': {
+            'title': 'December 2024 - February 2025',
+            'imgAlt': 'December 2024 – February 2025 Issue'
+          },
+          '02': {
+            'title': 'October - December - 2024',
+            'imgAlt': 'October 2024 – December 2024 Issue'
+          },
+          '03': {
+            'title': 'June - August - 2024',
+            'imgAlt': 'June 2024 – August 2024 Issue'
+          },
+          '04': {
+            'title': 'April - June - 2024',
+            'imgAlt': 'April 2024 – June 2024 Issue'
+          },
+          '05': {
+            'title': 'February - April - 2024',
+            'imgAlt': 'February 2024 – April 2024 Issue'
+          },
+        },
+        '2025': {
+          '01': {
+            'title': 'August - October - 2025',
+            'imgAlt': 'August 2025 – October 2025 Issue'
+          },
+          '02': {
+            'title': 'February - April - 2025',
+            'imgAlt': 'February 2025 – April 2025 Issue'
+          },
+        },
+        '2026': {
+          '01': {
+            'title': 'February - April - 2026',
+            'imgAlt': 'February 2026 – April 2026 Issue'
+          },
+        }
       },
       'header': {
         'button': 'Manage your account'

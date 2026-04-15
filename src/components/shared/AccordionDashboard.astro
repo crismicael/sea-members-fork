@@ -1,0 +1,286 @@
+---
+import { useTranslation } from "../../i18n/utils"
+import type { languageList } from "../../i18n/ui";
+import HyperLinkListItem from "./HyperLinkListItem.astro";
+import Card from "./Card.astro";
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslation(currentLang as keyof typeof languageList);
+---
+
+<div data-slot="accordion" class="overflow-hidden border border-(--border-color) rounded-(--rounded-button)" data-default-value="features" id="accordion-multiple-css">
+  <div
+    data-slot="accordion-item"
+    data-value="one"
+    class="group/accordion border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+      <span>2026</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]/accordion:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+        <HyperLinkListItem text={translateLabels("dashboard.editions.2026.01.title")} href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQnAORvLWGxL28lKoTieOrXABHk9615gmPF4Uc"/>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="two"
+    class="group/accordion border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+      <span>2025</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]/accordion:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <HyperLinkListItem text={translateLabels("dashboard.editions.2025.01.title")} href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQQsLZNt4Nf3WhiwMontsCd695SF8Y4eEITlz7"/>
+          <HyperLinkListItem text={translateLabels("dashboard.editions.2025.02.title")} href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQ0UUhW1lAuUGVF6wtj879HfzDKM2xbXyh5mWp"/>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="three"
+    class="group/accordion border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+      <span>2024</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]/accordion:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <HyperLinkListItem text={translateLabels("dashboard.editions.2024.01.title")} href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQgtVX7wvM8QHChbuLq2Ngw5UEjpRXxVnrZ7Km"/>
+          <HyperLinkListItem text={translateLabels("dashboard.editions.2024.02.title")} href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQXZQLuCzTpxZEuRckoP5J7dvgArnV8q9iXzft"/>
+          <HyperLinkListItem text={translateLabels("dashboard.editions.2024.03.title")} href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQx8rVPPTH6pekziSBtOgIDcb2N5qwXdQCjUo3"/>
+          <div class="grid grid-cols-2 md:grid-cols-3 justify-between gap-4 pt-5">
+              <Card
+                  text={translateLabels("dashboard.editions.2024.04.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQ6AVOHQ3OQngY5PwrRcsBe7abJUxN0TvmKl3V"
+                  imgAlt={translateLabels("dashboard.editions.2024.04.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQw429tYogu0nZkTtNI2vLBqa1lJA98FiWKecG"/>
+              <Card
+                  text={translateLabels("dashboard.editions.2024.05.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQ8JNviDHM1C0NRdVyv6csZ7YHXI3wJSgx9OD8"
+                  imgAlt={translateLabels("dashboard.editions.2024.05.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQGzZkv1FYqaTdA1M964LhsYyxZPg5BN2rw0jO"/>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="four"
+    class="group/accordion border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>2023</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]/accordion:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <div class="grid grid-cols-2 md:grid-cols-3 justify-between gap-4 pt-5">
+              <Card
+                  text={translateLabels("dashboard.editions.2023.01.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQYCsDIaXHRdgF8oPVwmQSBls1pKqEOU4bxkGD"
+                  imgAlt={translateLabels("dashboard.editions.2023.01.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQquwrGUgj7XtfBhVF2GZ5SDwxay9Je0UK8Qb3"/>
+              <Card
+                  text={translateLabels("dashboard.editions.2023.02.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQMRHjx2IWXcYCZzVeqDpUAEsxofIOrRBbFyw9"
+                  imgAlt={translateLabels("dashboard.editions.2023.02.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQX5CnaqzTpxZEuRckoP5J7dvgArnV8q9iXzft"/>
+              <Card
+                  text={translateLabels("dashboard.editions.2023.03.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQFMQB1cR0wBAfQvLYnCyabjJ7lGWIorK9S5E3"
+                  imgAlt={translateLabels("dashboard.editions.2023.03.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQLuK8tK6wDVOHhzA4csavtPuQjFmCdKNLeZEn"/>
+              <Card
+                  text={translateLabels("dashboard.editions.2023.04.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQXj2er6zTpxZEuRckoP5J7dvgArnV8q9iXzft"
+                  imgAlt={translateLabels("dashboard.editions.2023.04.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQkMYlh2RzcsOZ2Y0NjJBwKv5XtQLTuda3FghH"/>
+              <Card
+                  text={translateLabels("dashboard.editions.2023.05.title")}
+                  imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQzrc4T0BdjyPqaXo0KHsmZxGhuRMU32kNIQT5"
+                  imgAlt={translateLabels("dashboard.editions.2023.05.imgAlt")}
+                  href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQzs78kABdjyPqaXo0KHsmZxGhuRMU32kNIQT5"/>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="five"
+    class="group/accordion border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>2022</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]/accordion:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+        <div class="grid grid-cols-2 md:grid-cols-3 justify-between gap-4 pt-5">
+            <Card
+                text={translateLabels("dashboard.editions.2022.01.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQETui3ee9T0OFJCLrHiphUI6N4qPcntXkGWfY"
+                imgAlt={translateLabels("dashboard.editions.2022.01.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQKBa0oBpaSPEj0Y4wlFN2ZXyvWkMctr3i8oBq"/>
+            <Card
+                text={translateLabels("dashboard.editions.2022.02.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQGQKtakYqaTdA1M964LhsYyxZPg5BN2rw0jOu"
+                imgAlt={translateLabels("dashboard.editions.2022.02.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQenEGLHsSWikz5ZHOmCbfTDJYch2wsqxN8GvX"/>
+            <Card
+                text={translateLabels("dashboard.editions.2022.03.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQWyOlOLGMxbyXtSf0gCDG28ElqHL5F4BQ9Up1"
+                imgAlt={translateLabels("dashboard.editions.2022.03.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQLs3WCb6wDVOHhzA4csavtPuQjFmCdKNLeZEn"/>
+            <Card
+                text={translateLabels("dashboard.editions.2022.04.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQGIPkmwYqaTdA1M964LhsYyxZPg5BN2rw0jOu"
+                imgAlt={translateLabels("dashboard.editions.2022.04.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQZHHHvBEkb3epEUD0oRw2tm49fTanLXlVrAOQ"/>
+            <Card
+                text={translateLabels("dashboard.editions.2022.05.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQ0DeLw8lAuUGVF6wtj879HfzDKM2xbXyh5mWp"
+                imgAlt={translateLabels("dashboard.editions.2022.05.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQdZQ5CMjwkxqUtnLOijX7SFCNvl3gBQ20ZKp5"/>
+            <Card
+                text={translateLabels("dashboard.editions.2022.06.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQnVEDAkWGxL28lKoTieOrXABHk9615gmPF4Uc"
+                imgAlt={translateLabels("dashboard.editions.2022.06.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQ7th8OTKsPzJOMg5IqY0byCcVd4kLSfwEZXoi"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    data-slot="accordion-item"
+    data-value="six"
+    class="group/accordion border-b border-dashed border-(--border-color) last:border-b-0 px-4"
+  >
+    <button
+      data-slot="accordion-trigger"
+      class="flex w-full items-center gap-4 bg-transparent py-3 text-left"
+    >
+        <span>2021</span>
+      <svg
+        data-slot="accordion-trigger-icon"
+        viewBox="0 0 12 12"
+        class="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]/accordion:rotate-45"
+      >
+        <path d="M6.75 0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25H6.75V0Z" />
+      </svg>
+    </button>
+    <div
+      data-slot="accordion-content"
+      class="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    >
+      <div
+        data-slot="accordion-content-inner"
+        class="h-auto pb-4 pt-0 data-ending-style:h-0 data-starting-style:h-0"
+      >
+          <div class="grid grid-cols-2 md:grid-cols-3 justify-between gap-4 pt-5">
+            <Card
+                text={translateLabels("dashboard.editions.2021.01.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQXR6Dk1zTpxZEuRckoP5J7dvgArnV8q9iXzft"
+                imgAlt={translateLabels("dashboard.editions.2021.01.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQj7IogCyZEK8lwn2POHBmV1GrM6WJ4ca9eUhz"/>
+            <Card
+                text={translateLabels("dashboard.editions.2021.02.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQpmxuYzJVzUhxOH9tT3vaMkmi6eX0olBLwKZ8"
+                imgAlt={translateLabels("dashboard.editions.2021.02.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQWX9JcnUGMxbyXtSf0gCDG28ElqHL5F4BQ9Up"/>
+            <Card
+                text={translateLabels("dashboard.editions.2021.03.title")}
+                imgSrc="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQETu4QRy9T0OFJCLrHiphUI6N4qPcntXkGWfY"
+                imgAlt={translateLabels("dashboard.editions.2021.03.imgAlt")}
+                href="https://j9c04746f7.ufs.sh/f/FqGiQp0wBAfQMWsuowIWXcYCZzVeqDpUAEsxofIOrRBbFyw9"/>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+import { createAccordion } from "@data-slot/accordion"
+
+const accordionMultipleCss = document.getElementById("accordion-multiple-css");
+createAccordion(accordionMultipleCss, { multiple: true })
+</script>
