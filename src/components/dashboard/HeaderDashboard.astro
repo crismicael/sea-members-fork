@@ -21,13 +21,13 @@ const getHashUrl = (hash: string) => {
 ---
 
 <header class="fixed h-18 w-full border-b border-(--border-color) z-50">
-    <nav class="flex items-center justify-between px-4 lg:px-48 3xl:px-96 h-full w-full bg-white/0 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10">
+    <nav class="flex items-center justify-between gap-2 px-4 lg:px-48 3xl:px-96 h-full w-full bg-white/0 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10">
         <div class="flex items-center gap-5">
             <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
                 <Image src={Logo} alt="Sea View Magazine Logo" width=130 height=100 />
             </a>
         </div>
-        <ButtonFront text={translateLabels("dashboard.header.button")} href=https://billing.stripe.com/p/login/28E28j2Qx1YD5Yb4K81Jm00 className="font-semibold py-2.5 pb-3 px-5 text-[12px] xl:text-[16px]">
+        <ButtonFront text={translateLabels("dashboard.header.button")} href=https://billing.stripe.com/p/login/28E28j2Qx1YD5Yb4K81Jm00 className="font-semibold py-2.5 pb-3 text-[12px] xl:text-[16px]">
             <Image src={StripeLogo} alt="Stripe Logo" width=40 />
         </ButtonFront>
     </nav>
