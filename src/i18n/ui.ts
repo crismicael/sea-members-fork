@@ -508,10 +508,11 @@ export const lang = {
     },
     'signin': {
       'title': 'Iniciar Sesión',
-      'emailLabel': 'Correo electrónico',
+      'emailOrUlidLabel': 'Usuario',
+      'emailOrUlidPlaceholder': 'usuario@ejemplo.com o ULID',
       'passwordLabel': 'Contraseña',
       'submitButton': 'Iniciar Sesión',
-      'popup': 'La dirección de correo electrónico es la misma que utilizaste para adquirir tu suscripción.',
+      'popup': 'La dirección de correo electrónico es la misma que utilizaste para adquirir tu suscripción y el ULID es el código que puedes encontrar en tu tarjeta virtual o física.',
       'back': 'Regresar',
       'business': 'Cuenta de Negocio'
     },
@@ -1212,10 +1213,11 @@ export const lang = {
     },
     'signin': {
       'title': 'Sign In',
-      'emailLabel': 'Email',
+      'emailLabel': 'User',
+      'emailOrUlidPlaceholder': 'user@example.com or ULID',
       'passwordLabel': 'Password',
       'submitButton': 'Sign In',
-      'popup': 'The email address is the same one you used to purchase your membership.',
+      'popup': 'The email address is the same one you used to purchase your membership and the ULID is your unique identifier found in your membership card.',
       'back': 'Go Back',
       'business': 'Business Account'
     },
