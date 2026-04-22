@@ -109,7 +109,7 @@ const getHashUrl = (hash: string) => {
                     name="identifier"
                     required
                     placeholder={translateLabels("signin.emailOrUlidPlaceholder")} />
-                    <p id="format-warning" class="text-xs text-red-600 mt-1 ml-0.5 hidden"></p>
+                    <p id="format-warning" class="text-xs text-red-600 mt-1 ml-0.5 hidden">{translateLabels("signin.textWarning")}</p>
                     </div>
                     <div class="flex flex-col">
                         <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>

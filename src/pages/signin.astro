@@ -89,7 +89,7 @@ const getHashUrl = (hash: string) => {
                         {errorMessage}
                         </div>
                 )}
-    
+
                 <form method="post" id="signin-form" class="flex flex-col gap-3">
                     <div class="flex flex-col">
                         <div class="flex items-baseline gap-3">
@@ -109,7 +109,7 @@ const getHashUrl = (hash: string) => {
                         name="identifier"
                         required
                         placeholder={translateLabels("signin.emailOrUlidPlaceholder")} />
-                        <p id="format-warning" class="text-xs text-red-600 mt-1 ml-0.5 hidden"></p>
+                        <p id="format-warning" class="text-xs text-red-600 mt-1 ml-0.5 hidden">{translateLabels("signin.textWarning")}</p>
                     </div>
                     <div class="flex flex-col">
                         <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>
@@ -151,25 +151,25 @@ const getHashUrl = (hash: string) => {
 
     <script>
         import { createPopper } from "@popperjs/core";
-    
+
         const button = document.getElementById("information-button");
         const popper = document.getElementById("information-popper");
-    
+
         const form = document.getElementById('signin-form');
         const identifierInput = document.getElementById('identifier');
         const warningText = document.getElementById('format-warning');
-    
+
         let popperInstance: ReturnType<typeof createPopper> | null = null;
         let hideTimeout: ReturnType<typeof setTimeout> | null = null;
-    
+
         function show() {
             if (!button || !popper) return;
-    
+
             if (hideTimeout) {
                 clearTimeout(hideTimeout);
                 hideTimeout = null;
             }
-    
+
             popper.classList.remove("hidden");
             popperInstance = createPopper(button, popper, {
                 placement: "top",
@@ -183,31 +183,31 @@ const getHashUrl = (hash: string) => {
                 ],
             });
         }
-    
+
         function hide() {
             if (!popper) return;
-    
+
             hideTimeout = setTimeout(() => {
                 popper.classList.add("hidden");
-    
+
                 if (popperInstance) {
                     popperInstance.destroy();
                     popperInstance = null;
                 }
             }, 100);
         }
-    
+
         if (button && popper) {
             button.addEventListener('mouseenter', show);
             button.addEventListener('mouseleave', hide);
             popper.addEventListener('mouseenter', show);
             popper.addEventListener('mouseleave', hide);
         }
-    
+
         form.addEventListener('submit', (e) => {
             const val = identifierInput.value.trim();
             let isValidFormat = false;
-    
+
             // Check 1: Does it look like an email? (Simple check)
             if (val.includes('@') && val.includes('.')) {
             isValidFormat = true;
@@ -216,10 +216,9 @@ const getHashUrl = (hash: string) => {
             else if (!val.includes('@') && val.length === 26 && /^[0-9A-Z]+$/i.test(val)) {
             isValidFormat = true;
             }
-    
+
             if (!isValidFormat) {
             e.preventDefault(); // Stop the form from submitting to the server
-            warningText.textContent = "Please enter a valid email address or a 26-character ULID code.";
             warningText.classList.remove('hidden');
             } else {
             warningText.classList.add('hidden');
