@@ -9,6 +9,7 @@ import Card from '../assets/members_hero.png'
 import Button from './shared/Button.astro'
 import ButtonArrow from './shared/ButtonArrow.astro'
 import SeaViewLogo from '../assets/seaviewmagazine_logo.png'
+import SeaViewHero from '../assets/Members-sinlogo.webp'
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslation(currentLang as keyof typeof languageList);
 
@@ -32,7 +33,6 @@ const getHashUrl = (hash: string) => {
                     <a href="https://seaviewmagazine.com/" target="_blank">
                         <Image src={SeaViewLogo} width=70 alt="Logo de Sea View Magazine" />
                     </a>
-                    <!-- just a little easter egg -->
                 </div>
                 <div class="block sm:hidden pe-3">
                     <div id="language-button-hero">
@@ -83,7 +83,7 @@ const getHashUrl = (hash: string) => {
             </div>
         </div>
         <div class="flex justify-center md:justify-end w-full md:w-auto">
-            <Image src={Card} alt="placeholder" width=400 class="max-w-full h-auto" />
+            <Image src={SeaViewHero} alt="placeholder" width=500 class="max-w-full h-auto" />
         </div>
     </div>
 </section>

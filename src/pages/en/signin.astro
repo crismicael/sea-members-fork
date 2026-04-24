@@ -19,7 +19,7 @@ if (Astro.request.method === "POST") {
   try {
     // 2. Grab the form data submitted by the user
     const data = await Astro.request.formData();
-    const email = data.get("email");
+    const identifier = data.get("identifier");
     const password = data.get("password");
 
     // 3. Fetch the FastAPI backend (Step 4 from our prompt)
@@ -30,7 +30,7 @@ if (Astro.request.method === "POST") {
       },
       // FastAPI expects a JSON body matching the MemberLoginRequest schema
       body: JSON.stringify({
-        email: email,
+        identifier: identifier,
         password: password,
       }),
     });
@@ -76,127 +76,157 @@ const getHashUrl = (hash: string) => {
 
 <Layout>
     <main class="font-main">
-      <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 justify-between min-w-dvw prose">
-          <div class="left-right-padding pt-24 lg:pt-20">
-              <div class="flex justify-center">
-                  <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
-                      <Image src={Logo} alt="Sea View Magazine Logo" width=260 />
-                  </a>
-              </div>
-              <h1 class="font-main text-center text-2xl">{translateLabels("signin.title")}</h1>
-              {errorMessage && (
-                      <div class="bg-red-50 text-red-600 p-3 rounded-md text-sm mb-4 text-center">
-                      {errorMessage}
-                      </div>
-              )}
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 justify-between min-w-dvw prose">
+            <div class="left-right-padding pt-24 lg:pt-20">
+                <div class="flex justify-center">
+                    <a href={getAbsoluteLocaleUrl(currentLang, `/`)}>
+                        <Image src={Logo} alt="Sea View Magazine Logo" width=260 />
+                    </a>
+                </div>
+                <h1 class="font-main text-center text-2xl">{translateLabels("signin.title")}</h1>
+                {errorMessage && (
+                        <div class="bg-red-50 text-red-600 p-3 rounded-md text-sm mb-4 text-center">
+                        {errorMessage}
+                        </div>
+                )}
 
-              <form method="post" class="flex flex-col gap-3">
-                  <div class="flex flex-col">
-                      <div class="flex items-baseline gap-3">
-                          <label for="ulid_code" class="font-medium text-gray-700 mb-1">{translateLabels("signin.emailLabel")}</label>
-                          <div id="information-button">
-                              <InformationIcon />
-                          </div>
-                          <div id="information-popper" role="tooltip" class="hidden z-30">
-                              <div class="flex flex-col items-center gap-3 popover-content w-72 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg">
-                                  <p class="mt-0 mb-0">{translateLabels("signin.popup")}</p>
-                              </div>
-                          </div>
-                      </div>
-                      <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      placeholder="usuario@ejemplo.com" />
-                  </div>
-                  <div class="flex flex-col">
-                      <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>
-                      <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                      placeholder="*************"/>
-                  </div>
-                  <button type="submit" class="py-2.5 px-3.5 mt-2 rounded-(--rounded-button) transition-colors ease-in-out no-underline bg-(--primary-color) hover:bg-(--secondary-color) text-white cursor-pointer">
-                          {translateLabels("signin.submitButton")}
-                  </button>
-              </form>
-              <div class="flex justify-between mt-5">
-                  <a href="/" class="no-underline hover:underline">
-                      <span>
-                          <Image src={LeftArrow} alt="Left Arrow" width=15 class="inline-block mt-0 mb-0 mr-1" />
-                          {translateLabels("signin.back")}
-                      </span>
-                  </a>
-                  <a href={getHashUrl("business/signin")} class="no-underline hover:underline">
-                      <span>
-                          {translateLabels("signin.business")}
-                      </span>
-                  </a>
-              </div>
-              <div class="flex justify-center">
-                  <a href="/signin" class="no-underline hover:underline decoration-gray-600">
-                      <p class="text-gray-600">EN | English</p>
-                  </a>
-              </div>
-          </div>
-          <div class="hidden xl:block rounded-l-3xl">
-              <Image src={SignInImage} alt="Sign In Image" class="w-full h-[100dvh] object-cover rounded-l-4xl mt-0 mb-0 brightness-150" />
-          </div>
-      </div>
-  </main>
+                <form method="post" id="signin-form" class="flex flex-col gap-3">
+                    <div class="flex flex-col">
+                    <div class="flex items-baseline gap-3">
+                        <label for="ulid_code" class="font-medium text-gray-700 mb-1">{translateLabels("signin.emailLabel")}</label>
+                        <div id="information-button">
+                            <InformationIcon />
+                        </div>
+                        <div id="information-popper" role="tooltip" class="hidden z-30">
+                            <div class="flex flex-col items-center gap-3 popover-content w-72 p-4 bg-white border border-gray-300 rounded-[10px] shadow-lg">
+                                <p class="mt-0 mb-0">{translateLabels("signin.popup")}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
+                    type="text"
+                    id="identifier"
+                    name="identifier"
+                    required
+                    placeholder={translateLabels("signin.emailOrUlidPlaceholder")} />
+                    <p id="format-warning" class="text-xs text-red-600 mt-1 ml-0.5 hidden">{translateLabels("signin.textWarning")}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="password" class="font-medium text-gray-700 mb-1">{translateLabels("signin.passwordLabel")}</label>
+                        <input class="px-4 py-2 rounded-(--rounded-button) border border-(--border-color) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--primary-color)"
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        placeholder="*************"/>
+                    </div>
+                    <button type="submit" class="py-2.5 px-3.5 mt-2 rounded-(--rounded-button) transition-colors ease-in-out no-underline bg-(--primary-color) hover:bg-(--secondary-color) text-white cursor-pointer">
+                            {translateLabels("signin.submitButton")}
+                    </button>
+                </form>
+                <div class="flex justify-between mt-5">
+                    <a href="/en" class="no-underline hover:underline">
+                        <span>
+                            <Image src={LeftArrow} alt="Left Arrow" width=15 class="inline-block mt-0 mb-0 mr-1" />
+                            {translateLabels("signin.back")}
+                        </span>
+                    </a>
+                    <!-- <a href={getHashUrl("business/signin")} class="no-underline hover:underline">
+                        <span>
+                            {translateLabels("signin.business")}
+                        </span>
+                    </a> -->
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <a href="/signin" class="no-underline hover:underline decoration-gray-600">
+                        <p class="text-gray-600">EN | English</p>
+                    </a>
+                    <a href="/en/forgot-password" class="no-underline hover:underline decoration-gray-600">
+                        <p class="text-gray-600 mt-0">{translateLabels("signin.forgotPasswordLink")}</p>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden xl:block rounded-l-3xl">
+                <Image src={SignInImage} alt="Sign In Image" class="w-full h-[100dvh] object-cover rounded-l-4xl mt-0 mb-0 brightness-150" />
+            </div>
+        </div>
+    </main>
 
-<script>
-    import { createPopper } from "@popperjs/core";
+    <script>
+        import { createPopper } from "@popperjs/core";
 
-    const button = document.getElementById("information-button");
-    const popper = document.getElementById("information-popper");
+        const button = document.getElementById("information-button");
+        const popper = document.getElementById("information-popper");
 
-    let popperInstance: ReturnType<typeof createPopper> | null = null;
-    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+        const form = document.getElementById('signin-form');
+        const identifierInput = document.getElementById('identifier');
+        const warningText = document.getElementById('format-warning');
 
-    function show() {
-        if (!button || !popper) return;
+        let popperInstance: ReturnType<typeof createPopper> | null = null;
+        let hideTimeout: ReturnType<typeof setTimeout> | null = null;
 
-        if (hideTimeout) {
-            clearTimeout(hideTimeout);
-            hideTimeout = null;
+        function show() {
+            if (!button || !popper) return;
+
+            if (hideTimeout) {
+                clearTimeout(hideTimeout);
+                hideTimeout = null;
+            }
+
+            popper.classList.remove("hidden");
+            popperInstance = createPopper(button, popper, {
+                placement: "top",
+                modifiers: [
+                    {
+                        name: "offset",
+                        options: {
+                            offset: [0, 8],
+                        },
+                    },
+                ],
+            });
         }
 
-        popper.classList.remove("hidden");
-        popperInstance = createPopper(button, popper, {
-            placement: "top",
-            modifiers: [
-                {
-                    name: "offset",
-                    options: {
-                        offset: [0, 8],
-                    },
-                },
-            ],
-        });
-    }
+        function hide() {
+            if (!popper) return;
 
-    function hide() {
-        if (!popper) return;
+            hideTimeout = setTimeout(() => {
+                popper.classList.add("hidden");
 
-        hideTimeout = setTimeout(() => {
-            popper.classList.add("hidden");
+                if (popperInstance) {
+                    popperInstance.destroy();
+                    popperInstance = null;
+                }
+            }, 100);
+        }
 
-            if (popperInstance) {
-                popperInstance.destroy();
-                popperInstance = null;
+        if (button && popper) {
+            button.addEventListener('mouseenter', show);
+            button.addEventListener('mouseleave', hide);
+            popper.addEventListener('mouseenter', show);
+            popper.addEventListener('mouseleave', hide);
+        }
+
+        form.addEventListener('submit', (e) => {
+            const val = identifierInput.value.trim();
+            let isValidFormat = false;
+
+            // Check 1: Does it look like an email? (Simple check)
+            if (val.includes('@') && val.includes('.')) {
+            isValidFormat = true;
             }
-        }, 100);
-    }
+            // Check 2: Does it look like a ULID? (Exactly 26 alphanumeric chars)
+            else if (!val.includes('@') && val.length === 26 && /^[0-9A-Z]+$/i.test(val)) {
+            isValidFormat = true;
+            }
 
-    if (button && popper) {
-        button.addEventListener('mouseenter', show);
-        button.addEventListener('mouseleave', hide);
-        popper.addEventListener('mouseenter', show);
-        popper.addEventListener('mouseleave', hide);
-    }
-</script>
+            if (!isValidFormat) {
+            e.preventDefault(); // Stop the form from submitting to the server
+            warningText.textContent = "Please enter a valid email address or a 26-character ULID code.";
+            warningText.classList.remove('hidden');
+            } else {
+            warningText.classList.add('hidden');
+            }
+        });
+    </script>
 </Layout>

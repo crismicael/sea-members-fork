@@ -508,12 +508,24 @@ export const lang = {
     },
     'signin': {
       'title': 'Iniciar Sesión',
-      'emailLabel': 'Correo electrónico',
+      'emailOrUlidLabel': 'Usuario',
+      'emailOrUlidPlaceholder': 'usuario@ejemplo.com o ULID',
+      'textWarning': 'Introduzca una dirección de correo electrónico válida o un código ULID de 26 caracteres.',
       'passwordLabel': 'Contraseña',
       'submitButton': 'Iniciar Sesión',
-      'popup': 'La dirección de correo electrónico es la misma que utilizaste para adquirir tu suscripción.',
+      'popup': 'La dirección de correo electrónico es la misma que utilizaste para adquirir tu suscripción y el ULID es el código que puedes encontrar en tu tarjeta virtual o física.',
       'back': 'Regresar',
-      'business': 'Cuenta de Negocio'
+      'business': 'Cuenta de Negocio',
+      'forgotPasswordLink': '¿Olvidaste tu contraseña?',
+      'forgotPassword': {
+        'title': '¿Tienes problemas para iniciar sesión?',
+        'paragraph': 'Introduce la dirección de email con la que adquiriste tu suscripción. Te enviaremos un email con un enlace para recuperar el acceso a tu cuenta.',
+        'emailPlaceholder': 'usuario@ejemplo.com',
+        'submitButton': 'Enviar',
+        'success': 'Si esa dirección de correo electrónico se encuentra en nuestro sistema, se le enviara un enlace para restablecer la contraseña. Si en unos minutos no te ha llegado, mira en la carpeta de correo no deseado.',
+        'error': 'Se ha producido un error inesperado. Inténtalo de nuevo más tarde.',
+        'back': 'Regresar'
+      }
     },
     'dashboard': {
       'welcome': '¡Bienvenido',
@@ -1212,12 +1224,24 @@ export const lang = {
     },
     'signin': {
       'title': 'Sign In',
-      'emailLabel': 'Email',
+      'emailLabel': 'User',
+      'emailOrUlidPlaceholder': 'user@example.com or ULID',
+      'textWarning': 'Please enter a valid email address or a 26-character ULID code.',
       'passwordLabel': 'Password',
       'submitButton': 'Sign In',
-      'popup': 'The email address is the same one you used to purchase your membership.',
+      'popup': 'The email address is the same one you used to purchase your membership and the ULID is your unique identifier found in your membership card.',
       'back': 'Go Back',
-      'business': 'Business Account'
+      'business': 'Business Account',
+      'forgotPasswordLink': 'Forgot Password?',
+      'forgotPassword': {
+        'title': 'Having trouble signing in?',
+        'paragraph': "Enter the email address you used to purchase your subscription. We'll send you an email with a link to regain access to your account.",
+        'emailPlaceholder': 'user@example.com',
+        'submitButton': 'Continue',
+        'success': 'If that email is in our system, a reset link has been sent.',
+        'error': 'An unexpected error occurred. Please try again later.',
+        'back': 'Go Back'
+      }
     },
     'dashboard': {
       'welcome': '¡Welcome',
